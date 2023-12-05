@@ -1,1 +1,13 @@
-<p>sidebar works!</p>
+<div class="shadow-lg side-nav-content">
+
+    <ul class="nav-list" [ngClass]="{'nav-list-open':sideNavStatus}">
+        <li class="nav-list-item p-1" *ngFor="let item of list">
+            <i class="{{ item.icon }}"></i>
+            <span>
+                <a href="#">{{ item.name }}</a>
+            </span>
+        </li>
+        
+    </ul>
+
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,6 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  @Input() sideNavStatus: boolean = false;
+  list = [
+    {
+      number: '1',
+      name: 'Certificación',
+      icon: 'fa-solid fa-certificate'
+    },
+    {
+      number: '2',
+      name: 'Reportes',
+      icon: 'fa-solid fa-file-lines'
+    },
+    {
+      number: '3',
+      name: 'Administración',
+      icon: 'fa-solid fa-user-tie'
+    }
+  ];
   constructor() { }
 
   ngOnInit(): void {
