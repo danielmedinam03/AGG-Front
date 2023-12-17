@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-botadero',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BotaderoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  redireccionar(){
+    this.router.navigate(['/botadero/']);
+  }
 
   ngOnInit(): void {
   }
 
+  //Ajuste realizado 
 }

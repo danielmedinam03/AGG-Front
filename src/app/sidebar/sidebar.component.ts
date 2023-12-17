@@ -12,17 +12,23 @@ export class SidebarComponent implements OnInit {
     {
       number: '1',
       name: 'Certificación',
-      icon: 'fa-solid fa-certificate'
+      icon: 'fa-solid fa-certificate',
+      href: './botadero.component.html'
+
     },
     {
       number: '2',
       name: 'Reportes',
-      icon: 'fa-solid fa-file-lines'
+      icon: 'fa-solid fa-file-lines',
+      href: './botadero.component.html'
+
     },
     {
       number: '3',
       name: 'Administración',
-      icon: 'fa-solid fa-user-tie'
+      icon: 'fa-solid fa-user-tie',
+      href: './botadero.component.html'
+
     }
   ];
   constructor() { }
