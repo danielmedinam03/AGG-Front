@@ -4,7 +4,7 @@
         <li class="nav-list-item p-1" *ngFor="let item of list">
             <i class="{{ item.icon }}"></i>
             <span>
-                <a routerLink = "/sidebar/botadero">{{ item.name }}</a>
+                <a routerLink="{{item.href}}">{{ item.name }}</a>
             </span>
         </li>
         

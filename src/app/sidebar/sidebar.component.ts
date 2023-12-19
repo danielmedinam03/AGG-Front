@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -13,27 +13,30 @@ export class SidebarComponent implements OnInit {
       number: '1',
       name: 'Certificación',
       icon: 'fa-solid fa-certificate',
-      href: './botadero.component.html'
+      href: '/certificaciones'
 
     },
     {
       number: '2',
       name: 'Reportes',
       icon: 'fa-solid fa-file-lines',
-      href: './botadero.component.html'
+      href: '/reportes'
 
     },
     {
       number: '3',
       name: 'Administración',
       icon: 'fa-solid fa-user-tie',
-      href: './botadero.component.html'
+      href: '/botadero'
 
     }
   ];
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
+  navigateTo(route: string): void {
+    this.router.navigateByUrl(route);
+  }
 }

@@ -10,9 +10,9 @@ export class BotaderoComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  redireccionar(){
-    this.router.navigate(['/botadero/']);
-  }
+  // redireccionar(){
+  //   this.router.navigate(['/botadero/']);
+  // }
 
   ngOnInit(): void {
   }
