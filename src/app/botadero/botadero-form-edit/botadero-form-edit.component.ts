@@ -31,6 +31,13 @@ export class BotaderoFormEditComponent implements OnInit {
     });
 
   }
+
+  editar(botaderos: { city: any; property_name: any; }){
+      this.botaderoForm.setValue({
+        city: botaderos.city,
+        property_name: botaderos.property_name
+      })
+    }
   
 
 }
