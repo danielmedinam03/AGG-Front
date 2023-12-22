@@ -1,0 +1,57 @@
+/* styles.css */
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+h1 {
+    margin-bottom: 30px; /* Espacio entre el título y los botones */
+    text-align: center;
+    font: bold;
+    font-size: 28px;
+}
+
+.principal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; /* La altura de la pantalla */
+}
+
+
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilo para ambos botones */
+.btn-warning,
+.btn-success {
+  width: 200px; /* Ajusta el ancho según tus necesidades */
+  height: 50px; /* Ajusta el alto según tus necesidades */
+  font-size: 16px; /* Ajusta el tamaño de la fuente según tus necesidades */
+  margin-bottom: 10px; /* Espacio entre los botones */
+  border-color: black;
+}
+
+/* Estilo para el botón Amarillo */
+.btn-warning {
+  background-color: yellow;
+  color: black;
+}
+
+/* Estilo para el botón Verde */
+.btn-success {
+  background-color: green;
+}
+
+/* Estilo responsive */
+@media (max-width: 768px) {
+  .principal {
+    padding: 20px; /* Añade un poco de espacio alrededor del contenedor principal en pantallas pequeñas */
+  }
+}
