@@ -14,8 +14,9 @@
             <input type="text" class="form-control" id="property_name" formControlName="property_name">
         </div>
         <div class="buttons">
-            <button type="submit" class="btn btn-success" [disabled]="botaderoForm.invalid">Crear</button>
-            <button type="button" class="btn btn-danger">Cancelar</button>
+            <button type="button" class="btn btn-success" (click)="openModal()">Guardar</button>
+
+            <button type="button" class="btn btn-danger" routerLink="/botadero">Cancelar</button>
         </div>
         
         <div class="mb-3">
@@ -23,7 +24,17 @@
             <input type="number" id="user_id" formControlName="user_id">
         </div>
     </form>
-
-
-
 </div>
+
+
+<app-custom-modal *ngIf="showModal" (closeModalEvent)="closeModal()">
+    <p class="msj">
+        <i class="fas fa-exclamation-circle"></i> <!-- Icono de advertencia -->
+        ¿Estás seguro de que deseas guardar los cambios?
+    </p>
+    <div class="buttons">
+        <button type="button" class="btn btn-success" (click)="saveChanges()">Aceptar</button>
+        <button type="button" class="btn btn-danger" (click)="closeModal()">Cancelar</button>
+    </div>
+</app-custom-modal>
+

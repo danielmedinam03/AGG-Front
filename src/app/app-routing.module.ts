@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'certificaciones', component: CertificacionesComponent},
   { path: 'reportes', component: ReportesComponent},
   { path: 'botaderoCreate', component: BotaderoFormComponent},
-  { path: 'botaderoEdit', component: BotaderoFormEditComponent},
+  { path: 'botaderoEdit/:id', component: BotaderoFormEditComponent},
   {
     path:'',
     component:HomeComponent,

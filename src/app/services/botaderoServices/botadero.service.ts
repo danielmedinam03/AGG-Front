@@ -21,8 +21,17 @@ export class BotaderoService {
   
   public updateStatus(id:number, status:boolean): Observable<any>{
     const url = `${environment.API_SERVER}${this.API_SERVER}/${id}/status`;
-    console.log(url);
     return this.httpClient.put(url,status);
   }
 
+  public editBotadero(botadero: any){
+    const url = `${environment.API_SERVER}${this.API_SERVER}/`+ botadero.id_botadero +`/update`;
+    return this.httpClient.put(url,botadero);
+  }
+
+  public getByIdBotadero(id:number):Observable<any>{
+    const url = `${environment.API_SERVER}${this.API_SERVER}/${id}`;
+    console.log(url);
+    return this.httpClient.get(url);
+  }
 }

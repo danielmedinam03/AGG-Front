@@ -18,15 +18,17 @@
   
   /* Estilo específico para los botones */
   button {
-    justify-content: center;
     margin-right: 10px; /* Espacio entre los botones */
+    justify-content: center;
   }
   
   .buttons {
       display: grid;
+      display: flex;
       grid-template-columns: repeat(2, 1fr);
       gap: 10px; /* Espacio entre las columnas (botones) */
       justify-content: center;
+      
     }
   
   /* Estilo para hacer el formulario responsive */

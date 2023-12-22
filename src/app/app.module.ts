@@ -32,7 +32,8 @@ import { HomeComponent } from './pages/home/home.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
-
+import {NgxPaginationModule} from 'ngx-pagination';
+import { CustomModalComponent } from './botadero/custom-modal/custom-modal.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {MatIconModule} from '@angular/material/icon';
     CertificacionesComponent,
     ReportesComponent,
     BotaderoFormComponent,
-    BotaderoFormEditComponent
+    BotaderoFormEditComponent,
+    CustomModalComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ import {MatIconModule} from '@angular/material/icon';
     FormsModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    MatInputModule
+    MatInputModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

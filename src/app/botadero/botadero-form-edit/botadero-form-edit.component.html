@@ -1,31 +1,41 @@
 <div class="btn-regresar">
     <button type="button" class="btn btn-light" routerLink="/botadero"><i class="fa-solid fa-reply"></i></button>
 </div>
+
+
+
 <div class="principal">
 
     <h1>Editar botadero</h1>
-    <form [formGroup]="botaderoForm">
+    <form [formGroup]="botaderoForm" (ngSubmit)="editar()">
+
         <div class="mb-3">
             <label for="" class="form-label">Municipio o distrito del predio: </label>
-            <input type="text" class="form-control" id="city" formControlName="city">
+            <input type="text" class="form-control" id="city" [(ngModel)]="botaderos.city" formControlName="city">
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Nombre del predio:</label>
-            <input type="text" class="form-control" id="property_name" formControlName="property_name">
+            <input type="text" class="form-control" id="property_name" [(ngModel)]="botaderos.property_name"
+                formControlName="property_name">
         </div>
         <div class="buttons">
-            <button type="submit" class="btn btn-success">Guardar</button>
-            <button type="button" class="btn btn-danger">Cancelar</button>
+            <button type="button" class="btn btn-success" (click)="openModal()">Guardar</button>
+            <button type="button" routerLink="/botadero" class="btn btn-danger">Cancelar</button>
         </div>
-        <div class="mb-3">
-            <input type="hidden" id="status" formControlName="status">
-        </div>
-        <div class="mb-3">
-            <label for="user_id" class="form-label">ID de usuario:</label>
-            <input type="number" id="user_id" formControlName="user_id">
-        </div>
+
     </form>
 
-
-
 </div>
+
+<app-custom-modal *ngIf="showModal" (closeModalEvent)="closeModal()">
+    <!-- Contenido del modal -->
+    <p class="msj">
+        <i class="fas fa-exclamation-circle"></i> <!-- Icono de advertencia -->
+        ¿Estás seguro de que deseas guardar los cambios?
+    </p>
+    <div class="buttons">
+        <button type="button" class="btn btn-success" (click)="saveChanges()">Aceptar</button>
+        <button type="button" class="btn btn-danger" (click)="closeModal()">Cancelar</button>
+    </div>
+</app-custom-modal>
+
