@@ -1,0 +1,29 @@
+<div class="btn-regresar">
+    <button type="button" class="btn btn-light" routerLink="/botadero"><i class="fa-solid fa-reply"></i></button>
+</div>
+<div class="principal">
+
+    <h1>Crear nuevo botadero</h1>
+    <form [formGroup]="botaderoForm" (ngSubmit)="guardar()">
+        <div class="mb-3">
+            <label for="" class="form-label">Municipio o distrito del predio: </label>
+            <input type="text" class="form-control" id="city" formControlName="city">
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Nombre del predio:</label>
+            <input type="text" class="form-control" id="property_name" formControlName="property_name">
+        </div>
+        <div class="buttons">
+            <button type="submit" class="btn btn-success" [disabled]="botaderoForm.invalid">Crear</button>
+            <button type="button" class="btn btn-danger">Cancelar</button>
+        </div>
+        
+        <div class="mb-3">
+            <label for="user_id" class="form-label">ID de usuario:</label>
+            <input type="number" id="user_id" formControlName="user_id">
+        </div>
+    </form>
+
+
+
+</div>
