@@ -9,6 +9,10 @@ import { CertificacionesComponent } from './certificaciones/certificaciones.comp
 import { ReportesComponent } from './reportes/reportes.component';
 import { BotaderoFormComponent } from './botadero/botadero-form/botadero-form.component';
 import { BotaderoFormEditComponent } from './botadero/botadero-form-edit/botadero-form-edit.component';
+import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { UserDasboardComponent } from './pages/user/user-dasboard/user-dasboard.component';
+import { NormalGuard } from './services/normal.guard';
+import { AdminGuard } from './services/admin.guard';
 
 const routes: Routes = [
   { path: 'botadero', component: BotaderoComponent},
@@ -30,6 +34,18 @@ const routes: Routes = [
     path:'login',
     component:LoginComponent,
     pathMatch: 'full'
+  },
+  {
+    path:'admin',
+    component:DashboardComponent,
+    pathMatch:'full',
+    canActivate:[AdminGuard]
+  },
+  {
+    path:'user-dashboard',
+    component:UserDasboardComponent,
+    pathMatch:'full',
+    canActivate:[NormalGuard]
   }
 ]
 

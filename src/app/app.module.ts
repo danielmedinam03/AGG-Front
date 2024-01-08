@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { HeaderComponent } from './header/header.component';
 import { BotaderoComponent } from './botadero/botadero.component';
 import { CertificacionesComponent } from './certificaciones/certificaciones.component';
 import { ReportesComponent } from './reportes/reportes.component';
@@ -32,13 +31,15 @@ import { HomeComponent } from './pages/home/home.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import { authInterceptorProviders } from './services/auth.interceptor';
+import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { UserDasboardComponent } from './pages/user/user-dasboard/user-dasboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    HeaderComponent,
     BotaderoComponent,
     NavbarComponent,
     SignupComponent,
@@ -47,7 +48,9 @@ import {MatIconModule} from '@angular/material/icon';
     CertificacionesComponent,
     ReportesComponent,
     BotaderoFormComponent,
-    BotaderoFormEditComponent
+    BotaderoFormEditComponent,
+    DashboardComponent,
+    UserDasboardComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatPaginatorModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
