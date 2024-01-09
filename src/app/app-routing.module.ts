@@ -13,6 +13,7 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import { UserDasboardComponent } from './pages/user/user-dasboard/user-dasboard.component';
 import { NormalGuard } from './services/normal.guard';
 import { AdminGuard } from './services/admin.guard';
+import { CertificadoComponent } from './pages/certificado/certificado.component';
 
 const routes: Routes = [
   { path: 'botadero', component: BotaderoComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'reportes', component: ReportesComponent},
   { path: 'botaderoCreate', component: BotaderoFormComponent},
   { path: 'botaderoEdit', component: BotaderoFormEditComponent},
+  { path: 'certificado', component: CertificadoComponent},
   {
     path:'',
     component:HomeComponent,

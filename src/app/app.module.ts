@@ -15,6 +15,7 @@ import { BotaderoFormComponent } from './botadero/botadero-form/botadero-form.co
 import { BotaderoFormEditComponent } from './botadero/botadero-form-edit/botadero-form-edit.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
 
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
@@ -34,6 +35,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { authInterceptorProviders } from './services/auth.interceptor';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { UserDasboardComponent } from './pages/user/user-dasboard/user-dasboard.component';
+import { CertificadoComponent } from './pages/certificado/certificado.component';
 
 
 @NgModule({
@@ -44,13 +46,15 @@ import { UserDasboardComponent } from './pages/user/user-dasboard/user-dasboard.
     NavbarComponent,
     SignupComponent,
     LoginComponent,
+    HeaderComponent,
     HomeComponent,
     CertificacionesComponent,
     ReportesComponent,
     BotaderoFormComponent,
     BotaderoFormEditComponent,
     DashboardComponent,
-    UserDasboardComponent
+    UserDasboardComponent,
+    CertificadoComponent
   ],
   imports: [
     BrowserModule,
