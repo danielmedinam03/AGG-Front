@@ -6,17 +6,15 @@
             <tr>
                 <th scope="col">Municipio</th>
                 <th scope="col">Nombre del predio</th>
-                <th scope="col">Estado</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of botaderos">
+            <tr *ngFor="let item of botaderos | paginate: { itemsPerPage: 5, currentPage: pagination }">
                 <td>{{item.city}}</td>
                 <td>{{item.property_name}}</td>
-                <td>{{item.status?'Activo' : 'Inactivo'}}</td>
                 <td >
-                    <a id="pencilEdit"  routerLink="/botaderoEdit"><i class="fa-solid fa-pen"  ></i></a>
+                    <a id="pencilEdit"  routerLink="/botaderoEdit/{{item.id_botadero}}"><i class="fa-solid fa-pen"  ></i></a>
                     
                     <mat-slide-toggle class="toggle"    
                     [(ngModel)]="item.status" (change)="editStatus(item.id_botadero, item.status)"></mat-slide-toggle>
@@ -26,6 +24,7 @@
             
         </tbody>
     </table>
+    <pagination-controls (pageChange)="pagination = $event" previousLabel="" nextLabel="" ></pagination-controls>
 
     <div class="button-container">
         <button class="button" routerLink="/botaderoCreate">Agregar</button>

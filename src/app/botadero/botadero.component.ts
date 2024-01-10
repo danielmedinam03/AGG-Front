@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
-import { BotaderoService } from '../services/botadero.service';
+import { BotaderoService } from '../services/botaderoServices/botadero.service';
 import { NgModel } from '@angular/forms';
 
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
@@ -19,27 +19,13 @@ export class BotaderoComponent implements OnInit {
   botaderos: any;
   id: any;
   status: any;
+  pagination: number = 1;
 
-  // @ViewChild(MatPaginator) paginator!: MatPaginator;
-  // @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private router: Router,
     public botaderoService: BotaderoService) { 
   }
 
-  // ngAfterViewInit() {
-  //   this.botaderos.paginator = this.paginator;
-  //   this.botaderos.sort = this.sort;
-  // }
-
-  // applyFilter(event: Event) {
-  //   const filterValue = (event.target as HTMLInputElement).value;
-  //   this.botaderos.filter = filterValue.trim().toLowerCase();
-
-  //   if (this.botaderos.paginator) {
-  //     this.botaderos.paginator.firstPage();
-  //   }
-  // }
 
   ngOnInit(): void {
     this.botaderoService.getAllBotadero().subscribe(resp => {
@@ -57,12 +43,4 @@ export class BotaderoComponent implements OnInit {
     );
   }
   
-  // editar(botaderos: { city: any; property_name: any; }){
-  //   this.botaderoForm.setValue({
-  //     city: botaderos.city,
-  //     property_name: botaderos.property_name
-  //   })
-  // }
-
-  //Ajuste realizado 
 }

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Observable } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BotaderoService } from 'src/app/services/botadero.service';
+import { BotaderoService } from 'src/app/services/botaderoServices/botadero.service';
 import { error } from 'console';
+import { Router,ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-botadero-form-edit',
@@ -14,14 +17,22 @@ export class BotaderoFormEditComponent implements OnInit {
 
   botaderoForm !: FormGroup;
   botaderos : any;
-  
+  id:any;
+  showModal = false;
 
   constructor(
+    public route: Router,
     public fb: FormBuilder,
-    public botaderoService: BotaderoService
+    public botaderoService: BotaderoService,
+    private activateRouter: ActivatedRoute,
+  ) { 
 
-  ) { }
-
+    this.id= this.activateRouter.snapshot.params['id'];
+    this.botaderoService.getByIdBotadero(this.id).subscribe(resp => {
+      this.botaderos = resp;
+    },
+    error => {console.error(error)});
+  }
   ngOnInit(): void {
     this.botaderoForm = this.fb.group({
       city: ['', Validators.required],
@@ -32,13 +43,27 @@ export class BotaderoFormEditComponent implements OnInit {
 
   }
 
-  editar(botaderos: { city: any; property_name: any; }){
-      this.botaderoForm.setValue({
-        city: botaderos.city,
-        property_name: botaderos.property_name
-      })
-    }
+  editar(){
+    this.botaderoService.editBotadero(this.botaderos).subscribe(resp =>{
+      this.route.navigateByUrl('botadero');
+    },
+    error => { console.error(error); }
+    )
+  }
   
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
+
+  saveChanges() {
+    this.editar();
+    this.closeModal();
+  }
+
 
 }
 
