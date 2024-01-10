@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { HeaderComponent } from './header/header.component';
 import { BotaderoComponent } from './botadero/botadero.component';
 import { CertificacionesComponent } from './certificaciones/certificaciones.component';
 import { ReportesComponent } from './reportes/reportes.component';
@@ -16,6 +15,7 @@ import { BotaderoFormComponent } from './botadero/botadero-form/botadero-form.co
 import { BotaderoFormEditComponent } from './botadero/botadero-form-edit/botadero-form-edit.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
 
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
@@ -34,22 +34,29 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { CustomModalComponent } from './botadero/custom-modal/custom-modal.component';
+import { authInterceptorProviders } from './services/auth.interceptor';
+import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { UserDasboardComponent } from './pages/user/user-dasboard/user-dasboard.component';
+import { CertificadoComponent } from './pages/certificado/certificado.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    HeaderComponent,
     BotaderoComponent,
     NavbarComponent,
     SignupComponent,
     LoginComponent,
+    HeaderComponent,
     HomeComponent,
     CertificacionesComponent,
     ReportesComponent,
     BotaderoFormComponent,
     BotaderoFormEditComponent,
-    CustomModalComponent
+    CustomModalComponent,
+    DashboardComponent,
+    UserDasboardComponent,
+    CertificadoComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +80,7 @@ import { CustomModalComponent } from './botadero/custom-modal/custom-modal.compo
     MatInputModule,
     NgxPaginationModule,
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
