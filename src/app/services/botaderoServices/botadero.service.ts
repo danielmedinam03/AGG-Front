@@ -16,6 +16,8 @@ export class BotaderoService {
   }
 
   public saveBotadero(botadero:any): Observable<any>{
+    const valorGuardado = localStorage.getItem('id');
+    botadero.user_id = valorGuardado;
     return this.httpClient.post(environment.API_SERVER+this.API_SERVER, botadero);
   }
   
@@ -31,7 +33,6 @@ export class BotaderoService {
 
   public getByIdBotadero(id:number):Observable<any>{
     const url = `${environment.API_SERVER}${this.API_SERVER}/${id}`;
-    console.log(url);
     return this.httpClient.get(url);
   }
 }

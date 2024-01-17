@@ -14,6 +14,7 @@ import { UserDasboardComponent } from './pages/user/user-dasboard/user-dasboard.
 import { NormalGuard } from './services/normal.guard';
 import { AdminGuard } from './services/admin.guard';
 import { CertificadoComponent } from './pages/certificado/certificado.component';
+import { ListCertificatesComponent } from './pages/list-certificates/list-certificates.component';
 
 const routes: Routes = [
   { path: 'botadero', component: BotaderoComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'botaderoCreate', component: BotaderoFormComponent},
   { path: 'botaderoEdit/:id', component: BotaderoFormEditComponent},
   { path: 'certificado', component: CertificadoComponent},
+  { path: 'bandeja-certificaciones', component: ListCertificatesComponent},
   {
     path:'',
     component:HomeComponent,

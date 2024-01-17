@@ -38,6 +38,10 @@ import { authInterceptorProviders } from './services/auth.interceptor';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { UserDasboardComponent } from './pages/user/user-dasboard/user-dasboard.component';
 import { CertificadoComponent } from './pages/certificado/certificado.component';
+import { ListCertificatesComponent } from './pages/list-certificates/list-certificates.component';
+import { MatSelectModule } from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 @NgModule({
   declarations: [
@@ -56,7 +60,8 @@ import { CertificadoComponent } from './pages/certificado/certificado.component'
     CustomModalComponent,
     DashboardComponent,
     UserDasboardComponent,
-    CertificadoComponent
+    CertificadoComponent,
+    ListCertificatesComponent
   ],
   imports: [
     BrowserModule,
@@ -79,6 +84,8 @@ import { CertificadoComponent } from './pages/certificado/certificado.component'
     MatPaginatorModule,
     MatInputModule,
     NgxPaginationModule,
+    MatSelectModule,
+    MatDatepickerModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
