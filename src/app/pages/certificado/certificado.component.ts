@@ -26,6 +26,39 @@ export class CertificadoComponent implements OnInit {
     gestor : ''
   }
 
+  public datos_generador = {
+    name : '',
+    type_document_id: '',
+    legal_representative: '',
+    documento_rep : '',
+    address: '',
+    phone_number : '',
+    email: '',
+    address_rcd: ''
+  }
+
+  public datos_rcd = {
+    uno: '',
+    uno_uno: '',
+    uno_dos: '',
+    uno_tres: '',
+    uno_cuatro: '',
+    dos: '',
+    dos_uno: '',
+    dos_dos: '',
+    dos_tres: '',
+    total_rcd: '',
+    fecha_rcd: ''
+  }
+
+  public datos_transportador = {
+    nombre: '',
+    documento: '',
+    numero_documento: '',
+    placa: ''
+
+  }
+
   constructor(
     private datosGestorService:DatosGestorService,
     private datosGeneradorService:DatosGeneradorService,
@@ -54,6 +87,42 @@ export class CertificadoComponent implements OnInit {
       });
       return;
     }
+
+    this.datosGestorService.saveGestor(this.datos_gestor).subscribe(
+      (data) => {
+        console.log(data)
+        Swal.fire('Datos del gestor guardados con exito')
+      }, (error) => {
+        console.log(error);
+        this.snack.open('Ha ocurrido un error', 'Aceptar', {
+          duration:2000
+        })
+      }
+    )
+
+    this.datosGeneradorService.saveGenerador(this.datos_generador).subscribe(
+      (data) => {
+        console.log(data)
+      }, (error) => {
+        console.log(error);
+      }
+    )
+
+    this.datosResidousService.saveResiduos(this.datos_rcd).subscribe(
+      (data) => {
+        console.log(data)
+      }, (error) => {
+        console.log(error);
+      }
+    )
+
+    this.datosTransportadorService.saveTransportador(this.datos_transportador).subscribe(
+      (data) => {
+        console.log(data)
+      }, (error) => {
+        console.log(error);
+      }
+    )
   }
 
 }

@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 import { BotaderoComponent } from './botadero/botadero.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { CertificacionesComponent } from './certificaciones/certificaciones.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { BotaderoFormComponent } from './botadero/botadero-form/botadero-form.component';
@@ -14,14 +13,10 @@ import { UserDasboardComponent } from './pages/user/user-dasboard/user-dasboard.
 import { NormalGuard } from './services/normal.guard';
 import { AdminGuard } from './services/admin.guard';
 import { CertificadoComponent } from './pages/certificado/certificado.component';
+import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 
 const routes: Routes = [
-  { path: 'botadero', component: BotaderoComponent},
-  { path: 'certificaciones', component: CertificacionesComponent},
-  { path: 'reportes', component: ReportesComponent},
-  { path: 'botaderoCreate', component: BotaderoFormComponent},
-  { path: 'botaderoEdit/:id', component: BotaderoFormEditComponent},
-  { path: 'certificado', component: CertificadoComponent},
+
   {
     path:'',
     component:HomeComponent,
@@ -40,8 +35,37 @@ const routes: Routes = [
   {
     path:'admin',
     component:DashboardComponent,
-    pathMatch:'full',
-    canActivate:[AdminGuard]
+    canActivate:[AdminGuard],
+    children:[
+      {
+        path:'',
+        component:WelcomeComponent
+      },
+      {
+        path:'certificado',
+        component:CertificadoComponent
+      },
+      { 
+        path: 'botadero',
+        component: BotaderoComponent
+      },
+      { 
+        path: 'certificaciones',
+        component: CertificacionesComponent
+      },
+      { 
+        path: 'reportes',
+        component: ReportesComponent
+      },
+      { 
+        path: 'botaderoCreate',
+        component: BotaderoFormComponent
+      },
+      { 
+        path: 'botaderoEdit/:id',
+        component: BotaderoFormEditComponent
+      },
+    ]
   },
   {
     path:'user-dashboard',
