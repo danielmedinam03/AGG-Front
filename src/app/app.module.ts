@@ -39,6 +39,9 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import { UserDasboardComponent } from './pages/user/user-dasboard/user-dasboard.component';
 import { CertificadoComponent } from './pages/certificado/certificado.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+import { ListCertificatesComponent } from './pages/list-certificates/list-certificates.component';
+import { MatSelectModule } from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,8 @@ import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
     DashboardComponent,
     UserDasboardComponent,
     CertificadoComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ListCertificatesComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +85,8 @@ import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
     MatPaginatorModule,
     MatInputModule,
     NgxPaginationModule,
+    MatSelectModule,
+    MatDatepickerModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

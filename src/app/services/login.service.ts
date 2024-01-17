@@ -51,6 +51,7 @@ export class LoginService {
 
   public setUser(user:any){
     localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('id',user.id);
   }
 
   public getUser(){

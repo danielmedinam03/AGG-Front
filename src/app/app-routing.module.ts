@@ -14,9 +14,9 @@ import { NormalGuard } from './services/normal.guard';
 import { AdminGuard } from './services/admin.guard';
 import { CertificadoComponent } from './pages/certificado/certificado.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+import { ListCertificatesComponent } from './pages/list-certificates/list-certificates.component';
 
 const routes: Routes = [
-
   {
     path:'',
     component:HomeComponent,
@@ -65,6 +65,11 @@ const routes: Routes = [
         path: 'botaderoEdit/:id',
         component: BotaderoFormEditComponent
       },
+      {
+        path: 'bandeja-certificaciones',
+        component: ListCertificatesComponent
+      }
+      
     ]
   },
   {

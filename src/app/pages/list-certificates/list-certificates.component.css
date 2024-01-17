@@ -1,0 +1,54 @@
+h1 {
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.table-container {
+  text-align: center;
+  margin: auto;
+  width: 80%;
+  margin-bottom: 100px;
+}
+
+.thead{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
+.flex-container {
+    display: flex;
+}
+
+.form-control{
+    width: 150px;
+    height: 30px;
+    margin-right: 50px;
+    margin-left: 50px;
+    border-radius: 10px;
+}
+mat-form-field{
+  width: 100%;
+  margin-bottom: 10px;
+}
+.btn-buscar{
+  height: 100px;
+}
+.flex-item {
+  flex: 1;
+  margin-right: 10px;
+}
+input{
+  width: 100%;
+}
+/* Estilos adicionales para hacer la tabla más responsive */
+@media (max-width: 767px) {
+  .table-container {
+      width: 100%;
+      overflow-x: auto;
+  }
+
+  .table {
+      width: 100%;
+  }
+}

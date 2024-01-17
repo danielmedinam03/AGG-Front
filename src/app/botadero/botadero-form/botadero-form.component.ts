@@ -28,13 +28,15 @@ export class BotaderoFormComponent implements OnInit {
     this.botaderoForm = this.fb.group({
       city: ['', Validators.required],
       property_name: ['', Validators.required],
-      user_id: [0, Validators.required],
+      // user_id: [0, Validators.required],
       status: [true, Validators.required],
     });
 
   }
 
   guardar(): void {
+
+    
     this.botaderoService.saveBotadero(this.botaderoForm.value).subscribe(resp => {
       this.botaderoForm.reset();
       this.route.navigateByUrl('botadero');
