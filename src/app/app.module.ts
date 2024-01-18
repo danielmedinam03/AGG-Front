@@ -42,6 +42,7 @@ import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ListCertificatesComponent } from './pages/list-certificates/list-certificates.component';
 import { MatSelectModule } from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { GetCertificationComponent } from './pages/get-certification/get-certification.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     UserDasboardComponent,
     CertificadoComponent,
     WelcomeComponent,
-    ListCertificatesComponent
+    ListCertificatesComponent,
+    GetCertificationComponent
   ],
   imports: [
     BrowserModule,

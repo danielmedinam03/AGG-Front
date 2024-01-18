@@ -15,7 +15,7 @@
                     <td>{{item.city}}</td>
                     <td>{{item.property_name}}</td>
                     <td >
-                        <a id="pencilEdit"  routerLink="/botaderoEdit/{{item.id_botadero}}"><i class="fa-solid fa-pen"  ></i></a>
+                        <a id="pencilEdit"  routerLink="/admin/botaderoEdit/{{item.id_botadero}}"><i class="fa-solid fa-pen"  ></i></a>
                         
                         <mat-slide-toggle class="toggle"    
                         [(ngModel)]="item.status" (change)="editStatus(item.id_botadero, item.status)"></mat-slide-toggle>

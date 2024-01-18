@@ -1,0 +1,45 @@
+.text-center {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.form-certificado{
+    margin: 20px 0;
+}
+
+.form-datos-gestor {
+    text-align: left;
+}
+
+.div-title {
+    display: flex;
+    margin-top: 25px;
+}
+.div-title img {
+    width: 35px;
+    height: 35px;
+}
+.div-title h3 {
+    align-items: center;
+    margin-left: 5px;
+    font-weight: 400;
+}
+
+.residuos{
+    height: 60px;
+}
+
+.total {
+    margin-top: 30px;
+}
+
+.button-certificado {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.btn-certificado {
+    font-size: 25px;
+    padding: 15px 30px;
+    border-radius: 10px;
+}

@@ -39,7 +39,7 @@ export class BotaderoFormComponent implements OnInit {
     
     this.botaderoService.saveBotadero(this.botaderoForm.value).subscribe(resp => {
       this.botaderoForm.reset();
-      this.route.navigateByUrl('botadero');
+      this.route.navigateByUrl('/admin/botadero');
     },
       error => { console.error(error); }
     )
