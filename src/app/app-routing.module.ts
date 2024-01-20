@@ -24,7 +24,7 @@ const routes: Routes = [
     pathMatch:'full'
   },
   {
-    path:'certification',
+    path:'certification/:id',
     component: GetCertificationComponent,
     pathMatch:'full'
   },

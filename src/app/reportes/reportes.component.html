@@ -1,1 +1,45 @@
-<p>reportes works!</p>
+<!-- my-form.component.html -->
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-container">
+        <h1 class="form-title">Reporte CVC</h1>
+    
+        <mat-form-field class="form-field">
+            <mat-label>Fecha Inicio</mat-label>
+            <input matInput [matDatepicker]="startDatePicker" formControlName="startDate">
+            <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
+    
+        <mat-form-field class="form-field">
+            <mat-label>Fecha Fin</mat-label>
+            <input matInput [matDatepicker]="endDatePicker" formControlName="endDate">
+            <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #endDatePicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
+    
+        <mat-form-field class="form-field">
+            <mat-label>Opciones</mat-label>
+            <mat-select formControlName="options">
+                <mat-option *ngFor="let opt of options" [value]="opt.id_botadero">{{opt.city}} - {{opt.property_name}} </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="button-container">
+            <button mat-button color="primary" (click)="openModal()">Exportar</button>
+            <button mat-button color="warn" type="button" (click)="onCancel()">Cancelar</button>
+        </div>
+    </div>
+</form>
+
+
+<app-custom-modal *ngIf="showModal" (closeModalEvent)="closeModal()">
+    <!-- Contenido del modal -->
+    <p class="msj">
+        <i class="fas fa-exclamation-circle"></i> <!-- Icono de advertencia -->
+        ¿Estás seguro de que deseas guardar los cambios?
+    </p>
+    <div class="buttons">
+        <button type="button" class="btn btn-success" >Aceptar</button>
+        <button type="button" class="btn btn-danger" (click)="closeModal()">Cancelar</button>
+    </div>
+</app-custom-modal>

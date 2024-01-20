@@ -13,9 +13,9 @@ export class GetCertificationService {
 
   constructor(private httpClient: HttpClient) {   }
   
-  getById(id: number): Observable<DataGenerator | undefined> {
+  getById(id: number): Observable<any> {
     const url = `${this.API_SERVER}/${id}`;
-    return this.httpClient.get<DataGenerator>(url);
+    return this.httpClient.get(url);
   }
 }
 
@@ -43,6 +43,7 @@ export interface DataGenerator{
   quantitiesRcd: QuantitiesRcd[];
 
   data_driver: DataDriver;
+  certification:Certification;
 
 }
 
@@ -93,6 +94,8 @@ export interface TypeRcd{
   name:string;
   description:string;
   status:boolean;
+  numeration?:string;
+
 }
 
 export interface DataDriver{
@@ -103,4 +106,11 @@ export interface DataDriver{
   vehicle_plate:string;
 
   type_document:TypeDocument;
+}
+
+export interface Certification{
+  id_certification:number;
+  create_date:string;
+  number_certification:number;
+  final_number_certification:string;
 }
