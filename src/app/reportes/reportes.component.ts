@@ -1,54 +1,58 @@
-
 import { Component, OnInit } from '@angular/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatNativeDateModule } from '@angular/material/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BotaderoService } from '../services/botaderoServices/botadero.service';
+import { ReportServiceService } from '../services/reportService/report-service.service';
 
 @Component({
   selector: 'app-reportes',
   templateUrl: './reportes.component.html',
-  styleUrls: ['./reportes.component.css']
+  styleUrls: ['./reportes.component.css'],
 })
 export class ReportesComponent implements OnInit {
   showModal = false;
   myForm!: FormGroup;
-  options : any;
-  constructor(private fb: FormBuilder,
-    private serviceBotadero:BotaderoService) { }
+  options: any;
+  constructor(
+    private fb: FormBuilder,
+    private serviceBotadero: BotaderoService,
+    private reportService: ReportServiceService,
+  ) {}
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      startDate: [null, Validators.required],
-      endDate: [null, Validators.required],
-      options: [null, Validators.required]
+      start_date: [null, Validators.required],
+      end_date: [null, Validators.required],
+      id_botadero: [null, Validators.required],
     });
-  
-    this.serviceBotadero.getAllActiveBotadero().subscribe(options => {
+
+    this.serviceBotadero.getAllActiveBotadero().subscribe((options) => {
       this.options = options;
     });
-
   }
-
-  
 
   onSubmit() {
-    // Aquí puedes manejar la lógica para guardar los datos
-    console.log('Formulario enviado:', this.myForm.value);
+    const jsonData = this.myForm.value;
+
+    this.reportService.getReportCvc(jsonData).subscribe(
+      (data) => {
+        // Manejar los datos obtenidos de la API
+        const base64String = data.fileBase64; // Ajusta según la estructura de la respuesta
+        const nombreArchivo = data.name; // Establece el nombre de descarga
+
+        // Descargar el archivo .xlsx
+        this.reportService.descargarArchivoXLSX(base64String, nombreArchivo);
+        this.onCancel();
+      },
+      (error) => {
+        // Manejar errores
+        console.error(error);
+      }
+    );
   }
 
-  openModal() {
-    this.showModal = true;
-  }
-
-  closeModal() {
-    this.showModal = false;
-  }
   onCancel() {
     // Resetea el formulario para limpiar los inputs
     this.myForm.reset();
   }
+
 }

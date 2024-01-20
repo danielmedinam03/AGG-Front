@@ -46,6 +46,7 @@ import { GetCertificationComponent } from './pages/get-certification/get-certifi
 import { MatNativeDateModule } from '@angular/material/core';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import localeEs from '@angular/common/locales/es';
     NgxPaginationModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule, 
+    CommonModule
   ],
   providers: [authInterceptorProviders,
   {provide: LOCALE_ID, useValue: 'es-ES'}
