@@ -5,14 +5,36 @@ import { DatosGestorService } from './../../services/datos-gestor.service';
 import { DatosGeneradorService } from 'src/app/services/datos-generador.service';
 import { DatosTransportadorService } from 'src/app/services/datos-transportador.service';
 import { DatosResiduosService } from 'src/app/services/datos-residuos.service';
+import { Router } from '@angular/router';
+import { BotaderoService } from '../../services/botaderoServices/botadero.service';
+
+import { NgModel } from '@angular/forms';
+
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+interface City {
+  value: string;
+  viewValue: string;
+}
+
+interface CityGroups {
+  disabled?: boolean;
+  name: string;
+  property_name: City[];
+}
 
 @Component({
   selector: 'app-certificado',
   templateUrl: './certificado.component.html',
+  providers: [NgModel, MatFormFieldModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatInputModule],
   styleUrls: ['./certificado.component.css']
 })
 export class CertificadoComponent implements OnInit {
 
+  botaderos: any;
   razon_social: string = "ALEJANDRO GARZON GUZMAN/SUMINISTRAMOS Y CONTRATAMOS AGG SAS";
   nit: string = "901191011-8";
   representante_legal: string = "ALEJANDRO GARZÓN GUZMÁN";
@@ -21,9 +43,9 @@ export class CertificadoComponent implements OnInit {
   email: string = "suministramosycontratamos@gmail.com"
 
   public datos_gestor = {
-    municipio : '',
-    predio : '',
-    gestor : ''
+    city : '',
+    property_name : '',
+    manager : ''
   }
 
   public datos_generador = {
@@ -52,10 +74,10 @@ export class CertificadoComponent implements OnInit {
   }
 
   public datos_transportador = {
-    nombre: '',
-    documento: '',
-    numero_documento: '',
-    placa: ''
+    name: '',
+    type_document_id: '',
+    number_id: '',
+    vehicle_plate: ''
 
   }
 
@@ -64,14 +86,31 @@ export class CertificadoComponent implements OnInit {
     private datosGeneradorService:DatosGeneradorService,
     private datosResidousService:DatosResiduosService,
     private datosTransportadorService:DatosTransportadorService,
-    private snack:MatSnackBar) { }
+    private snack:MatSnackBar,
+    public botaderoService: BotaderoService
+    ) { }
 
   ngOnInit(): void {
+    this.botaderoService.getAllBotadero().subscribe(resp => {
+      this.botaderos = resp;
+    },
+    error => {console.error(error)});
   }
+
+  cityControl = new FormControl('');
+  cityGroups: CityGroups[] = [
+    {
+      name: 'Cali',
+      property_name: [
+        {value: 'ladiana', viewValue: 'La Diana'},
+        {value: 'lapaloma', viewValue: 'La Paloma'}
+      ]
+    }
+  ]
 
   formSubmit(){
     console.log(this.datos_gestor);
-    if(this.datos_gestor.municipio == '' || this.datos_gestor.municipio == null){
+    if(this.datos_gestor.city == '' || this.datos_gestor.city == null){
       this.snack.open('El nombre del municipio es requerido !!','Aceptar',{
         duration : 3000,
         verticalPosition : 'top',
@@ -79,7 +118,7 @@ export class CertificadoComponent implements OnInit {
       });
       return;
     }
-    if(this.datos_gestor.predio == '' || this.datos_gestor.predio == null){
+    if(this.datos_gestor.property_name == '' || this.datos_gestor.property_name == null){
       this.snack.open('El nombre del predio es requerido !!','Aceptar',{
         duration : 3000,
         verticalPosition : 'top',
@@ -124,5 +163,7 @@ export class CertificadoComponent implements OnInit {
       }
     )
   }
+
+  
 
 }

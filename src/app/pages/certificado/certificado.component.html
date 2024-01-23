@@ -1,267 +1,262 @@
 <div class="bootstrap-wrapper">
     <div class="container">
-        <div class="row" style="margin-top : 20px;">
+        <div class="row" style="margin-top: 20px">
             <div>
                 <div class="container text-center">
-
                     <div class="form-certificado">
-                        <p class="text-center">Disposición Final de Tierra y Material sobrante
-                            <br>Realizada por el gestor SUMINISTRAMOS Y CONTRATAMOS AGG S.A.S
-                            <br>ALEJANDRO GARZÓN GUZMAN
-                            <br>NIT. 901191011-8
+                        <p class="text-center">
+                            Disposición Final de Tierra y Material sobrante <br />Realizada
+                            por el gestor SUMINISTRAMOS Y CONTRATAMOS AGG S.A.S
+                            <br />ALEJANDRO GARZÓN GUZMAN <br />NIT. 901191011-8
                         </p>
 
-                            <form (ngSubmit)="formSubmit()" class="row g-3 form-datos-gestor">
+                        <form (ngSubmit)="formSubmit()" class="row g-3 form-datos-gestor">
+                            <div class="div-title">
+                                <img src="../../../assets/points.png" alt="" />
+                                <h2>DATOS BÁSICOS DEL GESTOR</h2>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label">Nombre o razón social</label>
+                                <input class="form-control" type="text" value="{{ razon_social }}"
+                                    aria-label="Disabled input example" disabled readonly />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Documento de identificación o NIT</label>
+                                <input class="form-control" type="text" value="{{ nit }}"
+                                    aria-label="Disabled input example" disabled readonly />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Representante Legal</label>
+                                <input class="form-control" type="text" value="{{ representante_legal }}"
+                                    aria-label="Disabled input example" disabled readonly />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Dirección</label>
+                                <input class="form-control" type="text" value="{{ direccion }}"
+                                    aria-label="Disabled input example" disabled readonly />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Teléfono</label>
+                                <input class="form-control" type="text" value="{{ telefono }}"
+                                    aria-label="Disabled input example" disabled readonly />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Correo electrónico</label>
+                                <input class="form-control" type="text" value="{{ email }}"
+                                    aria-label="Disabled input example" disabled readonly />
+                            </div>
+                            <div class="col-md-6"></div>
 
-                                <div class="div-title">
-                                    <img src="../../../assets/points.png" alt="">
-                                    <h2>DATOS BÁSICOS DEL GESTOR</h2>
-                                </div>
-                                <div class="col-md-12">
-                                    <label class="form-label">Nombre o razón social</label>
-                                    <input class="form-control" type="text" value="{{ razon_social }}"
-                                        aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Documento de identificación o NIT</label>
-                                    <input class="form-control" type="text" value="{{ nit }}"
-                                        aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Representante Legal</label>
-                                    <input class="form-control" type="text" value="{{ representante_legal }}"
-                                        aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Dirección</label>
-                                    <input class="form-control" type="text" value="{{ direccion }}"
-                                        aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Teléfono</label>
-                                    <input class="form-control" type="text" value="{{ telefono }}"
-                                        aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Correo electrónico</label>
-                                    <input class="form-control" type="text" value="{{ email }}"
-                                        aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-md-6">
-                                </div>
+                            <div class="col-md-6">
+                                        <!--
+                        <h4>Municipio</h4>
+                        <mat-form-field>
+                        <mat-label>City</mat-label>
+                        <mat-select [formControl]="cityControl">
+                            <mat-option>-- None --</mat-option>
+                            @for (group of pokemonGroups; track group) {
+                                <mat-optgroup [label]="group.name"
+                                            [disabled]="group.disabled">
+                                @for (pokemon of group.pokemon; track pokemon) {
+                                    <mat-option [value]="pokemon.value">{{pokemon.viewValue}}</mat-option>
+                                }
+                                </mat-optgroup>
+                            }
+                        </mat-select>
+                        </mat-form-field>
+                        -->
 
-                                <div class="col-md-6">
-                                    <label class="form-label">Municipio o Distrito del Predio</label>
-                                    <input type="text" class="form-control" id="inputEmail4">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Nombre del Predio</label>
-                                    <input type="text" class="form-control" id="inputPassword4">
-                                </div>
+                                <h3 style="font-weight: 500">Municipio y Predio</h3>
+                                <mat-form-field>
+                                    <mat-label>Predio</mat-label>
+                                    <select matNativeControl>
+                                        <option value=""></option>
+                                        <optgroup label="Cali" id="city" formControlName="property_name">
+                                            <option value="ladina" id="property_name" formControlName="property_name">La Diana</option>
+                                            <option value="lapaloma">La Paloma</option>
+                                        </optgroup>
+                                        <optgroup label="Ibague">
+                                            <option value="ladiana">La Diana v2</option>
+                                            <option value="lapaloma">La Paloma v2</option>
+                                        </optgroup>
+                                    </select>
+                                </mat-form-field>
+                            </div>
 
-                                <div class="col-4">
-                                    <label class="form-label">Gestor</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                                        <label class="form-check-label" for="gridCheck">
-                                            Punto limpio
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                                        <label class="form-check-label" for="gridCheck">
-                                            Planta de aprovechamiento
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                                        <label class="form-check-label" for="gridCheck">
-                                            Disposición final
-                                        </label>
-                                    </div>
-                                </div>
+                            <div class="col-md-6 control_label"></div>
 
-                                <div class="div-title">
-                                    <img src="../../../assets/points.png" alt="">
-                                    <h2>DATOS BÁSICOS DEL GENERADOR</h2>
+                            <div class="col-4">
+                                <label class="form-label">Gestor</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="manager_punto_limpio" formControlName="manager"/>
+                                    <label class="form-check-label" for="gridCheck">
+                                        Punto limpio
+                                    </label>
                                 </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck manager_plata_aprovechamiento" formControlName="manager"/>
+                                    <label class="form-check-label" for="gridCheck">
+                                        Planta de aprovechamiento
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck manager_disposicion_final" formControlName="manager"/>
+                                    <label class="form-check-label" for="gridCheck">
+                                        Disposición final
+                                    </label>
+                                </div>
+                            </div>
 
-                                <div class="col-md-6">
-                                    <label class="form-label">Nombre o razón social</label>
-                                    <input type="text" class="form-control" placeholder="Digite el nombre o razón social">
-                                </div>
+                            <div class="div-title">
+                                <img src="../../../assets/points.png" alt="" />
+                                <h2>DATOS BÁSICOS DEL GENERADOR</h2>
+                            </div>
 
-                                <div class="col-md-6">
-                                    <label class="form-label">Documento de identificación o NIT</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Representante Legal</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Documento de identificación (Representante legal)</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Dirección domicilio</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Teléfono</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Correo electrónico</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Dirección de generación de RCD</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Nombre o razón social</label>
+                                <input type="text" class="form-control" id="name" formControlName="generator" placeholder="Digite el nombre o razón social" />
+                            </div>
 
-                                <div class="div-title">
-                                    <img src="../../../assets/points.png" alt="">
-                                    <h2>CANTIDADES DE RCD RECIBIDOS DEL GENERADOR POR TIPO</h2>
-                                </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Documento de identificación o NIT</label>
+                                <input type="text" class="form-control" id="type_document_id" formControlName="generator" placeholder="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Representante Legal</label>
+                                <input type="text" class="form-control" id="legal_representative" formControlName="generator" placeholder="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Documento de identificación (Representante legal)</label>
+                                <input type="text" class="form-control" id="documento_rep" formControlName="generator" placeholder="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Dirección domicilio</label>
+                                <input type="text" class="form-control" id="address" formControlName="generator" placeholder="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Teléfono</label>
+                                <input type="text" class="form-control" id="phone_number" formControlName="generator" placeholder="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Correo electrónico</label>
+                                <input type="text" class="form-control" id="email" formControlName="generator" placeholder="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Dirección de generación de RCD</label>
+                                <input type="text" class="form-control" id="address_rcd" formControlName="generator" placeholder="" />
+                            </div>
 
-                                <!--
-                                <div class="mb-3 row">
-                                    <label for="inputPassword" class="col-md-10 col-form-label">1. Residuos de construcción y demolición -
-                                        RCD susceptibles de aprovechamiento:</label>
-                                    <div class="col-md-2">
-                                      <input type="text" class="form-control" id="inputPassword">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="inputPassword" class="col-md-10 col-form-label">1.1 Productos de excavación y sobrantes de la adecuación del terreno: coberturas vegetales, tierras, limos y materiales pétreos productos de la excavación, entre otros.</label>
-                                    <div class="col-md-2">
-                                      <input type="password" class="form-control" id="inputPassword">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="inputPassword" class="col-md-10 col-form-label">1.2 Productos de cimentaciones y pilotajes: arcillas, bentonitas y demás.</label>
-                                    <div class="col-md-2">
-                                      <input type="password" class="form-control" id="inputPassword">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="inputPassword" class="col-md-10 col-form-label">1.3 Pétreos: hormigón, arenas, gravas, gravillas, cantos, pétreos asfalticos, trozos de ladrillos y bloques, cerámicas,sobrantes de mezcla de cementos y concretos hidráulicos, entre otros.</label>
-                                    <div class="col-md-2">
-                                      <input type="password" class="form-control" id="inputPassword">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="inputPassword" class="col-md-10 col-form-label">1.4 No pétreos: vidrio, metales como acero, hierro, cobre, aluminio, con o sin recubrimiento de zinc o estaño, plásticos tales como: PVC, polietileno, policarbonato, acrílico, espumas de poliestireno y de poliuretano, gomas y cauchos, madera y compuestos de madera, cartón-yeso (drywall), entre otros.</label>
-                                    <div class="col-md-2">
-                                      <input type="password" class="form-control" id="inputPassword">
-                                    </div>
-                                </div>
-                                -->
+                            <div class="div-title">
+                                <img src="../../../assets/points.png" alt="" />
+                                <h2>CANTIDADES DE RCD RECIBIDOS DEL GENERADOR POR TIPO</h2>
+                            </div>
 
+                            <div class="col-md-6">
+                                <label class="form-label residuos">1. Residuos de construcción y demolición - RCD
+                                    susceptibles
+                                    de aprovechamiento:</label>
+                                <input type="number" class="form-control" id="uno" formControlName="rcd" placeholder="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label residuos">1.1 Productos de excavación y sobrantes de la
+                                    adecuación del
+                                    terreno: coberturas vegetales, tierras, limos y materiales
+                                    pétreos productos de la excavación, entre otros.</label>
+                                <input type="number" class="form-control" id="uno_uno" formControlName="rcd" placeholder="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label residuos">1.2 Productos de cimentaciones y pilotajes: arcillas,
+                                    bentonitas y demás.</label>
+                                <input type="number" class="form-control" id="uno_dos" formControlName="rcd" placeholder="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label residuos">1.3 Pétreos: hormigón, arenas, gravas, gravillas,
+                                    cantos,
+                                    pétreos asfalticos, trozos de ladrillos y bloques,
+                                    cerámicas,sobrantes de mezcla de cementos y concretos
+                                    hidráulicos, entre otros.
+                                </label>
+                                <input type="number" class="form-control" id="uno_tres" formControlName="rcd" placeholder="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label residuos">1.4 No pétreos: vidrio, metales como acero, hierro,
+                                    cobre,
+                                    aluminio, con o sin recubrimiento de zinc o estaño, plásticos
+                                    tales como: PVC, polietileno, policarbonato, acrílico, espumas
+                                    de poliestireno y de poliuretano, gomas y cauchos, madera y
+                                    compuestos de madera, cartón-yeso (drywall), entre
+                                    otros.</label>
+                                <input type="number" class="form-control" id="uno_cuatro" formControlName="rcd" placeholder="" />
+                            </div>
+                            <div class="col-md-6"></div>
 
-                                <div class="col-md-6">
-                                    <label class="form-label residuos">1. Residuos de construcción y demolición -
-                                        RCD susceptibles de aprovechamiento:</label>
-                                    <input type="number" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label residuos">1.1 Productos de excavación y sobrantes de la adecuación
-                                        del terreno: coberturas vegetales, tierras, limos y
-                                        materiales pétreos productos de la excavación, entre otros.</label>
-                                    <input type="number" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label residuos">1.2 Productos de cimentaciones y pilotajes:
-                                        arcillas, bentonitas y demás.</label>
-                                    <input type="number" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label residuos">1.3 Pétreos: hormigón, arenas, gravas, gravillas, cantos,
-                                        pétreos asfalticos, trozos de ladrillos y bloques,
-                                        cerámicas,sobrantes de mezcla de cementos y concretos hidráulicos, entre otros. </label>
-                                    <input type="number" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label residuos">1.4 No pétreos: vidrio, metales como acero, hierro, cobre,
-                                        aluminio, con o sin recubrimiento de zinc o estaño, plásticos
-                                        tales como: PVC, polietileno, policarbonato, acrílico,
-                                        espumas de poliestireno y de poliuretano, gomas y cauchos,
-                                        madera y compuestos de madera, cartón-yeso (drywall),
-                                        entre otros.</label>
-                                    <input type="number" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6">
-                                    
-                                </div>
+                            <div class="col-md-6">
+                                <label class="form-label residuos">2. Residuos de construcción y demolición - RCD no
+                                    susceptibles de aprovechamiento:</label>
+                                <input type="number" class="form-control" id="dos" formControlName="rcd" placeholder="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label residuos">2.1 Los contaminados con residuos peligrosos.</label>
+                                <input type="number" class="form-control" id="uno" formControlName="rcd" placeholder="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label residuos">2.2. Los que por su estado no pueden ser
+                                    aprovechados.</label>
+                                <input type="number" class="form-control" id="dos_dos" formControlName="rcd" placeholder="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label residuos">2.3 Los que tengan características de peligrosidad,
+                                    estos se
+                                    regirán por la normatividad ambiental especial establecida
+                                    para su gestión.</label>
+                                <input type="number" class="form-control" id="dos_tres" formControlName="rcd" placeholder="" />
+                            </div>
+                            <div class="col-md-6 total">
+                                <label class="form-label">Total, RCD recibidos (t)</label>
+                                <input type="text" class="form-control" id="total_rcd" formControlName="rcd" placeholder="" />
+                            </div>
+                            <div class="col-md-6 total">
+                                <label class="form-label">Fecha de recepción de los RCD</label>
+                                <input type="text" class="form-control"  id="fecha_rcd" formControlName="rcd" placeholder="" />
+                            </div>
 
-                                <div class="col-md-6 ">
-                                    <label class="form-label residuos">2. Residuos de construcción y demolición - RCD no
-                                        susceptibles de aprovechamiento:</label>
-                                    <input type="number" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label residuos">2.1 Los contaminados con residuos peligrosos.</label>
-                                    <input type="number" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label residuos">2.2. Los que por su estado no pueden ser aprovechados.</label>
-                                    <input type="number" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label residuos">2.3 Los que tengan características de peligrosidad, estos se
-                                        regirán por la normatividad ambiental especial establecida
-                                        para su gestión.</label>
-                                    <input type="number" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6 total">
-                                    <label class="form-label">Total, RCD recibidos (t)</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6 total">
-                                    <label class="form-label">Fecha de recepción de los RCD</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
+                            <div class="div-title">
+                                <img src="../../../assets/points.png" alt="" />
+                                <h2>DATOS BASICOS DEL GESTOR DE TRANSPORTE</h2>
+                            </div>
 
+                            <div class="col-md-6">
+                                <label class="form-label">Nombre o razón social</label>
+                                <input type="text" class="form-control" id="name" formControlName="driver" placeholder="" />
+                            </div>
 
-                                <div class="div-title">
-                                    <img src="../../../assets/points.png" alt="">
-                                    <h2>DATOS BASICOS DEL GESTOR DE TRANSPORTE</h2>
+                            <div class="col-md-6">
+                                <label class="form-label">Tipo de documento</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Seleccione una opcion</option>
+                                    <option value="1">Cedula de ciudadania</option>
+                                    <option value="2">NIT</option>
+                                    <option value="3">Cedula de extranjeria</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Numero de Identificación</label>
+                                <input type="text" class="form-control" id="number_id" formControlName="driver" placeholder="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Placa de Vehículo</label>
+                                <input type="text" class="form-control" id="vehicle_plate" formControlName="driver" placeholder="" />
+                            </div>
+
+                            <div class="col-12 button-certificado">
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-certificado">
+                                        Generar Certificado
+                                    </button>
                                 </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label">Nombre o razón social</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label">Tipo de documento</label>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Seleccione una opcion</option>
-                                        <option value="1">Cedula de ciudadania</option>
-                                        <option value="2">NIT</option>
-                                        <option value="3">Cedula de extranjeria</option>
-                                      </select>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label">Numero de Identificación</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Placa de Vehículo</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-
-
-
-
-                                <div class="col-12 button-certificado">
-                                    <div>
-                                        <button type="submit" class="btn btn-primary btn-certificado">Generar Certificado</button>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
