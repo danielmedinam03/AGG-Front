@@ -45,7 +45,7 @@ export class BotaderoFormEditComponent implements OnInit {
 
   editar(){
     this.botaderoService.editBotadero(this.botaderos).subscribe(resp =>{
-      this.route.navigateByUrl('botadero');
+      this.route.navigateByUrl('/admin/botadero');
     },
     error => { console.error(error); }
     )

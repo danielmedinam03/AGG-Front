@@ -15,11 +15,17 @@ import { AdminGuard } from './services/admin.guard';
 import { CertificadoComponent } from './pages/certificado/certificado.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ListCertificatesComponent } from './pages/list-certificates/list-certificates.component';
+import { GetCertificationComponent } from './pages/get-certification/get-certification.component';
 
 const routes: Routes = [
   {
     path:'',
-    component:HomeComponent,
+    component:LoginComponent,
+    pathMatch:'full'
+  },
+  {
+    path:'certification/:id',
+    component: GetCertificationComponent,
     pathMatch:'full'
   },
   {
@@ -39,7 +45,7 @@ const routes: Routes = [
     children:[
       {
         path:'',
-        component:WelcomeComponent
+        component:CertificacionesComponent
       },
       {
         path:'certificado',

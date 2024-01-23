@@ -1,6 +1,8 @@
 h1 {
   margin-bottom: 40px;
   margin-top: 40px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
 }
 
 .table-container {

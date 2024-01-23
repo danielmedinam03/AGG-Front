@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { MatListModule} from '@angular/material/list';
@@ -42,6 +42,11 @@ import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ListCertificatesComponent } from './pages/list-certificates/list-certificates.component';
 import { MatSelectModule } from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { GetCertificationComponent } from './pages/get-certification/get-certification.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -62,7 +67,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     UserDasboardComponent,
     CertificadoComponent,
     WelcomeComponent,
-    ListCertificatesComponent
+    ListCertificatesComponent,
+    GetCertificationComponent
   ],
   imports: [
     BrowserModule,
@@ -86,9 +92,13 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatInputModule,
     NgxPaginationModule,
     MatSelectModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatNativeDateModule, 
+    CommonModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders,
+  {provide: LOCALE_ID, useValue: 'es-ES'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

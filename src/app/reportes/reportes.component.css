@@ -1,0 +1,32 @@
+/* my-form.component.scss */
+.form-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    margin-bottom: 40px;
+    margin-top: 40px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+  }
+  
+  .form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .buttons {
+    display: grid;
+    display: flex;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; /* Espacio entre las columnas (botones) */
+    justify-content: center;
+    
+  }
+  
