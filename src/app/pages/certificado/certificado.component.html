@@ -49,15 +49,29 @@
                                 </div>
                                 <div class="col-md-6">
                                 </div>
-
+<!-- 
                                 <div class="col-md-6">
-                                    <label class="form-label">Municipio o Distrito del Predio</label>
+                                    <label class="form-label">Municipio y Predio</label>
                                     <input type="text" class="form-control" id="inputEmail4">
+                                </div> -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Municipio y Predio</label><br>
+
+                                    <mat-form-field class="form-field">
+                                        <mat-label>Municipio y Predio</mat-label>
+                                        <mat-select formControlName="id_botadero">
+                                            <mat-option *ngFor="let opt of botaderosActive" [value]="opt.id_botadero">{{opt.city}} - {{opt.property_name}} </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
+
+                                </div>
+
+                                <!-- <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Nombre del Predio</label>
                                     <input type="text" class="form-control" id="inputPassword4">
-                                </div>
+                                </div> -->
 
                                 <div class="col-4">
                                     <label class="form-label">Gestor</label>
@@ -99,10 +113,7 @@
                                     <label class="form-label">Representante Legal</label>
                                     <input type="text" class="form-control" placeholder="">
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Documento de identificación (Representante legal)</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
+                                
                                 <div class="col-md-6">
                                     <label class="form-label">Dirección domicilio</label>
                                     <input type="text" class="form-control" placeholder="">
@@ -234,7 +245,7 @@
                                     <input type="text" class="form-control" placeholder="">
                                 </div>
 
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <label class="form-label">Tipo de documento</label>
                                     <select class="form-select" aria-label="Default select example">
                                         <option selected>Seleccione una opcion</option>
@@ -242,7 +253,19 @@
                                         <option value="2">NIT</option>
                                         <option value="3">Cedula de extranjeria</option>
                                       </select>
+                                </div> -->
+
+                                <div class="col-md-6">
+                                    <label class="form-label">Tipo de documento</label> <br>
+
+                                    <mat-form-field class="form-field">
+                                        <mat-label>Tipo de documento</mat-label>
+                                        <mat-select formControlName="id_botadero">
+                                            <mat-option *ngFor="let opt of documentsActive" [value]="opt.id_type_document">{{opt.description}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
                                 </div>
+
 
                                 <div class="col-md-6">
                                     <label class="form-label">Numero de Identificación</label>

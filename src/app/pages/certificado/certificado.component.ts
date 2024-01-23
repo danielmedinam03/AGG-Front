@@ -5,6 +5,8 @@ import { DatosGestorService } from './../../services/datos-gestor.service';
 import { DatosGeneradorService } from 'src/app/services/datos-generador.service';
 import { DatosTransportadorService } from 'src/app/services/datos-transportador.service';
 import { DatosResiduosService } from 'src/app/services/datos-residuos.service';
+import { BotaderoService } from 'src/app/services/botaderoServices/botadero.service';
+import { TypeDocumentService } from 'src/app/services/type-documentServices/type-document.service';
 
 @Component({
   selector: 'app-certificado',
@@ -19,6 +21,10 @@ export class CertificadoComponent implements OnInit {
   direccion: string = "CALLE 70 # 12B – 77 SIETE DE AGOSTO (Oficina)";
   telefono: string = "3148095541 - (602) 3848023";
   email: string = "suministramosycontratamos@gmail.com"
+  botaderosActive: any;
+  documentsActive: any;
+  
+
 
   public datos_gestor = {
     municipio : '',
@@ -64,9 +70,21 @@ export class CertificadoComponent implements OnInit {
     private datosGeneradorService:DatosGeneradorService,
     private datosResidousService:DatosResiduosService,
     private datosTransportadorService:DatosTransportadorService,
-    private snack:MatSnackBar) { }
+    private snack:MatSnackBar,
+    private serviceBotadero: BotaderoService,
+    private serviceTypeDocument: TypeDocumentService) { }
 
   ngOnInit(): void {
+    this.serviceBotadero.getAllActiveBotadero().subscribe((options) => {
+      this.botaderosActive = options;
+    });
+
+    this.serviceTypeDocument.getAllActiveTypeDocument().subscribe((options) => {
+      this.documentsActive = options;
+    });
+
+    
+
   }
 
   formSubmit(){
