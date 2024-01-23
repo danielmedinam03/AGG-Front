@@ -122,7 +122,6 @@ export class CertificadoComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('Se envia esta info: ', this.certificationForm);
     this.datosGeneradorService.saveGenerador(this.certificationForm).subscribe(
       (resp) => {
         const numero: number = Number(resp);
@@ -137,15 +136,12 @@ export class CertificadoComponent implements OnInit {
   }
 
   generateCertificates(id:number){
-    console.log("Valor: ", id);
     this.certificacionService.getCertificates(id).subscribe(
       (respCert) =>{
         const fileCertificateBotadero = respCert.fileCertificateBotadero;
         const fileCertificateBascula = respCert.fileCertificateBascula;
         const numberFinalCertification = respCert.number_final_certification;
         // const fileBascula = respCert.fileBascula;
-
-        console.log("FileBasucula:",fileCertificateBascula);
         
         this.downloadFile(fileCertificateBotadero,'Certificacion '+numberFinalCertification+'.pdf');
         this.downloadFile(fileCertificateBascula,'Certificacion bascula'+numberFinalCertification+'.pdf');
