@@ -14,6 +14,10 @@ export class BotaderoService {
   public getAllBotadero(): Observable<any>{
     return this.httpClient.get(environment.API_SERVER+this.API_SERVER);
   }
+  public getAllActiveBotadero(): Observable<any>{
+    const url = environment.API_SERVER+this.API_SERVER+'/active'
+    return this.httpClient.get(url);
+  }
 
   public saveBotadero(botadero:any): Observable<any>{
     const valorGuardado = localStorage.getItem('id');

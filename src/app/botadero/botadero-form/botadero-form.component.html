@@ -4,17 +4,17 @@
     <h1>Crear nuevo botadero</h1>
     <form [formGroup]="botaderoForm" (ngSubmit)="guardar()">
         <div class="mb-3">
-            <label for="" class="form-label">Municipio o distrito del predio: </label>
-            <input type="text" class="form-control" id="city" formControlName="city">
+            <label for="" class="form-label">Municipio o distrito del predio:<span class="required">*</span> </label>
+            <input type="text" class="form-control" id="city" formControlName="city" required>
         </div>
         <div class="mb-3">
-            <label for="" class="form-label">Nombre del predio:</label>
-            <input type="text" class="form-control" id="property_name" formControlName="property_name">
+            <label for="" class="form-label">Nombre del predio:<span class="required">*</span></label>
+            <input type="text" class="form-control" id="property_name" formControlName="property_name" required>
         </div>
         <div class="buttons">
             <button type="button" class="btn btn-success" (click)="openModal()">Guardar</button>
 
-            <button type="button" class="btn btn-danger" routerLink="/botadero">Cancelar</button>
+            <button type="button" class="btn btn-danger" routerLink="/admin/botadero">Cancelar</button>
         </div>
     </form>
 </div>
