@@ -142,11 +142,14 @@ export class CertificadoComponent implements OnInit {
       (respCert) =>{
         const fileCertificateBotadero = respCert.fileCertificateBotadero;
         const fileCertificateBascula = respCert.fileCertificateBascula;
+        const fileCalibracionBascula = respCert.fileBascula;
         const numberFinalCertification = respCert.number_final_certification;
         // const fileBascula = respCert.fileBascula;
         
         this.downloadFile(fileCertificateBotadero,'Certificacion '+numberFinalCertification+'.pdf');
         this.downloadFile(fileCertificateBascula,'Certificacion bascula '+numberFinalCertification+'.pdf');
+        this.downloadFile(fileCalibracionBascula,'Certificacion calibración bascula '+numberFinalCertification+'.pdf');
+        
         
 
       }
