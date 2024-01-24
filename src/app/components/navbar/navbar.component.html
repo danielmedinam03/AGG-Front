@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
 
     <a [routerLink]="'/'" mat-icon-button class="example-icon" arial-label="Example icon-button with menu icon">
-        <img src="../../../assets/documentation.png" alt="icon-documentation" style="width: 100%; margin: 0 20px;">
+        <img src="../../../assets/logo2.png" alt="icon-documentation" style="width: 100%; margin: 0 20px;">
     </a>
     <span style="margin: 0 40px;">AGG S.A.S</span>
     <span class="example-spacer"></span>
@@ -9,13 +9,15 @@
         aria-label="Example icon-button with heart icon">
         Iniciar sesión
     </a>
+    
+    <button *ngIf="isLoggedIn && user" mat-button style="margin-right: 10px" class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon">
+    {{ user.username }}
+    </button>
 
     <a *ngIf="isLoggedIn" (click)="logout()" style="margin-right: 50px" mat-icon-button
         class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        Cerrar sesión
+        <mat-icon mat-list-icon>logout</mat-icon> Salir
     </a>
-    <button *ngIf="isLoggedIn && user" mat-button style="margin-right: 10px" class="example-icon favorite-icon"
-        aria-label="Example icon-button with heart icon">
-        {{ user.username }}
-    </button>
+
 </mat-toolbar>

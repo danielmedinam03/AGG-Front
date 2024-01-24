@@ -1,14 +1,14 @@
 
 <div class="principal">
 
-    <h1>Crear nuevo botadero</h1>
+    <h1>Agregar nuevo botadero</h1>
     <form [formGroup]="botaderoForm" (ngSubmit)="guardar()">
         <div class="mb-3">
-            <label for="" class="form-label">Municipio o distrito del predio:<span class="required">*</span> </label>
+            <label for="" class="form-label">Municipio o distrito del predio: </label>
             <input type="text" class="form-control" id="city" formControlName="city" required>
         </div>
         <div class="mb-3">
-            <label for="" class="form-label">Nombre del predio:<span class="required">*</span></label>
+            <label for="" class="form-label">Nombre del predio:</label>
             <input type="text" class="form-control" id="property_name" formControlName="property_name" required>
         </div>
         <div class="buttons">
