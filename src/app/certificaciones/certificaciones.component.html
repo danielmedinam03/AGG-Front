@@ -1,21 +1,29 @@
-<div class="container">
-    <div class="title">
-        <h1>
-            SUMINISTRAMOS Y CONTRATAMOS AGG S.A.S
-        </h1>
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row" style="margin-top: 20px">
+      <div>
+        <div class="container text-center">
+          <div class="title">
+            <h1>SUMINISTRAMOS Y CONTRATAMOS AGG S.A.S</h1>
+          </div>
+
+          <div class="button-container">
+            <button class="btn-buscar" type="button" routerLink="/admin/bandeja-certificaciones">
+              <span>Buscar certificado</span>
+              <img src="../../assets/search.png" alt="" />
+            </button>
+
+            <button
+              class="btn-create"
+              type="button"
+              routerLink="/admin/certificado"
+            >
+              <span>Generar certificado</span>
+              <img src="../../assets/add.png" alt="" />
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="button-container">
-
-        <button type="button" routerLink = "/admin/bandeja-certificaciones">
-            <span>Buscar certificado</span>
-            <img src="../../assets/search.png" alt="">
-        </button>
-
-        <button class="btn-create" type="button" routerLink = "/admin/certificado">
-            <span>Generar certificado</span>
-            <img src="../../assets/add.png" alt="">
-        </button>
-
-    </div>
+  </div>
 </div>

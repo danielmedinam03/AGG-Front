@@ -1,3 +1,31 @@
 .example-spacer{
     flex: 1 1 auto;
 }
+
+@media only screen and (max-width: 600px){
+/* Estilos comunes para la barra de herramientas */
+mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px; /* Ajusta el espaciado según tus necesidades */
+  }
+  
+  /* Estilos específicos para pantallas pequeñas */
+  @media screen and (max-width: 600px) {
+    mat-toolbar {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: center;
+    }
+  
+    mat-toolbar a,
+    mat-toolbar button {
+      margin: 10px 0;
+    }
+  
+    mat-toolbar span {
+      margin: 10px 0;
+    }
+  }
+}

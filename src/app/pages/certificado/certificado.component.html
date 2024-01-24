@@ -1,14 +1,16 @@
 <div class="bootstrap-wrapper">
     <div class="container">
-        <div class="row" style="margin-top: 20px">
+        <div class="row" style="margin-top : 20px;">
             <div>
                 <div class="container text-center">
+
                     <div class="form-certificado">
-                        <p class="text-center">
-                            Disposición Final de Tierra y Material sobrante <br />Realizada
-                            por el gestor SUMINISTRAMOS Y CONTRATAMOS AGG S.A.S
-                            <br />ALEJANDRO GARZÓN GUZMAN <br />NIT. 901191011-8
+                        <p class="text-center">Disposición Final de Tierra y Material sobrante
+                            <br>Realizada por el gestor SUMINISTRAMOS Y CONTRATAMOS AGG S.A.S
+                            <br>ALEJANDRO GARZÓN GUZMAN
+                            <br>NIT. 901191011-8
                         </p>
+
                             <form (ngSubmit)="onSubmit()" class="row g-3 form-datos-gestor">
 
                                 <div class="div-title">
@@ -82,10 +84,10 @@
                                     </div>
                                 </div>
 
-                            <div class="col-md-6">
-                                <label class="form-label">Nombre o razón social</label>
-                                <input type="text" class="form-control" id="name" formControlName="generator" placeholder="Digite el nombre o razón social" />
-                            </div>
+                                <div class="div-title">
+                                    <img src="../../../assets/points.png" alt="">
+                                    <h2>DATOS BÁSICOS DEL GENERADOR</h2>
+                                </div>
 
                                 <div class="col-md-6">
                                     <label class="form-label">Nombre o razón social</label>
@@ -127,45 +129,22 @@
                                     <input type="text" class="form-control" placeholder="" id="address_rcd" name="address_rcd" [(ngModel)]="certificationForm.address_rcd">
                                 </div>
 
-                            <div class="col-md-6">
-                                <label class="form-label residuos">1. Residuos de construcción y demolición - RCD
-                                    susceptibles
-                                    de aprovechamiento:</label>
-                                <input type="number" class="form-control" id="uno" formControlName="rcd" placeholder="" />
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label residuos">1.1 Productos de excavación y sobrantes de la
-                                    adecuación del
-                                    terreno: coberturas vegetales, tierras, limos y materiales
-                                    pétreos productos de la excavación, entre otros.</label>
-                                <input type="number" class="form-control" id="uno_uno" formControlName="rcd" placeholder="" />
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label residuos">1.2 Productos de cimentaciones y pilotajes: arcillas,
-                                    bentonitas y demás.</label>
-                                <input type="number" class="form-control" id="uno_dos" formControlName="rcd" placeholder="" />
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label residuos">1.3 Pétreos: hormigón, arenas, gravas, gravillas,
-                                    cantos,
-                                    pétreos asfalticos, trozos de ladrillos y bloques,
-                                    cerámicas,sobrantes de mezcla de cementos y concretos
-                                    hidráulicos, entre otros.
-                                </label>
-                                <input type="number" class="form-control" id="uno_tres" formControlName="rcd" placeholder="" />
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label residuos">1.4 No pétreos: vidrio, metales como acero, hierro,
-                                    cobre,
-                                    aluminio, con o sin recubrimiento de zinc o estaño, plásticos
-                                    tales como: PVC, polietileno, policarbonato, acrílico, espumas
-                                    de poliestireno y de poliuretano, gomas y cauchos, madera y
-                                    compuestos de madera, cartón-yeso (drywall), entre
-                                    otros.</label>
-                                <input type="number" class="form-control" id="uno_cuatro" formControlName="rcd" placeholder="" />
-                            </div>
-                            <div class="col-md-6"></div>
+                                <div class="div-title">
+                                    <img src="../../../assets/points.png" alt="">
+                                    <h2>CANTIDADES DE RCD RECIBIDOS DEL GENERADOR POR TIPO</h2>
+                                </div>
 
+                                <!-- <div class="row">
+
+                                    <div class="col-md-6" *ngFor="let item of quantities_rcd; let i = index">
+                                        <div class="form-group">
+                                            <label class="form-label residuos">{{item.type_rcd.numeration}}. {{item.type_rcd.description}}</label>
+                                            <input type="number" class="form-control" placeholder="" [(ngModel)]="quantitiesRcd[i].quantity_rcd" name="quantity_rcd">
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div> -->
 
                                 <div class="col-md-6">
                                     <label class="form-label residuos">1. Residuos de construcción y demolición -
@@ -239,24 +218,11 @@
                                     <input type="text" class="form-control" placeholder="" name="certificationForm.reception_date_rcd" [(ngModel)]="certificationForm.reception_date_rcd">
                                 </div>
 
-                            <div class="col-md-6">
-                                <label class="form-label">Numero de Identificación</label>
-                                <input type="text" class="form-control" id="number_id" formControlName="driver" placeholder="" />
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Placa de Vehículo</label>
-                                <input type="text" class="form-control" id="vehicle_plate" formControlName="driver" placeholder="" />
-                            </div>
 
-                            <div class="col-12 button-certificado">
-                                <div>
-                                    <button type="submit" class="btn btn-primary btn-certificado">
-                                        Generar Certificado
-                                    </button>
+                                <div class="div-title">
+                                    <img src="../../../assets/points.png" alt="">
+                                    <h2>DATOS BASICOS DEL GESTOR DE TRANSPORTE</h2>
                                 </div>
-
-                            </div>
-
 
                                 <div class="col-md-6">
                                     <label class="form-label">Nombre o razón social</label>
@@ -274,14 +240,13 @@
                                     </mat-form-field>
                                 </div>
 
-
                                 <div class="col-md-6">
                                     <label class="form-label">Numero de Identificación</label>
                                     <input type="text" class="form-control" placeholder="" [(ngModel)]="certificationForm.data_driver.number_id" name="certificadoForm.data_driver.number_id">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Placa de Vehículo</label>
-                                    <input type="text" class="form-control" placeholder="" [(ngModel)]="certificationForm.data_driver.vehicle_plate" name="certificadoForm.data_driver.vehicle_plate">
+                                    <input type="text" class="form-control" placeholder="" [(ngModel)]="certificationForm.data_driver.vehicle_plate" name="certificadoForm.data_driver.vehicle_plate" required="true">
                                 </div>
 
                                 <div class="col-12 button-certificado">

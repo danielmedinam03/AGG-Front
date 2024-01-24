@@ -30,7 +30,6 @@ export class CertificadoComponent implements OnInit {
   documentsActive: any;
   quantities_rcd: QuantitiesRcd[] = QUANTITY_RCD;
   // certificationForm !: FormGroup;
-  botaderos: any;
 
   id_data_generator:number=0;
 
@@ -121,7 +120,6 @@ export class CertificadoComponent implements OnInit {
       quantities.quantity_rcd_8 +
       quantities.quantity_rcd_9;
   }
-
 
   onSubmit(){
     this.datosGeneradorService.saveGenerador(this.certificationForm).subscribe(
