@@ -226,7 +226,7 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label">Nombre o razón social</label>
-                                    <input type="text" class="form-control" placeholder="" [(ngModel)]="certificationForm.data_driver.name" name="certificadoForm.data_driver.name">
+                                    <input type="text" autocomplete="off" class="form-control" placeholder="" [(ngModel)]="certificationForm.data_driver.name" name="certificadoForm.data_driver.name">
                                 </div>
 
                                 <div class="col-md-6">
@@ -242,7 +242,7 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label">Numero de Identificación</label>
-                                    <input type="text" class="form-control" placeholder="" [(ngModel)]="certificationForm.data_driver.number_id" name="certificadoForm.data_driver.number_id">
+                                    <input type="text" class="form-control" autocomplete="off" placeholder="" [(ngModel)]="certificationForm.data_driver.number_id" name="certificadoForm.data_driver.number_id">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Placa de Vehículo</label>
@@ -251,7 +251,7 @@
 
                                 <div class="col-12 button-certificado">
                                     <div>
-                                        <button type="submit" class="btn btn-primary btn-certificado" (click)="onSubmit()">Generar Certificado</button>
+                                        <button type="button" class="btn btn-primary btn-certificado" (click)="openModal()">Generar Certificado</button>
                                     </div>
                                 </div>
                             </form>
@@ -261,3 +261,15 @@
         </div>
     </div>
 </div>
+
+<app-custom-modal *ngIf="showModal" (closeModalEvent)="closeModal()">
+    <p class="msj">
+        <i class="fas fa-exclamation-circle"></i> <!-- Icono de advertencia -->
+        ¿Estás seguro de que deseas guardar los cambios? <br>
+        <span style="text-align:center;">Se descargarán automaticamente las certificaciones</span> 
+    </p>
+    <div class="buttons">
+        <button type="button" class="btn btn-success" (click)="saveChanges()">Aceptar</button>
+        <button type="button" class="btn btn-danger" (click)="closeModal()">Cancelar</button>
+    </div>
+</app-custom-modal>
