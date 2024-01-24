@@ -10,7 +10,7 @@
                             <br />ALEJANDRO GARZÓN GUZMAN <br />NIT. 901191011-8
                         </p>
 
-                        <form (ngSubmit)="formSubmit()" class="row g-3 form-datos-gestor">
+                        <form class="row g-3 form-datos-gestor">
                             <div class="div-title">
                                 <img src="../../../assets/points.png" alt="" />
                                 <h2>DATOS BÁSICOS DEL GESTOR</h2>
@@ -46,42 +46,6 @@
                                     aria-label="Disabled input example" disabled readonly />
                             </div>
                             <div class="col-md-6"></div>
-
-                            <div class="col-md-6">
-                                        <!--
-                        <h4>Municipio</h4>
-                        <mat-form-field>
-                        <mat-label>City</mat-label>
-                        <mat-select [formControl]="cityControl">
-                            <mat-option>-- None --</mat-option>
-                            @for (group of pokemonGroups; track group) {
-                                <mat-optgroup [label]="group.name"
-                                            [disabled]="group.disabled">
-                                @for (pokemon of group.pokemon; track pokemon) {
-                                    <mat-option [value]="pokemon.value">{{pokemon.viewValue}}</mat-option>
-                                }
-                                </mat-optgroup>
-                            }
-                        </mat-select>
-                        </mat-form-field>
-                        -->
-
-                                <h3 style="font-weight: 500">Municipio y Predio</h3>
-                                <mat-form-field>
-                                    <mat-label>Predio</mat-label>
-                                    <select matNativeControl>
-                                        <option value=""></option>
-                                        <optgroup label="Cali" id="city" formControlName="property_name">
-                                            <option value="ladina" id="property_name" formControlName="property_name">La Diana</option>
-                                            <option value="lapaloma">La Paloma</option>
-                                        </optgroup>
-                                        <optgroup label="Ibague">
-                                            <option value="ladiana">La Diana v2</option>
-                                            <option value="lapaloma">La Paloma v2</option>
-                                        </optgroup>
-                                    </select>
-                                </mat-form-field>
-                            </div>
 
                             <div class="col-md-6 control_label"></div>
 

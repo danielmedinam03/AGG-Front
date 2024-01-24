@@ -42,45 +42,6 @@ export class CertificadoComponent implements OnInit {
   telefono: string = "3148095541 - (602) 3848023";
   email: string = "suministramosycontratamos@gmail.com"
 
-  public datos_gestor = {
-    city : '',
-    property_name : '',
-    manager : ''
-  }
-
-  public datos_generador = {
-    name : '',
-    type_document_id: '',
-    legal_representative: '',
-    documento_rep : '',
-    address: '',
-    phone_number : '',
-    email: '',
-    address_rcd: ''
-  }
-
-  public datos_rcd = {
-    uno: '',
-    uno_uno: '',
-    uno_dos: '',
-    uno_tres: '',
-    uno_cuatro: '',
-    dos: '',
-    dos_uno: '',
-    dos_dos: '',
-    dos_tres: '',
-    total_rcd: '',
-    fecha_rcd: ''
-  }
-
-  public datos_transportador = {
-    name: '',
-    type_document_id: '',
-    number_id: '',
-    vehicle_plate: ''
-
-  }
-
   constructor(
     private datosGestorService:DatosGestorService,
     private datosGeneradorService:DatosGeneradorService,
@@ -107,63 +68,5 @@ export class CertificadoComponent implements OnInit {
       ]
     }
   ]
-
-  formSubmit(){
-    console.log(this.datos_gestor);
-    if(this.datos_gestor.city == '' || this.datos_gestor.city == null){
-      this.snack.open('El nombre del municipio es requerido !!','Aceptar',{
-        duration : 3000,
-        verticalPosition : 'top',
-        horizontalPosition : 'right'
-      });
-      return;
-    }
-    if(this.datos_gestor.property_name == '' || this.datos_gestor.property_name == null){
-      this.snack.open('El nombre del predio es requerido !!','Aceptar',{
-        duration : 3000,
-        verticalPosition : 'top',
-        horizontalPosition : 'right'
-      });
-      return;
-    }
-
-    this.datosGestorService.saveGestor(this.datos_gestor).subscribe(
-      (data) => {
-        console.log(data)
-        Swal.fire('Datos del gestor guardados con exito')
-      }, (error) => {
-        console.log(error);
-        this.snack.open('Ha ocurrido un error', 'Aceptar', {
-          duration:2000
-        })
-      }
-    )
-
-    this.datosGeneradorService.saveGenerador(this.datos_generador).subscribe(
-      (data) => {
-        console.log(data)
-      }, (error) => {
-        console.log(error);
-      }
-    )
-
-    this.datosResidousService.saveResiduos(this.datos_rcd).subscribe(
-      (data) => {
-        console.log(data)
-      }, (error) => {
-        console.log(error);
-      }
-    )
-
-    this.datosTransportadorService.saveTransportador(this.datos_transportador).subscribe(
-      (data) => {
-        console.log(data)
-      }, (error) => {
-        console.log(error);
-      }
-    )
-  }
-
-  
 
 }
