@@ -12,11 +12,16 @@ h1 {
   margin-bottom: 100px;
 }
 
-.thead{
+thead{
     text-align: center;
     justify-content: center;
     align-items: center;
     width: 100px;
+}
+th{
+  color: #ffffff;
+  background-color: #0074d3;
+  font-weight: 500;
 }
 .flex-container {
     display: flex;
@@ -33,9 +38,7 @@ mat-form-field{
   width: 100%;
   margin-bottom: 10px;
 }
-.btn-buscar{
-  height: 100px;
-}
+
 .flex-item {
   flex: 1;
   margin-right: 10px;
@@ -43,6 +46,44 @@ mat-form-field{
 input{
   width: 100%;
 }
+
+button {
+  border: none;
+  display: flex;
+  padding: 0.75rem 1.5rem;
+  background-color: #0074d3;
+  color: #ffffff;
+  font-size: 0.7rem;
+  line-height: 1rem;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 0.5rem;
+  user-select: none;
+  gap: 0.75rem;
+  box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
+  width: 120px;
+  transition: all .6s ease;
+  margin: 0 20px;
+}
+
+button:hover {
+  box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
+}
+
+button:focus,button:active {
+  opacity: .85;
+  box-shadow: none;
+}
+
+button svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+
 /* Estilos adicionales para hacer la tabla más responsive */
 @media (max-width: 767px) {
   .table-container {

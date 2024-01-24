@@ -45,7 +45,7 @@ const routes: Routes = [
     children:[
       {
         path:'',
-        component:CertificacionesComponent
+        component:WelcomeComponent
       },
       {
         path:'certificado',
