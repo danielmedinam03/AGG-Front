@@ -29,6 +29,8 @@ export class CertificadoComponent implements OnInit {
   botaderosActive: any;
   documentsActive: any;
   quantities_rcd: QuantitiesRcd[] = QUANTITY_RCD;
+  showModal = false;
+
   // certificationForm !: FormGroup;
 
   id_data_generator:number=0;
@@ -144,7 +146,7 @@ export class CertificadoComponent implements OnInit {
         // const fileBascula = respCert.fileBascula;
         
         this.downloadFile(fileCertificateBotadero,'Certificacion '+numberFinalCertification+'.pdf');
-        this.downloadFile(fileCertificateBascula,'Certificacion bascula'+numberFinalCertification+'.pdf');
+        this.downloadFile(fileCertificateBascula,'Certificacion bascula '+numberFinalCertification+'.pdf');
         
 
       }
@@ -174,61 +176,19 @@ export class CertificadoComponent implements OnInit {
     link.click();
   }
 
-  // formSubmit(){
-  //   console.log(this.datos_gestor);
-  //   if(this.datos_gestor.municipio == '' || this.datos_gestor.municipio == null){
-  //     this.snack.open('El nombre del municipio es requerido !!','Aceptar',{
-  //       duration : 3000,
-  //       verticalPosition : 'top',
-  //       horizontalPosition : 'right'
-  //     });
-  //     return;
-  //   }
-  //   if(this.datos_gestor.predio == '' || this.datos_gestor.predio == null){
-  //     this.snack.open('El nombre del predio es requerido !!','Aceptar',{
-  //       duration : 3000,
-  //       verticalPosition : 'top',
-  //       horizontalPosition : 'right'
-  //     });
-  //     return;
-  //   }
+  openModal() {
+    this.showModal = true;
+  }
 
-  //   this.datosGestorService.saveGestor(this.datos_gestor).subscribe(
-  //     (data) => {
-  //       console.log(data)
-  //       Swal.fire('Datos del gestor guardados con exito')
-  //     }, (error) => {
-  //       console.log(error);
-  //       this.snack.open('Ha ocurrido un error', 'Aceptar', {
-  //         duration:2000
-  //       })
-  //     }
-  //   )
+  closeModal() {
+    this.showModal = false;
+  }
 
-  //   this.datosGeneradorService.saveGenerador(this.datos_generador).subscribe(
-  //     (data) => {
-  //       console.log(data)
-  //     }, (error) => {
-  //       console.log(error);
-  //     }
-  //   )
+  saveChanges() {
+    this.onSubmit();
+    this.closeModal();
+  }
 
-  //   this.datosResidousService.saveResiduos(this.datos_rcd).subscribe(
-  //     (data) => {
-  //       console.log(data)
-  //     }, (error) => {
-  //       console.log(error);
-  //     }
-  //   )
-
-  //   this.datosTransportadorService.saveTransportador(this.datos_transportador).subscribe(
-  //     (data) => {
-  //       console.log(data)
-  //     }, (error) => {
-  //       console.log(error);
-  //     }
-  //   )
-  // }
 }
 
 export interface DataGeneratorRequest {
