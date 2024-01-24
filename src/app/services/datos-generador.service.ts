@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DatosGeneradorService {
 
-  private API_SERVER = '/certificado'
+  private API_SERVER = '/generator'
 
   constructor(private httpClient: HttpClient) { }
 
