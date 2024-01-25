@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DatosGestorService } from './../../services/datos-gestor.service';
-import { DatosGeneradorService } from 'src/app/services/datos-generador.service';
+import { DatosGeneradorService } from 'src/app/services/data-generator/datos-generador.service';
 import { DatosTransportadorService } from 'src/app/services/datos-transportador.service';
 import { DatosResiduosService } from 'src/app/services/datos-residuos.service';
 import { BotaderoService } from 'src/app/services/botaderoServices/botadero.service';
@@ -13,21 +13,22 @@ import { Router } from '@angular/router';
 import { Botadero, QuantitiesRcd } from 'src/app/services/get-certificationServices/get-certification.service';
 import { FormsModule } from '@angular/forms';
 import { CertificationService } from 'src/app/services/certification/certification.service';
+import { DataManagerService } from 'src/app/services/data-manger/data-manager.service';
 @Component({
   selector: 'app-certificado',
   templateUrl: './certificado.component.html',
   styleUrls: ['./certificado.component.css'],
 })
 export class CertificadoComponent implements OnInit {
-  razon_social: string =
-    'ALEJANDRO GARZON GUZMAN/SUMINISTRAMOS Y CONTRATAMOS AGG SAS';
-  nit: string = '901191011-8';
-  representante_legal: string = 'ALEJANDRO GARZÓN GUZMÁN';
-  direccion: string = 'CALLE 70 # 12B – 77 SIETE DE AGOSTO (Oficina)';
-  telefono: string = '3148095541 - (602) 3848023';
-  email: string = 'suministramosycontratamos@gmail.com';
+  razon_social: string="";
+  nit: string = '';
+  representante_legal: string = '';
+  direccion: string = '';
+  telefono: string = '';
+  email: string = '';
   botaderosActive: any;
   documentsActive: any;
+  dataManager:any;
   quantities_rcd: QuantitiesRcd[] = QUANTITY_RCD;
   showModal = false;
 
@@ -69,7 +70,7 @@ export class CertificadoComponent implements OnInit {
 
   certificationForm: DataGeneratorRequest = {
     botadero_id: 0,
-    data_manager_id: 1,
+    data_manager_id: 0,
     name: '',
     type_document_id: 0,
     number_id: '',
@@ -95,7 +96,8 @@ export class CertificadoComponent implements OnInit {
     private serviceTypeDocument: TypeDocumentService,
     public fb: FormBuilder,
     public route: Router,
-    private certificacionService:CertificationService
+    private certificacionService:CertificationService,
+    private dataManagerService: DataManagerService
   ) {}
 
   ngOnInit(): void {
@@ -105,6 +107,9 @@ export class CertificadoComponent implements OnInit {
 
     this.serviceTypeDocument.getAllActiveTypeDocument().subscribe((options) => {
       this.documentsActive = options;
+    });
+    this.dataManagerService.getAllDataManager().subscribe((options)=>{
+      this.dataManager = options;
     });
 
   }
@@ -177,6 +182,29 @@ export class CertificadoComponent implements OnInit {
   
     // Simular el clic en el enlace para iniciar la descarga
     link.click();
+  }
+
+  onGestorSelectionChange() {
+    // Obtén el ID del gestor seleccionado
+    const selectedGestorId = this.certificationForm.data_manager_id;
+
+    // Llama al servicio para obtener los datos del gestor seleccionado
+    this.dataManagerService.getByIdDataManager(selectedGestorId)
+      .subscribe(
+        (gestorData: any) => {
+          // Asigna los datos del gestor a las variables
+          this.razon_social = gestorData.name;
+          this.nit = gestorData.number_id;
+          this.representante_legal = gestorData.legal_representative;
+          this.direccion = gestorData.address;
+          this.telefono = gestorData.phone_number;
+          this.email = gestorData.email;
+        },
+        error => {
+          console.error('Error al obtener datos del gestor:', error);
+          // Maneja el error según tus necesidades
+        }
+      );
   }
 
   openModal() {

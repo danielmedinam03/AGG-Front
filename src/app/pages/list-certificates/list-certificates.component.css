@@ -47,7 +47,7 @@ input{
   width: 100%;
 }
 
-button {
+.btn-buscar {
   border: none;
   display: flex;
   padding: 0.75rem 1.5rem;
@@ -69,16 +69,16 @@ button {
   margin: 0 20px;
 }
 
-button:hover {
+.btn-buscar :hover {
   box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
 }
 
-button:focus,button:active {
+.btn-buscar :focus,.btn-buscar:active {
   opacity: .85;
   box-shadow: none;
 }
 
-button svg {
+.btn-buscar  svg {
   width: 1rem;
   height: 1rem;
 }

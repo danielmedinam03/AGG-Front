@@ -15,4 +15,14 @@ export class DatosGeneradorService {
   public saveGenerador(generador:any){
     return this.httpClient.post(environment.API_SERVER+this.API_SERVER, generador);
   }
+  
+  public getByIdEdit(id:any){
+    const url = `${environment.API_SERVER}${this.API_SERVER}/${id}/edit`
+    return this.httpClient.get(url)
+  }
+  public editGenerador(id:number,generador:any){
+    const url = `${environment.API_SERVER}${this.API_SERVER}/${id}`
+    return this.httpClient.put(url, generador);
+  }
+
 }
