@@ -3,23 +3,32 @@ import { ActivatedRoute } from '@angular/router';
 import { DataGenerator, GetCertificationService, Manager, QuantitiesRcd, TypeRcd } from 'src/app/services/get-certificationServices/get-certification.service';
 import { QUANTITY_RCD } from './constants/quantities_rcd';
 import { MANAGER } from './constants/manager';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-get-certification',
   templateUrl: './get-certification.component.html',
   styleUrls: ['./get-certification.component.css']
+
 })
 export class GetCertificationComponent implements OnInit {
 
   data_generator= {} as DataGenerator;
   quantities_rcd: QuantitiesRcd[] = QUANTITY_RCD;
   manager: Manager[]=MANAGER;
+  fechaActual: string;
   
   public id = this.route.snapshot.paramMap.get('id');
 
   constructor( private route: ActivatedRoute,
-    private getCertificationService :GetCertificationService) {
-
+    private getCertificationService :GetCertificationService
+    ) {
+      const fecha = new Date();
+      const anio = fecha.getFullYear();
+      const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+      const dia = fecha.getDate().toString().padStart(2, '0');
+  
+      this.fechaActual = `${dia} del mes ${mes} del ${anio}`;
      }
 
     ngOnInit() {

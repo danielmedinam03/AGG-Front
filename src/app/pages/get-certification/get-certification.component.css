@@ -43,3 +43,36 @@
     padding: 15px 30px;
     border-radius: 10px;
 }
+
+.bascula{
+ margin-top: 80px;
+ border: 2px solid black;
+ padding: 5% 10%;
+}
+
+.div-bascula {
+    text-align: center;
+    font-weight: 500;
+}
+
+.div-bascula > img{
+    width: 40px;
+}
+
+.firma {
+    margin-top: 100px;
+}
+
+.piepagina {
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.img-bascula {
+    border: 2px solid black;
+}
+
+.img-bascula > img {
+    width: 100%;
+}
