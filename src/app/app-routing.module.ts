@@ -16,6 +16,7 @@ import { CertificadoComponent } from './pages/certificado/certificado.component'
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ListCertificatesComponent } from './pages/list-certificates/list-certificates.component';
 import { GetCertificationComponent } from './pages/get-certification/get-certification.component';
+import { EditCertificateComponent } from './pages/editar-certificado/edit-certificate/edit-certificate.component';
 
 const routes: Routes = [
   {
@@ -74,6 +75,10 @@ const routes: Routes = [
       {
         path: 'bandeja-certificaciones',
         component: ListCertificatesComponent
+      },
+      { 
+        path: 'certification-edit/:id',
+        component: EditCertificateComponent
       }
       
     ]

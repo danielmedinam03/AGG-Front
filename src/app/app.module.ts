@@ -47,6 +47,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { CommonModule } from '@angular/common';
+import { EditCertificateComponent } from './pages/editar-certificado/edit-certificate/edit-certificate.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { CommonModule } from '@angular/common';
     CertificadoComponent,
     WelcomeComponent,
     ListCertificatesComponent,
-    GetCertificationComponent
+    GetCertificationComponent,
+    EditCertificateComponent
   ],
   imports: [
     BrowserModule,
