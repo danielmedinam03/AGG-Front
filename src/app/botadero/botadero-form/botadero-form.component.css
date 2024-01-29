@@ -3,6 +3,9 @@
     margin: auto;
     padding: 20px;
   }
+  .requerido{
+    color: rgb(190, 0, 0);
+  }
   
   /* Estilo general para los campos del formulario */
   .mb-3 {
