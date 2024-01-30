@@ -5,14 +5,29 @@
     <form [formGroup]="botaderoForm" (ngSubmit)="guardar()">
         <div class="mb-3">
             <label for="" class="form-label">Municipio o distrito del predio: </label>
-            <input type="text" class="form-control" id="city" formControlName="city" required>
+            <input class
+                [class.is-success]="botaderoForm.get('city')?.touched && botaderoForm.get('city')?.valid"  
+                type="text" class="form-control" id="city" formControlName="city" required>
         </div>
+
+        <div *ngIf="botaderoForm.get('city')?.errors && botaderoForm.get('city')?.touched">
+            <p class="text-danger" *ngIf="botaderoForm.get('city')?.hasError('required')" >
+                Es un campo requerido
+            </p>
+        </div>
+
         <div class="mb-3">
             <label for="" class="form-label">Nombre del predio:</label>
             <input type="text" class="form-control" id="property_name" formControlName="property_name" required>
         </div>
+        <div *ngIf="botaderoForm.get('property_name')?.errors && botaderoForm.get('property_name')?.touched">
+            <p class="text-danger" *ngIf="botaderoForm.get('property_name')?.hasError('required')" >
+                Es un campo requerido
+            </p>
+        </div>
+
         <div class="buttons">
-            <button type="button" class="btn btn-success" (click)="openModal()">Guardar</button>
+            <button [disabled]="botaderoForm.invalid" type="button" class="btn btn-success" (click)="openModal()">Guardar</button>
 
             <button type="button" class="btn btn-danger" routerLink="/admin/botadero">Cancelar</button>
         </div>
