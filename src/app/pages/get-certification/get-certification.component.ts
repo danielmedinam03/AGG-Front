@@ -28,7 +28,7 @@ export class GetCertificationComponent implements OnInit {
       const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
       const dia = fecha.getDate().toString().padStart(2, '0');
   
-      this.fechaActual = `${dia} del mes ${mes} del ${anio}`;
+      this.fechaActual = `${dia} días del mes ${mes} del ${anio}`;
      }
 
     ngOnInit() {

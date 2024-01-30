@@ -5,16 +5,169 @@
                 <div class="container text-center">
 
                     <div class="form-certificado">
-                        <p class="text-center"><strong>CERTIFICACIÓN N° {{data_generator.certification.final_number_certification}}</strong>
+                        <p class="text-center"><strong>CERTIFICACIÓN N°
+                                {{data_generator.certification.final_number_certification}}</strong>
                             <br>Disposición Final de Tierra y Material sobrante
-                            <br>Realizada por el gestor SUMINISTRAMOS Y CONTRATAMOS AGG S.A.S
-                            <br>ALEJANDRO GARZÓN GUZMAN
-                            <br>NIT. 901191011-8
+                            <br>Realizada por el gestor {{data_generator.data_manager.name}}
+                            <br>{{data_generator.data_manager.type_document.name}}. {{data_generator.data_manager.number_id}}
                         </p>
 
                         <form class="row g-3 form-datos-gestor">
 
-                            <div class="div-title">
+                            <table>
+                                <tr>
+                                    <th colspan="3" style="text-align: center;">
+                                        DATOS BÁSICOS DEL GESTOR
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>Número único asignado para el gestor por parte de la autoridad ambiental por
+                                        proyecto</th>
+                                    <td colspan="2">{{data_generator.data_manager.unic_number}}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Nombre o razón social</th>
+                                    <td colspan="2">{{data_generator.data_manager.name}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Documento de identificación o NIT</th>
+                                    <td colspan="2">{{data_generator.data_manager.number_id}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Representante legal</th>
+                                    <td colspan="2">{{data_generator.data_manager.legal_representative}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Dirección</th>
+                                    <td colspan="2">{{data_generator.data_manager.address}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Télefono</th>
+                                    <td colspan="2">{{data_generator.data_manager.phone_number}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Correo electrónico</th>
+                                    <td colspan="2">{{data_generator.data_manager.email}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Municipio o distrito del predio</th>
+                                    <td colspan="2">{{data_generator.botadero.city}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nombre del predio</th>
+                                    <td colspan="2">{{data_generator.botadero.property_name}}</td>
+                                </tr>
+                                <tr>
+                                    <th rowspan="4">Gestor</th>
+                                </tr>
+                                
+                                <tr *ngFor="let item of manager">
+                                    <td colspan="1">{{item.name}}</td>
+                                    <td *ngIf="item.status === true; else cuandoEsFalse " colspan="1">x</td>
+                                    <ng-template #cuandoEsFalse> <td colspan="1"> </td> </ng-template>
+                                </tr>
+                                <tr>
+                                    <th colspan="3" style="text-align: center;">
+                                        DATOS BÁSICOS DEL GENERADOR
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>Número único asignado para el gestor por parte de la autoridad ambiental por
+                                        proyecto</th>
+                                    <td colspan="2">{{data_generator.unic_number}}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Nombre o razón social</th>
+                                    <td colspan="2">{{data_generator.name}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Documento de identificación o NIT</th>
+                                    <td colspan="2">{{data_generator.number_id}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Representante legal</th>
+                                    <td colspan="2">{{data_generator.legal_representative}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Dirección domicilio/th>
+                                    <td colspan="2">{{data_generator.address}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Télefono</th>
+                                    <td colspan="2">{{data_generator.phone_number}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Correo electrónico</th>
+                                    <td colspan="2">{{data_generator.email}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Dirección generación de RCD</th>
+                                    <td colspan="2">{{data_generator.address_rcd}}</td>
+                                </tr>
+                                <tr>
+                                    <th colspan="3" style="text-align: center;">
+                                        CANTIDADES DE RCD RECIBIDOS DEL GENERADOR POR TIPO
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="1" style="text-align: center;">
+                                        Tipo de residuo
+                                    </th>
+                                    <th colspan="2" style="text-align: center;">
+                                        Cantidad de RCD recibidos del generador (t)
+                                    </th>
+                                </tr>
+                                <tr *ngFor="let item of quantities_rcd">
+                                    <td  style="text-align: left;" colspan="1">{{item.type_rcd.numeration}}.{{item.type_rcd.description}}</td>
+                                    <td *ngIf="item.quantity_rcd > 0; else cuandoEsFalse " colspan="2">{{item.quantity_rcd}} TONELADAS</td>
+                                    <ng-template #cuandoEsFalse> <td colspan="2"> </td> </ng-template>
+                                </tr>
+                                <tr>
+                                    <th>Total, RCD recibidos (t)</th>
+                                    <td colspan="2">{{data_generator.total_rcd}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Fecha de recepción de los RCD</th>
+                                    <td colspan="2">{{data_generator.reception_date_rcd}}</td>
+                                </tr>
+                                <tr>
+                                    <th colspan="3" style="text-align: center;">
+                                        DATOS BÁSICOS DEL GESTOR DE TRANSPORTE
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>Nombre o razón social / Identificación</th>
+                                    <td colspan="2">{{data_generator.data_driver.name}}. {{data_generator.data_driver.type_document.name}}. {{data_generator.data_driver.number_id}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Placa del vehículo</th>
+                                    <td colspan="2">{{data_generator.data_driver.vehicle_plate}}</td>
+                                </tr>
+                            </table>
+                            <p>
+                                La presente certificación se basa en el anexo II de la resolución 1257 del 2021 “Por la cual se modifica
+                                la Resolución 0472 de 2017 sobre la gestión integral de Residuos de Construcción y Demolición –
+                                RCD y se adoptan otras disposiciones” y se expide a solicitud del interesado, a los {{fechaActual}}. Para ser presentada ante la autoridad Ambiental competente 
+                                <strong> IMPORTANTE PARA CONFIRMAR LA VERACIDAD DE ESTE CERTIFICADO COMUNÍQUESE CON NUESTRA OFICINA.</strong> 
+                            </p>
+                            <p>
+                                Se anexa certificado de calibración de la báscula utilizada para realizar el proceso de pesaje de los
+                                RCD recibidos, como lo establece el marco normativo en su artículo 3 de la Resolución 1257 del 2021. 
+                            </p>
+                            <p>
+                                Quien certifica;
+                            </p>
+                            <br>
+                            <p >
+                                {{data_generator.data_manager.name}} <br>
+                                {{data_generator.data_manager.address}} <br>
+                                Tel. {{data_generator.data_manager.phone_number}} <br>
+                                E. mail {{data_generator.data_manager.email}}
+                                <br>
+                            </p>
+                            <!-- <div class="div-title">
                                 <img src="../../../assets/points.png" alt="">
                                 <h2>DATOS BÁSICOS DEL GESTOR</h2>
                             </div>
@@ -166,16 +319,18 @@
                                 <label class="form-label">Placa de Vehículo</label>
                                 <input type="text" class="form-control" placeholder="" disabled
                                 [value]="data_generator.data_driver.vehicle_plate">
-                            </div>
+                            </div> -->
 
+                            <!-- Certificacion bascula -->
 
                             <div class="bascula">
                                 <div class="div-bascula">
                                     <img src="../../../assets/equilibrio.png" alt="">
                                     <h1>Certificado bascula</h1>
                                 </div>
-                                
-                                <p class="text-center"><strong>CERTIFICACIÓN N° {{data_generator.certification.final_number_certification}}</strong>
+
+                                <p class="text-center"><strong>CERTIFICACIÓN N°
+                                        {{data_generator.certification.final_number_certification}}</strong>
                                     <br>Disposición Final de Tierra y Material sobrante
                                     <br>Realizada por el gestor SUMINISTRAMOS Y CONTRATAMOS AGG S.A.S
                                     <br>ALEJANDRO GARZÓN GUZMAN
@@ -183,22 +338,30 @@
                                 </p>
                                 <br>
                                 <p>
-                                    La presente para certificar que el señor: {{data_generator.data_driver.name}} con CC No. {{data_generator.data_driver.number_id}}, se
-                                    le presto el servicio de báscula a la volqueta con placa {{data_generator.data_driver.vehicle_plate}} de las obras varias {{data_generator.address_rcd}} 
-                                    cantidad pesada: {{data_generator.total_rcd}} Toneladas, de disposición final de material, RCD
-                                    (Residuos de material construcción), De {{data_generator.reception_date_rcd}} según certificación de
-                                    disposición final RCD No. {{data_generator.certification.final_number_certification}}.
+                                    La presente para certificar que el señor: {{data_generator.data_driver.name}} con CC
+                                    No. {{data_generator.data_driver.number_id}}, se
+                                    le presto el servicio de báscula a la volqueta con placa
+                                    {{data_generator.data_driver.vehicle_plate}} de las obras varias
+                                    {{data_generator.address_rcd}}
+                                    cantidad pesada: {{data_generator.total_rcd}} Toneladas, de disposición final de
+                                    material, RCD
+                                    (Residuos de material construcción), De {{data_generator.reception_date_rcd}} según
+                                    certificación de
+                                    disposición final RCD No.
+                                    {{data_generator.certification.final_number_certification}}.
                                 </p>
                                 <br>
                                 <p>
                                     Se expide a solicitud del interesado, a los {{ fechaActual }}, para ser
-                                    presentada ante la autoridad ambiental competente. <b><i>IMPORTANTE:</i></b> Para confirmar la
-                                    veracidad de esta autorización comuníquese con nuestra oficina, <b>al número 3848023 o
-                                        al celular 3165354803.</b> 
+                                    presentada ante la autoridad ambiental competente. <b><i>IMPORTANTE:</i></b> Para
+                                    confirmar la
+                                    veracidad de esta autorización comuníquese con nuestra oficina, <b>al número 3848023
+                                        o
+                                        al celular 3165354803.</b>
                                 </p>
                                 <br>
                                 <p>
-                                    De antemano agradezco su amable atención. 
+                                    De antemano agradezco su amable atención.
                                 </p>
                                 <br>
                                 <p>
@@ -215,7 +378,8 @@
                                     SUMINISTRAMOS Y CONTRATAMOS AGG S.A.S <br>
                                     Calle 70 N.º 12B – 77 B / 7 de agosto Cali– Colombia <br>
                                     Tel (602) 3848023 – Cel 314 809 5541 – 316 535 4803 <br>
-                                    E. mail suministramosycontratamos@gmail.com-suministramosycontratamosagg@gmail.com <br>
+                                    E. mail suministramosycontratamos@gmail.com-suministramosycontratamosagg@gmail.com
+                                    <br>
                                 </p>
                             </div>
                             <div class="img-bascula">
