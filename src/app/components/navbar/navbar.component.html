@@ -5,11 +5,11 @@
     </a>
     <span style="margin: 0 40px;">AGG S.A.S</span>
     <span class="example-spacer"></span>
-    <a *ngIf="!isLoggedIn" [routerLink]="'/login'" style="margin-right: 80px" mat-icon-button class="example-icon favorite-icon"
+    <!--<a *ngIf="!isLoggedIn" [routerLink]="'/login'" style="margin-right: 80px" mat-icon-button class="example-icon favorite-icon"
         aria-label="Example icon-button with heart icon">
         Iniciar sesión
     </a>
-    
+-->
     <button *ngIf="isLoggedIn && user" mat-button style="margin-right: 10px" class="example-icon favorite-icon"
     aria-label="Example icon-button with heart icon">
     {{ user.username }}
