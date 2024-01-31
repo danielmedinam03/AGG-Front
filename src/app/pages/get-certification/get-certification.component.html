@@ -161,167 +161,19 @@
                             </p>
                             <br>
                             <p >
+                                <img *ngIf="data_generator.data_manager.id_data_manager === 1" src="../../../assets/firma1.png" alt="" style="width: 350px;"><br>
+                                <img *ngIf="data_generator.data_manager.id_data_manager === 2" src="../../../assets/firma4.png" alt="" style="width: 350px;"><br>
+                                <img *ngIf="data_generator.data_manager.id_data_manager === 3" src="../../../assets/firma3.png" alt="" style="width: 350px;"><br>
+                                <img *ngIf="data_generator.data_manager.id_data_manager === 4" src="../../../assets/firma2.png" alt="" style="width: 350px;"><br>
+                                
+
                                 {{data_generator.data_manager.name}} <br>
                                 {{data_generator.data_manager.address}} <br>
                                 Tel. {{data_generator.data_manager.phone_number}} <br>
                                 E. mail {{data_generator.data_manager.email}}
                                 <br>
                             </p>
-                            <!-- <div class="div-title">
-                                <img src="../../../assets/points.png" alt="">
-                                <h2>DATOS BÁSICOS DEL GESTOR</h2>
-                            </div>
-                            <div class="col-md-12">
-                                <label class="form-label">Nombre o razón social</label>
-                                <input class="form-control" type="text" aria-label="Disabled input example" disabled
-                                    [value]="data_generator.data_manager.name">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Documento de identificación o NIT</label>
-                                <input class="form-control" type="text" aria-label="Disabled input example" disabled
-                                    [value]="data_generator.data_manager.number_id">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Representante Legal</label>
-                                <input class="form-control" type="text" aria-label="Disabled input example" disabled
-                                    [value]="data_generator.data_manager.legal_representative">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Dirección</label>
-                                <input class="form-control" type="text" aria-label="Disabled input example" disabled
-                                    [value]="data_generator.data_manager.address">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Teléfono</label>
-                                <input class="form-control" type="text" aria-label="Disabled input example" disabled
-                                    [value]="data_generator.data_manager.phone_number">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Correo electrónico</label>
-                                <input class="form-control" type="text" aria-label="Disabled input example" disabled
-                                    [value]="data_generator.data_manager.email">
-                            </div>
-                            <div class="col-md-6">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label">Municipio o Distrito del Predio</label>
-                                <input type="text" class="form-control" id="inputEmail4" disabled
-                                    [value]="data_generator.botadero.city">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputPassword4" class="form-label">Nombre del Predio</label>
-                                <input type="text" class="form-control" id="inputPassword4" disabled
-                                    [value]="data_generator.botadero.property_name">
-                            </div>
-                            <label class="form-label"><strong> Gestor:</strong></label>
-                            <div *ngFor="let item of manager">
-                                
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck" [checked]="item.status" [disabled]="true">
-                                    <label for="gridCheck">
-                                        {{item.name}}
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="div-title">
-                                <img src="../../../assets/points.png" alt="">
-                                <h2>DATOS BÁSICOS DEL GENERADOR</h2>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label">Nombre o razón social</label>
-                                <input type="text" class="form-control" placeholder="Digite el nombre o razón social"
-                                    disabled [value]="data_generator.name">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label">Documento de identificación o NIT</label>
-                                <input type="text" class="form-control" placeholder="" disabled
-                                    [value]="data_generator.number_id">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Representante Legal</label>
-                                <input type="text" class="form-control" placeholder="" disabled
-                                    [value]="data_generator.legal_representative">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Dirección domicilio</label>
-                                <input type="text" class="form-control" placeholder="" disabled
-                                    [value]="data_generator.address">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Teléfono</label>
-                                <input type="text" class="form-control" placeholder="" disabled
-                                    [value]="data_generator.phone_number">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Correo electrónico</label>
-                                <input type="text" class="form-control" placeholder="" disabled
-                                    [value]="data_generator.email">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Dirección de generación de RCD</label>
-                                <input type="text" class="form-control" placeholder="" disabled
-                                    [value]="data_generator.address_rcd">
-                            </div>
-
-                            <div class="div-title">
-                                <img src="../../../assets/points.png" alt="">
-                                <h2>CANTIDADES DE RCD RECIBIDOS DEL GENERADOR POR TIPO</h2>
-                            </div>
-
-                            <div class="row">
-
-                                <div class="col-md-6" *ngFor="let item of quantities_rcd">
-                                    <div class="form-group">
-                                        <label class="form-label residuos">{{item.type_rcd.numeration}}. {{item.type_rcd.description}}</label>
-                                        <input type="number" class="form-control" placeholder="" [value]="item.quantity_rcd" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 total">
-                                <label class="form-label">Total, RCD recibidos (t)</label>
-                                <input type="text" class="form-control" placeholder="" disabled
-                                [value]="data_generator.total_rcd">
-                            </div>
-                            <div class="col-md-6 total">
-                                <label class="form-label">Fecha de recepción de los RCD</label>
-                                <input type="text" class="form-control" placeholder="" disabled
-                                [value]="data_generator.reception_date_rcd">
-                            </div>
-
-
-                            <div class="div-title">
-                                <img src="../../../assets/points.png" alt="">
-                                <h2>DATOS BASICOS DEL GESTOR DE TRANSPORTE</h2>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label">Nombre o razón social</label>
-                                <input type="text" class="form-control" placeholder="" disabled
-                                [value]="data_generator.data_driver.name">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label">Tipo de documento</label>
-                                <input type="text" class="form-control" placeholder="" disabled
-                                [value]="data_generator.data_driver.type_document.description">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label">Numero de Identificación</label>
-                                <input type="text" class="form-control" placeholder="" disabled
-                                [value]="data_generator.data_driver.number_id">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Placa de Vehículo</label>
-                                <input type="text" class="form-control" placeholder="" disabled
-                                [value]="data_generator.data_driver.vehicle_plate">
-                            </div> -->
-
-                            <!-- Certificacion bascula -->
+                            
 
                             <div class="bascula">
                                 <div class="div-bascula">
@@ -369,6 +221,7 @@
                                 </p>
                                 <br>
                                 <p class="firma">
+                                    <img src="../../../assets/firma2.png" alt="" style="width: 350px;"><br>
                                     <b>ALEJANDRO GARZÓN GUZMÁN</b> <br>
                                     C.C.79.308.043 <br>
                                     Gerente. <br>
