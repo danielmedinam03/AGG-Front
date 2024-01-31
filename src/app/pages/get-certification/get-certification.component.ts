@@ -21,7 +21,7 @@ export class GetCertificationComponent implements OnInit {
   public id = this.route.snapshot.paramMap.get('id');
 
   constructor( private route: ActivatedRoute,
-    private getCertificationService :GetCertificationService
+    public getCertificationService :GetCertificationService
     ) {
       const fecha = new Date();
       const anio = fecha.getFullYear();

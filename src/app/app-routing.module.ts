@@ -27,7 +27,7 @@ const routes: Routes = [
   {
     path:'certification/:id',
     component: GetCertificationComponent,
-    pathMatch:'full'
+    pathMatch:'prefix'
   },
   {
     path:'signup',
