@@ -21,7 +21,7 @@ import { EditCertificateComponent } from './pages/editar-certificado/edit-certif
 const routes: Routes = [
   {
     path:'',
-    component:HomeComponent,
+    component:LoginComponent,
     pathMatch:'full'
   },
   {
@@ -79,6 +79,10 @@ const routes: Routes = [
       { 
         path: 'certification-edit/:id',
         component: EditCertificateComponent
+      },
+      {
+        path:'certification/:id',
+        component: GetCertificationComponent
       }
       
     ]
