@@ -17,8 +17,9 @@ export class GetCertificationComponent implements OnInit {
   quantities_rcd: QuantitiesRcd[] = QUANTITY_RCD;
   manager: Manager[]=MANAGER;
   fechaActual: string;
+  id:any
   
-  public id = this.route.snapshot.paramMap.get('id');
+  public ids = this.route.snapshot.paramMap.get('id');
 
   constructor( private route: ActivatedRoute,
     public getCertificationService :GetCertificationService
@@ -27,7 +28,7 @@ export class GetCertificationComponent implements OnInit {
       const anio = fecha.getFullYear();
       const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
       const dia = fecha.getDate().toString().padStart(2, '0');
-  
+      this.id= this.route.snapshot.params['id'];
       this.fechaActual = `${dia} días del mes ${mes} del ${anio}`;
      }
 

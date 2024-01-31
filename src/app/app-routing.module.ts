@@ -81,7 +81,7 @@ const routes: Routes = [
         component: EditCertificateComponent
       },
       {
-        path:'certification/:id',
+        path:'generator/:id',
         component: GetCertificationComponent
       }
       
