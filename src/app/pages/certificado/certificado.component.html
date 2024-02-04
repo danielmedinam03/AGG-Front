@@ -1,3 +1,70 @@
+<!--<form [formGroup]="formulario" (ngSubmit)="onSubmitv()">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" formControlName="nombre" />
+    <div *ngIf="formulario.get('nombre').hasError('required')">
+      El nombre es obligatorio.
+    </div>
+    <div *ngIf="formulario.get('nombre').hasError('minlength')">
+      El nombre debe tener al menos 3 caracteres.
+    </div>
+  
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email" />
+    <div *ngIf="formulario.get('email').hasError('required')">
+      El email es obligatorio.
+    </div>
+    <div *ngIf="formulario.get('email').hasError('email')">
+      Ingresa un email válido.
+    </div>
+  
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" formControlName="edad" />
+    <div *ngIf="formulario.get('edad').hasError('required')">
+      La edad es obligatoria.
+    </div>
+    <div *ngIf="formulario.get('edad').hasError('min')">
+      Debes ser mayor de 18 años.
+    </div>
+  
+    <button type="submit" [disabled]="!formulario.valid">Enviar</button>
+  </form>
+
+
+    <form [formGroup]="formularioContacto" (ngSubmit)="submit()">
+    <p>Nombre:
+      <input type="text" formControlName="nombre" required>
+      <span *ngIf="this.formularioContacto.get('nombre')?.errors?.['required']">
+        (El nombre no puede quedar vacío)
+      </span>
+      <span *ngIf="this.formularioContacto.get('nombre')?.errors?.['minlength']">
+        (Debe tener como mínimo 10 caracteres)
+      </span>
+    </p>
+    <p>Mail:
+      <input type="text" formControlName="mail">
+      <span *ngIf="this.formularioContacto.get('mail')?.errors?.['required']">
+        (El mail no puede quedar vacío)
+      </span>
+      <span *ngIf="this.formularioContacto.get('mail')?.errors?.['email']">
+        (El mail no es válido)
+      </span>
+    </p>
+    <p>Mensaje<br>
+      <textarea rows="10" cols="70" formControlName="mensaje"></textarea>
+    </p>
+    <div *ngIf="this.formularioContacto.get('mensaje')?.errors?.['required']">
+      (El mensaje no puede quedar vacío)
+    </div>
+    <div *ngIf="this.formularioContacto.get('mensaje')?.errors?.['maxlength']">
+      (Debe tener como máximo 500 caracteres)
+    </div>
+    <button type="submit">Confirmar</button>
+  </form>
+  <div>{{resultado}}</div>
+
+
+
+-->
 <div class="bootstrap-wrapper">
     <div class="container">
         <div class="row" style="margin-top : 20px;">
@@ -9,7 +76,7 @@
                             
                         </h1>
 
-                            <form (ngSubmit)="onSubmit()" class="row g-3 form-datos-gestor">
+                            <form *ngIf="formulario" [formGroup]="formulario" (ngSubmit)="onSubmit()" class="row g-3 form-datos-gestor">
                                 <div class="col-md-6">
                                     <label class="form-label">Seleccion el gestor</label><br>
 
@@ -21,6 +88,8 @@
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
+
+
 
                                 <div class="div-title">
                                     <img src="../../../assets/points.png" alt="">
@@ -69,7 +138,11 @@
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
+                                    <label class="form-label consecutivo">Ingrese el numero del consecutivo</label><br>
 
+                                    <input type="number" class="form-control" placeholder="" name="certificationForm.quantitiesRcd.quantities.quantity_rcd_2" 
+                                    [(ngModel)]="certificationForm.quantitiesRcd.quantities.quantity_rcd_2" (input)="updateTotal()">
+                            
                                 </div>
                                 <div class="col-4">
                                     <label class="form-label">Gestor</label>
@@ -143,17 +216,19 @@
                                     <h2>CANTIDADES DE RCD RECIBIDOS DEL GENERADOR POR TIPO</h2>
                                 </div>
 
-                                <!-- <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label">Tipo de pesaje</label> <br>
 
-                                    <div class="col-md-6" *ngFor="let item of quantities_rcd; let i = index">
-                                        <div class="form-group">
-                                            <label class="form-label residuos">{{item.type_rcd.numeration}}. {{item.type_rcd.description}}</label>
-                                            <input type="number" class="form-control" placeholder="" [(ngModel)]="quantitiesRcd[i].quantity_rcd" name="quantity_rcd">
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                </div> -->
+                                    <mat-form-field class="form-field">
+                                        <mat-label>Tipo de pesaje</mat-label>
+                                        <mat-select [(ngModel)]="certificationForm.type_weight" name="type_weight">
+                                            <mat-option *ngFor="let opt of documentsActive" [value]="opt.id_type_document">{{opt.description}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-6">
+                                </div>
 
                                 <div class="col-md-6">
                                     <label class="form-label residuos">1. Residuos de construcción y demolición -
@@ -234,8 +309,11 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label class="form-label">Nombre o razón social</label>
-                                    <input type="text" autocomplete="off" class="form-control" placeholder="" [(ngModel)]="certificationForm.data_driver.name" name="certificadoForm.data_driver.name">
+                                    <label for="nombre" class="form-label">Nombre o razón social</label>
+                                    <input type="text" id="name" formControlName="name" autocomplete="off" class="form-control" placeholder="" [(ngModel)]="certificationForm.data_driver.name" name="certificadoForm.data_driver.name">
+                                    <div *ngIf="formulario.get('nombre')?.hasError('required')">
+                                        El nombre es obligatorio.
+                                      </div>
                                 </div>
 
                                 <div class="col-md-6">
@@ -267,13 +345,14 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
 
 <app-custom-modal *ngIf="showModal" (closeModalEvent)="closeModal()">
     <p class="msj">
-        <i class="fas fa-exclamation-circle"></i> <!-- Icono de advertencia -->
+        <i class="fas fa-exclamation-circle"></i>
         ¿Estás seguro de que deseas guardar los cambios? <br>
         <span style="text-align:center;">Se descargarán automaticamente las certificaciones</span> 
     </p>

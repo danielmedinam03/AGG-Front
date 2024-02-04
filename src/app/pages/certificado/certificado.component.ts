@@ -8,10 +8,10 @@ import { DatosResiduosService } from 'src/app/services/datos-residuos.service';
 import { BotaderoService } from 'src/app/services/botaderoServices/botadero.service';
 import { TypeDocumentService } from 'src/app/services/type-documentServices/type-document.service';
 import { QUANTITY_RCD } from '../get-certification/constants/quantities_rcd';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Botadero, QuantitiesRcd } from 'src/app/services/get-certificationServices/get-certification.service';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CertificationService } from 'src/app/services/certification/certification.service';
 import { DataManagerService } from 'src/app/services/data-manger/data-manager.service';
 @Component({
@@ -20,6 +20,8 @@ import { DataManagerService } from 'src/app/services/data-manger/data-manager.se
   styleUrls: ['./certificado.component.css'],
 })
 export class CertificadoComponent implements OnInit {
+  formulario: FormGroup | null = null;
+
   razon_social: string="";
   nit: string = '';
   representante_legal: string = '';
@@ -31,6 +33,22 @@ export class CertificadoComponent implements OnInit {
   dataManager:any;
   quantities_rcd: QuantitiesRcd[] = QUANTITY_RCD;
   showModal = false;
+
+
+//resultado!: string;
+
+//formularioContacto = new FormGroup({
+//  nombre: new FormControl('', [Validators.required, Validators.minLength(10)]),
+//  mail: new FormControl('', [Validators.required, Validators.email]),
+//  mensaje: new FormControl('', [Validators.required, Validators.maxLength(500)])
+//})
+//
+//submit() {
+//  if (this.formularioContacto.valid)
+//    this.resultado = "Todos los datos son válidos";
+//  else
+//    this.resultado = "Hay datos inválidos en el formulario";
+//}
 
   // certificationForm !: FormGroup;
 
@@ -82,6 +100,7 @@ export class CertificadoComponent implements OnInit {
     reception_date_rcd: '',
     data_driver: this.data_driver,
     manager: this.manager,
+    type_weight: 0,
     quantitiesRcd: this.quantitiesTotal
   }
 
@@ -97,7 +116,7 @@ export class CertificadoComponent implements OnInit {
     public fb: FormBuilder,
     public route: Router,
     private certificacionService:CertificationService,
-    private dataManagerService: DataManagerService
+    private dataManagerService: DataManagerService,
   ) {}
 
   ngOnInit(): void {
@@ -111,8 +130,12 @@ export class CertificadoComponent implements OnInit {
     this.dataManagerService.getAllDataManager().subscribe((options)=>{
       this.dataManager = options;
     });
+    this.formulario = this.fb.group({
+      name : ['', [Validators.required, Validators.minLength(3)]]
+    });;
 
   }
+
 
   updateTotal() {
     const quantities = this.certificationForm.quantitiesRcd.quantities;
@@ -129,6 +152,10 @@ export class CertificadoComponent implements OnInit {
   }
 
   onSubmit(){
+    if (this.formulario && this.formulario.valid) {
+      // Realizar acciones con los datos del formulario
+      console.log(this.formulario.value);
+    };
     this.datosGeneradorService.saveGenerador(this.certificationForm).subscribe(
       (resp) => {
         const numero: number = Number(resp);
@@ -237,6 +264,7 @@ export interface DataGeneratorRequest {
   reception_date_rcd: string;
   data_driver: DataDriverRequest;
   manager: ManagerRequest;
+  type_weight: number;
   quantitiesRcd: QuantitiesTotal;
 }
 

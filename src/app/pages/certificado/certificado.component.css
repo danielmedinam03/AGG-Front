@@ -1,3 +1,4 @@
+
 .title{
     font-size:28px;
     margin-bottom: 35px;
@@ -54,7 +55,11 @@
     display: grid;
     display: flex;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px; /* Espacio entre las columnas (botones) */
+    gap: 10px; 
     justify-content: center;
     }
-  
+
+.consecutivo {
+    color: rgb(255, 0, 0);
+    font-weight: 600;
+}

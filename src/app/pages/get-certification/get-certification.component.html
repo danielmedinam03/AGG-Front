@@ -14,166 +14,169 @@
 
                         <form class="row g-3 form-datos-gestor">
 
-                            <table>
-                                <tr>
-                                    <th colspan="3" style="text-align: center;">
-                                        DATOS BÁSICOS DEL GESTOR
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th>Número único asignado para el gestor por parte de la autoridad ambiental por
-                                        proyecto</th>
-                                    <td colspan="2">{{data_generator.data_manager.unic_number}}</td>
-                                </tr>
-
-                                <tr>
-                                    <th>Nombre o razón social</th>
-                                    <td colspan="2">{{data_generator.data_manager.name}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Documento de identificación o NIT</th>
-                                    <td colspan="2">{{data_generator.data_manager.number_id}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Representante legal</th>
-                                    <td colspan="2">{{data_generator.data_manager.legal_representative}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Dirección</th>
-                                    <td colspan="2">{{data_generator.data_manager.address}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Télefono</th>
-                                    <td colspan="2">{{data_generator.data_manager.phone_number}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Correo electrónico</th>
-                                    <td colspan="2">{{data_generator.data_manager.email}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Municipio o distrito del predio</th>
-                                    <td colspan="2">{{data_generator.botadero.city}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Nombre del predio</th>
-                                    <td colspan="2">{{data_generator.botadero.property_name}}</td>
-                                </tr>
-                                <tr>
-                                    <th rowspan="4">Gestor</th>
-                                </tr>
-                                
-                                <tr *ngFor="let item of manager">
-                                    <td colspan="1">{{item.name}}</td>
-                                    <td *ngIf="item.status === true; else cuandoEsFalse " colspan="1">x</td>
-                                    <ng-template #cuandoEsFalse> <td colspan="1"> </td> </ng-template>
-                                </tr>
-                                <tr>
-                                    <th colspan="3" style="text-align: center;">
-                                        DATOS BÁSICOS DEL GENERADOR
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th>Número único asignado para el gestor por parte de la autoridad ambiental por
-                                        proyecto</th>
-                                    <td colspan="2">{{data_generator.unic_number}}</td>
-                                </tr>
-
-                                <tr>
-                                    <th>Nombre o razón social</th>
-                                    <td colspan="2">{{data_generator.name}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Documento de identificación o NIT</th>
-                                    <td colspan="2">{{data_generator.number_id}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Representante legal</th>
-                                    <td colspan="2">{{data_generator.legal_representative}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Dirección domicilio/th>
-                                    <td colspan="2">{{data_generator.address}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Télefono</th>
-                                    <td colspan="2">{{data_generator.phone_number}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Correo electrónico</th>
-                                    <td colspan="2">{{data_generator.email}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Dirección generación de RCD</th>
-                                    <td colspan="2">{{data_generator.address_rcd}}</td>
-                                </tr>
-                                <tr>
-                                    <th colspan="3" style="text-align: center;">
-                                        CANTIDADES DE RCD RECIBIDOS DEL GENERADOR POR TIPO
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th colspan="1" style="text-align: center;">
-                                        Tipo de residuo
-                                    </th>
-                                    <th colspan="2" style="text-align: center;">
-                                        Cantidad de RCD recibidos del generador (t)
-                                    </th>
-                                </tr>
-                                <tr *ngFor="let item of quantities_rcd">
-                                    <td  style="text-align: left;" colspan="1">{{item.type_rcd.numeration}}.{{item.type_rcd.description}}</td>
-                                    <td *ngIf="item.quantity_rcd > 0; else cuandoEsFalse " colspan="2">{{item.quantity_rcd}} TONELADAS</td>
-                                    <ng-template #cuandoEsFalse> <td colspan="2"> </td> </ng-template>
-                                </tr>
-                                <tr>
-                                    <th>Total, RCD recibidos (t)</th>
-                                    <td colspan="2">{{data_generator.total_rcd}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Fecha de recepción de los RCD</th>
-                                    <td colspan="2">{{data_generator.reception_date_rcd}}</td>
-                                </tr>
-                                <tr>
-                                    <th colspan="3" style="text-align: center;">
-                                        DATOS BÁSICOS DEL GESTOR DE TRANSPORTE
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th>Nombre o razón social / Identificación</th>
-                                    <td colspan="2">{{data_generator.data_driver.name}}. {{data_generator.data_driver.type_document.name}}. {{data_generator.data_driver.number_id}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Placa del vehículo</th>
-                                    <td colspan="2">{{data_generator.data_driver.vehicle_plate}}</td>
-                                </tr>
-                            </table>
-                            <p>
-                                La presente certificación se basa en el anexo II de la resolución 1257 del 2021 “Por la cual se modifica
-                                la Resolución 0472 de 2017 sobre la gestión integral de Residuos de Construcción y Demolición –
-                                RCD y se adoptan otras disposiciones” y se expide a solicitud del interesado, a los {{fechaActual}}. Para ser presentada ante la autoridad Ambiental competente 
-                                <strong> IMPORTANTE PARA CONFIRMAR LA VERACIDAD DE ESTE CERTIFICADO COMUNÍQUESE CON NUESTRA OFICINA.</strong> 
-                            </p>
-                            <p>
-                                Se anexa certificado de calibración de la báscula utilizada para realizar el proceso de pesaje de los
-                                RCD recibidos, como lo establece el marco normativo en su artículo 3 de la Resolución 1257 del 2021. 
-                            </p>
-                            <p>
-                                Quien certifica;
-                            </p>
-                            <br>
-                            <p >
-                                <img *ngIf="data_generator.data_manager.id_data_manager === 1" src="../../../assets/firma1.png" alt="" style="width: 350px;"><br>
-                                <img *ngIf="data_generator.data_manager.id_data_manager === 2" src="../../../assets/firma4.png" alt="" style="width: 350px;"><br>
-                                <img *ngIf="data_generator.data_manager.id_data_manager === 3" src="../../../assets/firma3.png" alt="" style="width: 350px;"><br>
-                                <img *ngIf="data_generator.data_manager.id_data_manager === 4" src="../../../assets/firma2.png" alt="" style="width: 350px;"><br>
-                                
-
-                                {{data_generator.data_manager.name}} <br>
-                                {{data_generator.data_manager.address}} <br>
-                                Tel. {{data_generator.data_manager.phone_number}} <br>
-                                E. mail {{data_generator.data_manager.email}}
+                            <div class="first-certification">
+                                <table>
+                                    <tr>
+                                        <th colspan="3" style="text-align: center;">
+                                            DATOS BÁSICOS DEL GESTOR
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>Número único asignado para el gestor por parte de la autoridad ambiental por
+                                            proyecto</th>
+                                        <td colspan="2">{{data_generator.data_manager.unic_number}}</td>
+                                    </tr>
+    
+                                    <tr>
+                                        <th>Nombre o razón social</th>
+                                        <td colspan="2">{{data_generator.data_manager.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Documento de identificación o NIT</th>
+                                        <td colspan="2">{{data_generator.data_manager.number_id}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Representante legal</th>
+                                        <td colspan="2">{{data_generator.data_manager.legal_representative}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Dirección</th>
+                                        <td colspan="2">{{data_generator.data_manager.address}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Télefono</th>
+                                        <td colspan="2">{{data_generator.data_manager.phone_number}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Correo electrónico</th>
+                                        <td colspan="2">{{data_generator.data_manager.email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Municipio o distrito del predio</th>
+                                        <td colspan="2">{{data_generator.botadero.city}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Nombre del predio</th>
+                                        <td colspan="2">{{data_generator.botadero.property_name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th rowspan="4">Gestor</th>
+                                    </tr>
+                                    
+                                    <tr *ngFor="let item of manager">
+                                        <td colspan="1">{{item.name}}</td>
+                                        <td *ngIf="item.status === true; else cuandoEsFalse " colspan="1">x</td>
+                                        <ng-template #cuandoEsFalse> <td colspan="1"> </td> </ng-template>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="3" style="text-align: center;">
+                                            DATOS BÁSICOS DEL GENERADOR
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>Número único asignado para el gestor por parte de la autoridad ambiental por
+                                            proyecto</th>
+                                        <td colspan="2">{{data_generator.unic_number}}</td>
+                                    </tr>
+    
+                                    <tr>
+                                        <th>Nombre o razón social</th>
+                                        <td colspan="2">{{data_generator.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Documento de identificación o NIT</th>
+                                        <td colspan="2">{{data_generator.number_id}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Representante legal</th>
+                                        <td colspan="2">{{data_generator.legal_representative}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Dirección domicilio/th>
+                                        <td colspan="2">{{data_generator.address}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Télefono</th>
+                                        <td colspan="2">{{data_generator.phone_number}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Correo electrónico</th>
+                                        <td colspan="2">{{data_generator.email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Dirección generación de RCD</th>
+                                        <td colspan="2">{{data_generator.address_rcd}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="3" style="text-align: center;">
+                                            CANTIDADES DE RCD RECIBIDOS DEL GENERADOR POR TIPO
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="1" style="text-align: center;">
+                                            Tipo de residuo
+                                        </th>
+                                        <th colspan="2" style="text-align: center;">
+                                            Cantidad de RCD recibidos del generador (t)
+                                        </th>
+                                    </tr>
+                                    <tr *ngFor="let item of quantities_rcd">
+                                        <td  style="text-align: left;" colspan="1">{{item.type_rcd.numeration}}.{{item.type_rcd.description}}</td>
+                                        <td *ngIf="item.quantity_rcd > 0; else cuandoEsFalse " colspan="2">{{item.quantity_rcd}} TONELADAS</td>
+                                        <ng-template #cuandoEsFalse> <td colspan="2"> </td> </ng-template>
+                                    </tr>
+                                    <tr>
+                                        <th>Total, RCD recibidos (t)</th>
+                                        <td colspan="2">{{data_generator.total_rcd}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Fecha de recepción de los RCD</th>
+                                        <td colspan="2">{{data_generator.reception_date_rcd}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="3" style="text-align: center;">
+                                            DATOS BÁSICOS DEL GESTOR DE TRANSPORTE
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>Nombre o razón social / Identificación</th>
+                                        <td colspan="2">{{data_generator.data_driver.name}}. {{data_generator.data_driver.type_document.name}}. {{data_generator.data_driver.number_id}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Placa del vehículo</th>
+                                        <td colspan="2">{{data_generator.data_driver.vehicle_plate}}</td>
+                                    </tr>
+                                </table>
+                                <p>
+                                    La presente certificación se basa en el anexo II de la resolución 1257 del 2021 “Por la cual se modifica
+                                    la Resolución 0472 de 2017 sobre la gestión integral de Residuos de Construcción y Demolición –
+                                    RCD y se adoptan otras disposiciones” y se expide a solicitud del interesado, a los {{fechaActual}}. Para ser presentada ante la autoridad Ambiental competente 
+                                    <strong> IMPORTANTE PARA CONFIRMAR LA VERACIDAD DE ESTE CERTIFICADO COMUNÍQUESE CON NUESTRA OFICINA.</strong> 
+                                </p>
+                                <p>
+                                    Se anexa certificado de calibración de la báscula utilizada para realizar el proceso de pesaje de los
+                                    RCD recibidos, como lo establece el marco normativo en su artículo 3 de la Resolución 1257 del 2021. 
+                                </p>
+                                <p>
+                                    Quien certifica;
+                                </p>
                                 <br>
-                            </p>
-                            
+                                <p >
+                                    <img *ngIf="data_generator.data_manager.id_data_manager === 1" src="../../../assets/firma1.png" alt="" style="width: 350px;"><br>
+                                    <img *ngIf="data_generator.data_manager.id_data_manager === 2" src="../../../assets/firma4.png" alt="" style="width: 350px;"><br>
+                                    <img *ngIf="data_generator.data_manager.id_data_manager === 3" src="../../../assets/firma3.png" alt="" style="width: 350px;"><br>
+                                    <img *ngIf="data_generator.data_manager.id_data_manager === 4" src="../../../assets/firma2.png" alt="" style="width: 350px;"><br>
+                                    
+    
+                                    {{data_generator.data_manager.name}} <br>
+                                    {{data_generator.data_manager.address}} <br>
+                                    Tel. {{data_generator.data_manager.phone_number}} <br>
+                                    E. mail {{data_generator.data_manager.email}}
+                                    <br>
+                                </p>
+                                
+                            </div>
+
 
                             <div class="bascula">
                                 <div class="div-bascula">
@@ -221,7 +224,7 @@
                                 </p>
                                 <br>
                                 <p class="firma">
-                                    <img src="../../../assets/firma2.png" alt="" style="width: 350px;"><br>
+                                    <img src="../../../assets/firma5.png" alt="" style="width: 350px;"><br>
                                     <b>ALEJANDRO GARZÓN GUZMÁN</b> <br>
                                     C.C.79.308.043 <br>
                                     Gerente. <br>

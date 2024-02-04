@@ -75,6 +75,7 @@ export class EditCertificateComponent implements OnInit {
     reception_date_rcd: '',
     data_driver: this.data_driver,
     manager: this.manager,
+    type_weight: 0,
     quantitiesRcd: this.quantitiesTotal
   }
 
@@ -192,6 +193,7 @@ export class EditCertificateComponent implements OnInit {
     this.certificationForm.email = this.get_data_generator.email;
     this.certificationForm.address_rcd = this.get_data_generator.address_rcd;
     this.certificationForm.reception_date_rcd = this.get_data_generator.reception_date_rcd;
+    this.certificationForm.type_weight = this.get_data_generator.type_weight;
 //MAPEO DEL MANAGER
     this.certificationForm.manager.manager_id_1 = this.get_data_generator.manager.manager_id_1;
     this.certificationForm.manager.manager_id_2 = this.get_data_generator.manager.manager_id_2;

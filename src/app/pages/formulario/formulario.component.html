@@ -1,0 +1,30 @@
+<form *ngIf="formulario" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" formControlName="nombre" />
+    <div *ngIf="formulario.get('nombre')?.hasError('required')">
+      El nombre es obligatorio.
+    </div>
+    <div *ngIf="formulario.get('nombre')?.hasError('minlength')">
+      El nombre debe tener al menos 3 caracteres.
+    </div>
+  
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email" />
+    <div *ngIf="formulario.get('email')?.hasError('required')">
+      El email es obligatorio.
+    </div>
+    <div *ngIf="formulario.get('email')?.hasError('email')">
+      Ingresa un email válido.
+    </div>
+  
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" formControlName="edad" />
+    <div *ngIf="formulario.get('edad')?.hasError('required')">
+      La edad es obligatoria.
+    </div>
+    <div *ngIf="formulario.get('edad')?.hasError('min')">
+      Debes ser mayor de 18 años.
+    </div>
+  
+    <button type="submit" [disabled]="!formulario.valid">Enviar</button>
+  </form>

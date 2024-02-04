@@ -1,100 +1,112 @@
+.first-certification {
+  width: 100%;
+  height: 100%;
+
+  background: url("../../../assets/logo3.png") no-repeat center center;
+  background-size: 70%;
+}
+
 .text-center {
-    font-size: 17px;
-    font-weight: 500;
+  font-size: 17px;
+  font-weight: 500;
 }
 table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-bottom: 2px;
-    position: relative;
-    margin-bottom: 50px;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 2px;
+  position: relative;
+  margin-bottom: 50px;
 }
 th {
-    border: 1.3px solid black;
-    text-align: left;
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-    padding-left: 10px;
+  border: 1.3px solid black;
+  text-align: left;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: 10px;
 }
 
 td {
-    border: 1.3px solid black;
-    text-align: center;
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-
+  border: 1.3px solid black;
+  text-align: center;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.form-certificado{
-    margin: 20px 0;
+.form-certificado {
+  margin: 20px 0;
 }
 
 .form-datos-gestor {
-    text-align: left;
+  text-align: left;
 }
 
 .div-title {
-    display: flex;
-    margin-top: 25px;
+  display: flex;
+  margin-top: 25px;
 }
 .div-title img {
-    width: 35px;
-    height: 35px;
+  width: 35px;
+  height: 35px;
 }
 .div-title h3 {
-    align-items: center;
-    margin-left: 5px;
-    font-weight: 400;
+  align-items: center;
+  margin-left: 5px;
+  font-weight: 400;
 }
 
-.residuos{
-    height: 60px;
+.residuos {
+  height: 60px;
 }
 
 .total {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .button-certificado {
-    margin: 50px 0;
-    text-align: center;
+  margin: 50px 0;
+  text-align: center;
 }
 
 .btn-certificado {
-    font-size: 25px;
-    padding: 15px 30px;
-    border-radius: 10px;
+  font-size: 25px;
+  padding: 15px 30px;
+  border-radius: 10px;
 }
 
-.bascula{
- margin-top: 80px;
- border: 2px solid black;
- padding: 5% 10%;
+.bascula {
+  width: 100%;
+  height: 100%;
+
+  background: url("../../../assets/logo3.png") no-repeat center center;
+  background-size: 70%;
+  margin-top: 80px;
+  border: 2px solid black;
+  padding: 5% 10%;
 }
 
 .div-bascula {
-    text-align: center;
-    font-weight: 500;
+  text-align: center;
+  font-weight: 500;
 }
 
-.div-bascula > img{
-    width: 40px;
+.div-bascula > img {
+  width: 40px;
 }
 
 .firma {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 .piepagina {
-    font-size: 14px;
-    font-weight: 700;
-    text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
 }
 
 .img-bascula {
-    border: 2px solid black;
+  border: 2px solid black;
 }
 
 .img-bascula > img {
-    width: 100%;
+  width: 100%;
 }
