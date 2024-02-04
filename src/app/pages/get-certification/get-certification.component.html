@@ -161,20 +161,29 @@
                                 Quien certifica;
                             </p>
                             <br>
-                            <p >
-                                <img *ngIf="data_generator.data_manager.id_data_manager === 1" src="../../../assets/firma1.png" alt="" style="width: 350px;"><br>
-                                <img *ngIf="data_generator.data_manager.id_data_manager === 2" src="../../../assets/firma4.png" alt="" style="width: 350px;"><br>
-                                <img *ngIf="data_generator.data_manager.id_data_manager === 3" src="../../../assets/firma3.png" alt="" style="width: 350px;"><br>
-                                <img *ngIf="data_generator.data_manager.id_data_manager === 4" src="../../../assets/firma2.png" alt="" style="width: 350px;"><br>
-                                
+                            <div>
+                                <div *ngIf="data_generator.data_manager.id_data_manager === 1">
+                                    <img  src="../../../assets/firma1.png" alt="" style="width: 350px;"><br>
+                                </div>
+                                <div *ngIf="data_generator.data_manager.id_data_manager === 2">
+                                    <img  src="../../../assets/firma4.png" alt="" style="width: 350px;"><br>
+                                </div>
+                                <div *ngIf="data_generator.data_manager.id_data_manager === 3">
+                                    <img  src="../../../assets/firma3.png" alt="" style="width: 350px;"><br>
+                                </div>
+                                <div *ngIf="data_generator.data_manager.id_data_manager === 4">
+                                    <img  src="../../../assets/firma2.png" alt="" style="width: 350px;"><br>
+                                </div>
+                                 
 
                                 {{data_generator.data_manager.name}} <br>
                                 {{data_generator.data_manager.address}} <br>
                                 Tel. {{data_generator.data_manager.phone_number}} <br>
                                 E. mail {{data_generator.data_manager.email}}
                                 <br>
-                            </p>
-                            
+                            </div>
+
+
                             </div>
 
                             <div class="bascula">
