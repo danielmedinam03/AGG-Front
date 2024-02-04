@@ -309,11 +309,10 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="nombre" class="form-label">Nombre o razón social</label>
-                                    <input type="text" id="name" formControlName="name" autocomplete="off" class="form-control" placeholder="" [(ngModel)]="certificationForm.data_driver.name" name="certificadoForm.data_driver.name">
-                                    <div *ngIf="formulario.get('nombre')?.hasError('required')">
-                                        El nombre es obligatorio.
-                                      </div>
+
+                                    <label class="form-label">Nombre o razón social</label>
+                                    <input type="text" autocomplete="name" class="form-control" placeholder="" [(ngModel)]="certificationForm.data_driver.name" name="certificadoForm.data_driver.name">
+
                                 </div>
 
                                 <div class="col-md-6">
@@ -329,7 +328,7 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label">Numero de Identificación</label>
-                                    <input type="text" class="form-control" autocomplete="off" placeholder="" [(ngModel)]="certificationForm.data_driver.number_id" name="certificadoForm.data_driver.number_id">
+                                    <input type="text" class="form-control" autocomplete="name" placeholder="" [(ngModel)]="certificationForm.data_driver.number_id" name="certificadoForm.data_driver.number_id">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Placa de Vehículo</label>

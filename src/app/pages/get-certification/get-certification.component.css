@@ -17,6 +17,14 @@ table {
   position: relative;
   margin-bottom: 50px;
 }
+@media screen and (max-width: 600px) {
+    .responsive-table {
+        overflow-x: auto;
+    }
+    .responsive-table table {
+        min-width: 600px;
+    }
+}
 th {
   border: 1.3px solid black;
   text-align: left;
