@@ -1,70 +1,3 @@
-<!--<form [formGroup]="formulario" (ngSubmit)="onSubmitv()">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" formControlName="nombre" />
-    <div *ngIf="formulario.get('nombre').hasError('required')">
-      El nombre es obligatorio.
-    </div>
-    <div *ngIf="formulario.get('nombre').hasError('minlength')">
-      El nombre debe tener al menos 3 caracteres.
-    </div>
-  
-    <label for="email">Email:</label>
-    <input type="email" id="email" formControlName="email" />
-    <div *ngIf="formulario.get('email').hasError('required')">
-      El email es obligatorio.
-    </div>
-    <div *ngIf="formulario.get('email').hasError('email')">
-      Ingresa un email válido.
-    </div>
-  
-    <label for="edad">Edad:</label>
-    <input type="number" id="edad" formControlName="edad" />
-    <div *ngIf="formulario.get('edad').hasError('required')">
-      La edad es obligatoria.
-    </div>
-    <div *ngIf="formulario.get('edad').hasError('min')">
-      Debes ser mayor de 18 años.
-    </div>
-  
-    <button type="submit" [disabled]="!formulario.valid">Enviar</button>
-  </form>
-
-
-    <form [formGroup]="formularioContacto" (ngSubmit)="submit()">
-    <p>Nombre:
-      <input type="text" formControlName="nombre" required>
-      <span *ngIf="this.formularioContacto.get('nombre')?.errors?.['required']">
-        (El nombre no puede quedar vacío)
-      </span>
-      <span *ngIf="this.formularioContacto.get('nombre')?.errors?.['minlength']">
-        (Debe tener como mínimo 10 caracteres)
-      </span>
-    </p>
-    <p>Mail:
-      <input type="text" formControlName="mail">
-      <span *ngIf="this.formularioContacto.get('mail')?.errors?.['required']">
-        (El mail no puede quedar vacío)
-      </span>
-      <span *ngIf="this.formularioContacto.get('mail')?.errors?.['email']">
-        (El mail no es válido)
-      </span>
-    </p>
-    <p>Mensaje<br>
-      <textarea rows="10" cols="70" formControlName="mensaje"></textarea>
-    </p>
-    <div *ngIf="this.formularioContacto.get('mensaje')?.errors?.['required']">
-      (El mensaje no puede quedar vacío)
-    </div>
-    <div *ngIf="this.formularioContacto.get('mensaje')?.errors?.['maxlength']">
-      (Debe tener como máximo 500 caracteres)
-    </div>
-    <button type="submit">Confirmar</button>
-  </form>
-  <div>{{resultado}}</div>
-
-
-
--->
 <div class="bootstrap-wrapper">
     <div class="container">
         <div class="row" style="margin-top : 20px;">
@@ -76,13 +9,13 @@
                             
                         </h1>
 
-                            <form *ngIf="formulario" [formGroup]="formulario" (ngSubmit)="onSubmit()" class="row g-3 form-datos-gestor">
+                            <form [formGroup]="generatorForm" (ngSubmit)="onSubmit()" class="row g-3 form-datos-gestor">
                                 <div class="col-md-6">
                                     <label class="form-label">Seleccion el gestor</label><br>
 
                                     <mat-form-field class="form-field">
                                         <mat-label>Gestor</mat-label>
-                                        <mat-select [(ngModel)]="certificationForm.data_manager_id" name="certificationForm.data_manager_id"
+                                        <mat-select formControlName="data_manager_id"
                                             (selectionChange)="onGestorSelectionChange()">
                                             <mat-option *ngFor="let opt of dataManager" [value]="opt.id_data_manager"  >{{opt.name}}</mat-option>
                                         </mat-select>
@@ -132,7 +65,7 @@
 
                                     <mat-form-field class="form-field">
                                         <mat-label>Municipio y Predio</mat-label>
-                                        <mat-select [(ngModel)]="certificationForm.botadero_id" name="botadero_id">
+                                        <mat-select formControlName="botadero_id">
                                             <mat-option *ngFor="let opt of botaderosActive" [value]="opt.id_botadero"  >{{opt.city}} - {{opt.property_name}} </mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -140,26 +73,26 @@
                                 <div class="col-md-6">
                                     <label class="form-label consecutivo">Ingrese el numero del consecutivo</label><br>
 
-                                    <input type="number" class="form-control" placeholder="" name="certificationForm.quantitiesRcd.quantities.quantity_rcd_2" 
-                                    [(ngModel)]="certificationForm.quantitiesRcd.quantities.quantity_rcd_2" (input)="updateTotal()">
+                                    <input type="number" class="form-control" placeholder="" formControlName="consecutive"
+                                    (input)="updateTotal()">
                             
                                 </div>
                                 <div class="col-4">
                                     <label class="form-label">Gestor</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck" name="certificationForm.manager.manager_id_1" [(ngModel)]="certificationForm.manager.manager_id_1">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="manager.manager_id_1">
                                         <label class="form-check-label" for="gridCheck">
                                             Punto limpio
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck" name="certificationForm.manager.manager_id_2" [(ngModel)]="certificationForm.manager.manager_id_2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="manager.manager_id_2">
                                         <label class="form-check-label" for="gridCheck">
                                             Planta de aprovechamiento
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck" name="certificationForm.manager.manager_id_3" [(ngModel)]="certificationForm.manager.manager_id_3">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="manager.manager_id_3">
                                         <label class="form-check-label" for="gridCheck">
                                             Disposición final
                                         </label>
@@ -173,42 +106,42 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label">Nombre o razón social</label>
-                                    <input type="text" class="form-control" placeholder="Digite el nombre o razón social" [(ngModel)]="certificationForm.name" name="name">
+                                    <input type="text" class="form-control" placeholder="Digite el nombre o razón social" formControlName="name">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Tipo de documento</label> <br>
 
                                     <mat-form-field class="form-field">
                                         <mat-label>Tipo de documento</mat-label>
-                                        <mat-select [(ngModel)]="certificationForm.type_document_id" name="type_document_id">
+                                        <mat-select formControlName="type_document_id">
                                             <mat-option *ngFor="let opt of documentsActive" [value]="opt.id_type_document">{{opt.description}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Documento de identificación o NIT</label>
-                                    <input type="text" class="form-control" placeholder="" id="number_id" name="number_id" [(ngModel)]="certificationForm.number_id" required>
+                                    <input type="text" class="form-control" placeholder="" id="number_id" formControlName="number_id" >
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Representante Legal</label>
-                                    <input type="text" required class="form-control" placeholder="" id="legal_representative" name="legal_representative" [(ngModel)]="certificationForm.legal_representative">
+                                    <input type="text" required class="form-control" placeholder="" id="legal_representative" formControlName="legal_representative">
                                 </div>
                                 
                                 <div class="col-md-6">
                                     <label class="form-label">Dirección domicilio</label>
-                                    <input type="text" class="form-control" placeholder="" id="address" name="address" [(ngModel)]="certificationForm.address">
+                                    <input type="text" class="form-control" placeholder="" id="address" formControlName="address" >
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Teléfono</label>
-                                    <input type="number" class="form-control" placeholder="" id="phone_number" name="phone_number" [(ngModel)]="certificationForm.phone_number">
+                                    <input type="number" class="form-control" placeholder="" id="phone_number" formControlName="phone_number">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Correo electrónico</label>
-                                    <input type="text" class="form-control" placeholder="" id="email" name="email" [(ngModel)]="certificationForm.email">
+                                    <input type="text" class="form-control" placeholder="" id="email" formControlName="email" >
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Dirección de generación de RCD</label>
-                                    <input type="text" class="form-control" placeholder="" id="address_rcd" name="address_rcd" [(ngModel)]="certificationForm.address_rcd">
+                                    <input type="text" class="form-control" placeholder="" id="address_rcd" formControlName="address_rcd">
                                 </div>
 
                                 <div class="div-title">
@@ -221,7 +154,7 @@
 
                                     <mat-form-field class="form-field">
                                         <mat-label>Tipo de pesaje</mat-label>
-                                        <mat-select [(ngModel)]="certificationForm.type_weight" name="type_weight">
+                                        <mat-select formControlName="type_weight_id">
                                             <mat-option *ngFor="let opt of documentsActive" [value]="opt.id_type_document">{{opt.description}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -233,28 +166,28 @@
                                 <div class="col-md-6">
                                     <label class="form-label residuos">1. Residuos de construcción y demolición -
                                         RCD susceptibles de aprovechamiento:</label>
-                                    <input type="number" class="form-control" placeholder="" name="certificationForm.quantitiesRcd.quantities.quantity_rcd_1" 
-                                        [(ngModel)]="certificationForm.quantitiesRcd.quantities.quantity_rcd_1" (input)="updateTotal()">
+                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_1" 
+                                        (input)="updateTotal()">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label residuos">1.1 Productos de excavación y sobrantes de la adecuación
                                         del terreno: coberturas vegetales, tierras, limos y
                                         materiales pétreos productos de la excavación, entre otros.</label>
-                                    <input type="number" class="form-control" placeholder="" name="certificationForm.quantitiesRcd.quantities.quantity_rcd_2" 
-                                        [(ngModel)]="certificationForm.quantitiesRcd.quantities.quantity_rcd_2" (input)="updateTotal()">
+                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_2"
+                                        (input)="updateTotal()">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label residuos">1.2 Productos de cimentaciones y pilotajes:
                                         arcillas, bentonitas y demás.</label>
-                                    <input type="number" class="form-control" placeholder="" name="certificationForm.quantitiesRcd.quantities.quantity_rcd_3" 
-                                        [(ngModel)]="certificationForm.quantitiesRcd.quantities.quantity_rcd_3" (input)="updateTotal()">
+                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_3"
+                                        (input)="updateTotal()">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label residuos">1.3 Pétreos: hormigón, arenas, gravas, gravillas, cantos,
                                         pétreos asfalticos, trozos de ladrillos y bloques,
                                         cerámicas,sobrantes de mezcla de cementos y concretos hidráulicos, entre otros. </label>
-                                    <input type="number" class="form-control" placeholder="" name="certificationForm.quantitiesRcd.quantities.quantity_rcd_4" 
-                                        [(ngModel)]="certificationForm.quantitiesRcd.quantities.quantity_rcd_4" (input)="updateTotal()">
+                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_4"
+                                        (input)="updateTotal()">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label residuos">1.4 No pétreos: vidrio, metales como acero, hierro, cobre,
@@ -263,8 +196,8 @@
                                         espumas de poliestireno y de poliuretano, gomas y cauchos,
                                         madera y compuestos de madera, cartón-yeso (drywall),
                                         entre otros.</label>
-                                    <input type="number" class="form-control" placeholder="" name="certificationForm.quantitiesRcd.quantities.quantity_rcd_5" 
-                                        [(ngModel)]="certificationForm.quantitiesRcd.quantities.quantity_rcd_5" (input)="updateTotal()">
+                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_5"
+                                        (input)="updateTotal()">
                                 </div>
                                 <div class="col-md-6">
                                     
@@ -273,33 +206,33 @@
                                 <div class="col-md-6 ">
                                     <label class="form-label residuos">2. Residuos de construcción y demolición - RCD no
                                         susceptibles de aprovechamiento:</label>
-                                    <input type="number" class="form-control" placeholder="" name="certificationForm.quantitiesRcd.quantities.quantity_rcd_6" 
-                                        [(ngModel)]="certificationForm.quantitiesRcd.quantities.quantity_rcd_6" (input)="updateTotal()">
+                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_6"
+                                        (input)="updateTotal()">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label residuos">2.1 Los contaminados con residuos peligrosos.</label>
-                                    <input type="number" class="form-control" placeholder="" name="certificationForm.quantitiesRcd.quantities.quantity_rcd_7" 
-                                        [(ngModel)]="certificationForm.quantitiesRcd.quantities.quantity_rcd_7" (input)="updateTotal()">
+                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_7"
+                                        (input)="updateTotal()">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label residuos">2.2. Los que por su estado no pueden ser aprovechados.</label>
-                                    <input type="number" class="form-control" placeholder="" name="certificationForm.quantitiesRcd.quantities.quantity_rcd_8" 
-                                        [(ngModel)]="certificationForm.quantitiesRcd.quantities.quantity_rcd_8" (input)="updateTotal()">
+                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_8" 
+                                        (input)="updateTotal()">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label residuos">2.3 Los que tengan características de peligrosidad, estos se
                                         regirán por la normatividad ambiental especial establecida
                                         para su gestión.</label>
-                                    <input type="number" class="form-control" placeholder="" name="certificationForm.quantitiesRcd.quantities.quantity_rcd_9" 
-                                        [(ngModel)]="certificationForm.quantitiesRcd.quantities.quantity_rcd_9" (input)="updateTotal()">
+                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_9"
+                                         (input)="updateTotal()">
                                 </div>
                                 <div class="col-md-6 total">
                                     <label class="form-label">Total, RCD recibidos (t)</label>
-                                    <input type="number" class="form-control" placeholder="" disabled name="certificationForm.quantitiesRcd.total" [(ngModel)]="certificationForm.quantitiesRcd.total">
+                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.total">
                                 </div>
                                 <div class="col-md-6 total">
                                     <label class="form-label">Fecha de recepción de los RCD</label>
-                                    <input type="text" class="form-control" placeholder="" name="certificationForm.reception_date_rcd" [(ngModel)]="certificationForm.reception_date_rcd">
+                                    <input type="text" class="form-control" placeholder="" formControlName="reception_date_rcd">
                                 </div>
 
 
@@ -311,7 +244,7 @@
                                 <div class="col-md-6">
 
                                     <label class="form-label">Nombre o razón social</label>
-                                    <input type="text" autocomplete="name" class="form-control" placeholder="" [(ngModel)]="certificationForm.data_driver.name" name="certificadoForm.data_driver.name">
+                                    <input type="text" autocomplete="name" class="form-control" placeholder="" name="data_driver.name">
 
                                 </div>
 
@@ -320,7 +253,7 @@
 
                                     <mat-form-field class="form-field">
                                         <mat-label>Tipo de documento</mat-label>
-                                        <mat-select [(ngModel)]="certificationForm.data_driver.type_document_id" name="type_document_id">
+                                        <mat-select name="data_driver.type_document_id">
                                             <mat-option *ngFor="let opt of documentsActive" [value]="opt.id_type_document">{{opt.description}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -328,16 +261,16 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label">Numero de Identificación</label>
-                                    <input type="text" class="form-control" autocomplete="name" placeholder="" [(ngModel)]="certificationForm.data_driver.number_id" name="certificadoForm.data_driver.number_id">
+                                    <input type="text" class="form-control" autocomplete="name" placeholder="" formControlName="data_driver.number_id">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Placa de Vehículo</label>
-                                    <input type="text" class="form-control" placeholder="" [(ngModel)]="certificationForm.data_driver.vehicle_plate" name="certificadoForm.data_driver.vehicle_plate" required="true">
+                                    <input type="text" class="form-control" placeholder="" formControlName="data_driver.vehicle_plate">
                                 </div>
 
                                 <div class="col-12 button-certificado">
                                     <div>
-                                        <button type="button" class="btn btn-primary btn-certificado" (click)="openModal()">Generar Certificado</button>
+                                        <button type="button" class="btn btn-primary btn-certificado" (click)="openModal()" [disabled]="generatorForm.invalid">Generar Certificado</button>
                                     </div>
                                 </div>
                             </form>

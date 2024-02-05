@@ -20,7 +20,6 @@ import { DataManagerService } from 'src/app/services/data-manger/data-manager.se
   styleUrls: ['./certificado.component.css'],
 })
 export class CertificadoComponent implements OnInit {
-  formulario: FormGroup | null = null;
 
   razon_social: string="";
   nit: string = '';
@@ -34,75 +33,60 @@ export class CertificadoComponent implements OnInit {
   quantities_rcd: QuantitiesRcd[] = QUANTITY_RCD;
   showModal = false;
 
+  generatorForm !: FormGroup;
 
-//resultado!: string;
-
-//formularioContacto = new FormGroup({
-//  nombre: new FormControl('', [Validators.required, Validators.minLength(10)]),
-//  mail: new FormControl('', [Validators.required, Validators.email]),
-//  mensaje: new FormControl('', [Validators.required, Validators.maxLength(500)])
-//})
-//
-//submit() {
-//  if (this.formularioContacto.valid)
-//    this.resultado = "Todos los datos son válidos";
-//  else
-//    this.resultado = "Hay datos inválidos en el formulario";
-//}
-
-  // certificationForm !: FormGroup;
-
+  // -----------------------------
   id_data_generator:number=0;
 
-  data_driver: DataDriverRequest ={
-    name: '',
-    type_document_id: 0,
-    number_id: '',
-    vehicle_plate: ''
-  }
+  // data_driver: DataDriverRequest ={
+  //   name: '',
+  //   type_document_id: 0,
+  //   number_id: '',
+  //   vehicle_plate: ''
+  // }
 
-  manager: ManagerRequest = 
-    {
-      manager_id_1: false,
-      manager_id_2: false,
-      manager_id_3: false
-    };
+  // manager: ManagerRequest = 
+  //   {
+  //     manager_id_1: false,
+  //     manager_id_2: false,
+  //     manager_id_3: false
+  //   };
 
-  quantitiesRcd: QuantitiesRcdRequest=
-    {
-      quantity_rcd_1: 0,
-      quantity_rcd_2: 0,
-      quantity_rcd_3: 0,
-      quantity_rcd_4: 0,
-      quantity_rcd_5: 0,
-      quantity_rcd_6: 0,
-      quantity_rcd_7: 0,
-      quantity_rcd_8: 0,
-      quantity_rcd_9: 0
-    };
+  // quantitiesRcd: QuantitiesRcdRequest=
+  //   {
+  //     quantity_rcd_1: 0,
+  //     quantity_rcd_2: 0,
+  //     quantity_rcd_3: 0,
+  //     quantity_rcd_4: 0,
+  //     quantity_rcd_5: 0,
+  //     quantity_rcd_6: 0,
+  //     quantity_rcd_7: 0,
+  //     quantity_rcd_8: 0,
+  //     quantity_rcd_9: 0
+  //   };
   
-  quantitiesTotal: QuantitiesTotal = {
-    quantities: this.quantitiesRcd,
-    total: 0
-  }
+  // quantitiesTotal: QuantitiesTotal = {
+  //   quantities: this.quantitiesRcd,
+  //   total: 0
+  // }
 
-  certificationForm: DataGeneratorRequest = {
-    botadero_id: 0,
-    data_manager_id: 0,
-    name: '',
-    type_document_id: 0,
-    number_id: '',
-    legal_representative: '',
-    address: '',
-    phone_number: 0,
-    email: '',
-    address_rcd: '',
-    reception_date_rcd: '',
-    data_driver: this.data_driver,
-    manager: this.manager,
-    type_weight: 0,
-    quantitiesRcd: this.quantitiesTotal
-  }
+  // certificationForm: DataGeneratorRequest = {
+  //   botadero_id: 0,
+  //   data_manager_id: 0,
+  //   name: '',
+  //   type_document_id: 0,
+  //   number_id: '',
+  //   legal_representative: '',
+  //   address: '',
+  //   phone_number: 0,
+  //   email: '',
+  //   address_rcd: '',
+  //   reception_date_rcd: '',
+  //   data_driver: this.data_driver,
+  //   manager: this.manager,
+  //   type_weight: 0,
+  //   quantitiesRcd: this.quantitiesTotal
+  // }
 
 
   constructor(
@@ -117,7 +101,11 @@ export class CertificadoComponent implements OnInit {
     public route: Router,
     private certificacionService:CertificationService,
     private dataManagerService: DataManagerService,
-  ) {}
+    private formBuilder: FormBuilder,
+  ) {
+    this.buildForm();
+
+  }
 
   ngOnInit(): void {
     this.serviceBotadero.getAllActiveBotadero().subscribe((options) => {
@@ -130,33 +118,79 @@ export class CertificadoComponent implements OnInit {
     this.dataManagerService.getAllDataManager().subscribe((options)=>{
       this.dataManager = options;
     });
-    this.formulario = this.fb.group({
-      name : ['', [Validators.required, Validators.minLength(3)]]
-    });;
-
   }
 
+  private buildForm(){
+    this.generatorForm = this.formBuilder.group({
+      certificationForm : this.formBuilder.group({
+        botadero_id : [0, Validators.required],
+        data_manger_id : [0, Validators.required],
+  
+        unic_number : ['', Validators.required],
+        name : ['', Validators.required],
+        type_document_id : [0, Validators.required],
+        number_id : ['', Validators.required],
+        legal_representative : ['', Validators.required],
+        address : ['', Validators.required],
+        phone_number : [0, Validators.required],
+        email : ['', Validators.required],
+        address_rcd : ['', Validators.required],
+        reception_date_rcd : ['', Validators.required],
+        
+        data_driver : this.formBuilder.group({
+          name: ['',Validators.required],
+          type_document_id: [0,Validators.required],
+          number_id: ['',Validators.required],
+          vehicle_plate: ['',Validators.required]
+        }),
+        
+        manager : this.formBuilder.group({
+          manager_id_1: [false,Validators.required],
+          manager_id_2: [false,Validators.required],
+          manager_id_3: [false,Validators.required]
+        }),
+        quantitiesRcd : this.formBuilder.group({
+          quantities : this.formBuilder.group({
+            quantity_rcd_1: 0,
+            quantity_rcd_2: 0,
+            quantity_rcd_3: 0,
+            quantity_rcd_4: 0,
+            quantity_rcd_5: 0,
+            quantity_rcd_6: 0,
+            quantity_rcd_7: 0,
+            quantity_rcd_8: 0,
+            quantity_rcd_9: 0
+          }),
+          total : [0, Validators.required]
+        }),
+        type_weight: [0, Validators.required],
+        consecutive : [0, Validators.required],
+      })
+      
+
+    });
+  }
 
   updateTotal() {
-    const quantities = this.certificationForm.quantitiesRcd.quantities;
-    this.certificationForm.quantitiesRcd.total =
-      quantities.quantity_rcd_1 +
-      quantities.quantity_rcd_2 +
-      quantities.quantity_rcd_3 +
-      quantities.quantity_rcd_4 +
-      quantities.quantity_rcd_5 +
-      quantities.quantity_rcd_6 +
-      quantities.quantity_rcd_7 +
-      quantities.quantity_rcd_8 +
-      quantities.quantity_rcd_9;
+
+     const cantidades = this.generatorForm.value;
+    const total =
+      cantidades.quantitiesRcd.quantities.quantity_rcd_1 +
+      cantidades.quantitiesRcd.quantities.quantity_rcd_2 +
+      cantidades.quantitiesRcd.quantities.quantity_rcd_3 +
+      cantidades.quantitiesRcd.quantities.quantity_rcd_4 +
+      cantidades.quantitiesRcd.quantities.quantity_rcd_5 +
+      cantidades.quantitiesRcd.quantities.quantity_rcd_6 +
+      cantidades.quantitiesRcd.quantities.quantity_rcd_7 +
+      cantidades.quantitiesRcd.quantities.quantity_rcd_8 +
+      cantidades.quantitiesRcd.quantities.quantity_rcd_9;
+    
+      cantidades.quantitiesRcd.total.patchValue({total});   
   }
 
   onSubmit(){
-    if (this.formulario && this.formulario.valid) {
-      // Realizar acciones con los datos del formulario
-      console.log(this.formulario.value);
-    };
-    this.datosGeneradorService.saveGenerador(this.certificationForm).subscribe(
+    
+    this.datosGeneradorService.saveGenerador(this.generatorForm.value).subscribe(
       (resp) => {
         const numero: number = Number(resp);
         this.generateCertificates(numero);
@@ -213,7 +247,7 @@ export class CertificadoComponent implements OnInit {
 
   onGestorSelectionChange() {
     // Obtén el ID del gestor seleccionado
-    const selectedGestorId = this.certificationForm.data_manager_id;
+    const selectedGestorId = this.generatorForm.value.data_manager_id;
 
     // Llama al servicio para obtener los datos del gestor seleccionado
     this.dataManagerService.getByIdDataManager(selectedGestorId)
