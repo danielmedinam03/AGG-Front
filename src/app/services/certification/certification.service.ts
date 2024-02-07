@@ -12,8 +12,8 @@ export class CertificationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getCertificates(id: number): Observable<any> {
-    const url = `${this.API_SERVER}/${id}`;
+  getCertificates(id: number, consecutive:number): Observable<any> {
+    const url = `${this.API_SERVER}/${id}/${consecutive}`;
     return this.httpClient.get(url);
   }
 }

@@ -6,274 +6,317 @@
 
                     <div class="form-certificado">
                         <h1 class="title">Disposición Final de Tierra y Material sobrante
-                            
+
                         </h1>
 
-                            <form [formGroup]="generatorForm" (ngSubmit)="onSubmit()" class="row g-3 form-datos-gestor">
-                                <div class="col-md-6">
-                                    <label class="form-label">Seleccion el gestor</label><br>
+                        <form [formGroup]="generatorForm" (ngSubmit)="onSubmit()" class="row g-3 form-datos-gestor">
+                            <div class="col-md-6">
+                                <label class="form-label">Seleccion el gestor</label><br>
 
-                                    <mat-form-field class="form-field">
-                                        <mat-label>Gestor</mat-label>
-                                        <mat-select formControlName="data_manager_id"
-                                            (selectionChange)="onGestorSelectionChange()">
-                                            <mat-option *ngFor="let opt of dataManager" [value]="opt.id_data_manager"  >{{opt.name}}</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
+                                <mat-form-field class="form-field">
+                                    <mat-label>Gestor</mat-label>
+                                    <mat-select formControlName="data_manager_id"
+                                        (selectionChange)="onGestorSelectionChange()">
+                                        <mat-option *ngFor="let opt of dataManager"
+                                            [value]="opt.id_data_manager">{{opt.name}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
 
 
 
-                                <div class="div-title">
-                                    <img src="../../../assets/points.png" alt="">
-                                    <h2>DATOS BÁSICOS DEL GESTOR</h2>
-                                </div>
-                                <div class="col-md-12">
-                                    <label class="form-label">Nombre o razón social</label>
-                                    <input class="form-control" type="text" value="{{ razon_social }}"
-                                        aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Documento de identificación o NIT</label>
-                                    <input class="form-control" type="text" value="{{ nit }}"
-                                        aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Representante Legal</label>
-                                    <input class="form-control" type="text" value="{{ representante_legal }}"
-                                        aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Dirección</label>
-                                    <input class="form-control" type="text" value="{{ direccion }}"
-                                        aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Teléfono</label>
-                                    <input class="form-control" type="text" value="{{ telefono }}"
-                                        aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Correo electrónico</label>
-                                    <input class="form-control" type="text" value="{{ email }}"
-                                        aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-md-6">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Municipio y Predio</label><br>
+                            <div class="div-title">
+                                <img src="../../../assets/points.png" alt="">
+                                <h2>DATOS BÁSICOS DEL GESTOR</h2>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label">Nombre o razón social</label>
+                                <input class="form-control" type="text" value="{{ razon_social }}"
+                                    aria-label="Disabled input example" disabled readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Documento de identificación o NIT</label>
+                                <input class="form-control" type="text" value="{{ nit }}"
+                                    aria-label="Disabled input example" disabled readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Representante Legal</label>
+                                <input class="form-control" type="text" value="{{ representante_legal }}"
+                                    aria-label="Disabled input example" disabled readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Dirección</label>
+                                <input class="form-control" type="text" value="{{ direccion }}"
+                                    aria-label="Disabled input example" disabled readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Teléfono</label>
+                                <input class="form-control" type="text" value="{{ telefono }}"
+                                    aria-label="Disabled input example" disabled readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Correo electrónico</label>
+                                <input class="form-control" type="text" value="{{ email }}"
+                                    aria-label="Disabled input example" disabled readonly>
+                            </div>
+                            <div class="col-md-6">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Municipio y Predio</label><br>
 
-                                    <mat-form-field class="form-field">
-                                        <mat-label>Municipio y Predio</mat-label>
-                                        <mat-select formControlName="botadero_id">
-                                            <mat-option *ngFor="let opt of botaderosActive" [value]="opt.id_botadero"  >{{opt.city}} - {{opt.property_name}} </mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label consecutivo">Ingrese el numero del consecutivo</label><br>
-
-                                    <input type="number" class="form-control" placeholder="" formControlName="consecutive"
+                                <mat-form-field class="form-field">
+                                    <mat-label>Municipio y Predio</mat-label>
+                                    <mat-select formControlName="botadero_id">
+                                        <mat-option *ngFor="let opt of botaderosActive"
+                                            [value]="opt.id_botadero">{{opt.city}} - {{opt.property_name}} </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label consecutivo" for="consecutive">Ingrese el numero del
+                                    consecutivo</label><br>
+                                <input type="number" class="form-control" placeholder="" formControlName="consecutive"
                                     (input)="updateTotal()">
+
+                            </div>
+                            <div class="col-4" formGroupName="manager">
+                                <label class="form-label">Gestor</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="manager_id_1"
+                                        formControlName="manager_id_1">
+                                    <label class="form-check-label" for="gridCheck">
+                                        Punto limpio
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="manager_id_2"
+                                        formControlName="manager_id_2">
+                                    <label class="form-check-label" for="gridCheck">
+                                        Planta de aprovechamiento
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="manager_id_3"
+                                        formControlName="manager_id_3">
+                                    <label class="form-check-label" for="gridCheck">
+                                        Disposición final
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="div-title">
+                                <img src="../../../assets/points.png" alt="">
+                                <h2>DATOS BÁSICOS DEL GENERADOR</h2>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Nombre o razón social</label>
+                                <input type="text" class="form-control" placeholder="Digite el nombre o razón social"
+                                    id="name" formControlName="name">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Tipo de documento</label> <br>
+
+                                <mat-form-field class="form-field">
+                                    <mat-label>Tipo de documento</mat-label>
+                                    <mat-select formControlName="type_document_id">
+                                        <mat-option *ngFor="let opt of documentsActive"
+                                            [value]="opt.id_type_document">{{opt.description}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Documento de identificación o NIT</label>
+                                <input type="text" class="form-control" placeholder="" id="number_id"
+                                    formControlName="number_id">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Representante Legal</label>
+                                <input type="text" required class="form-control" placeholder=""
+                                    id="legal_representative" formControlName="legal_representative">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Dirección domicilio</label>
+                                <input type="text" class="form-control" placeholder="" id="address"
+                                    formControlName="address">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Teléfono</label>
+                                <input type="number" class="form-control" placeholder="" id="phone_number"
+                                    formControlName="phone_number">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Correo electrónico</label>
+                                <input type="text" class="form-control" placeholder="" id="email"
+                                    formControlName="email">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Dirección de generación de RCD</label>
+                                <input type="text" class="form-control" placeholder="" id="address_rcd"
+                                    formControlName="address_rcd">
+                            </div>
+
+                            <div class="div-title">
+                                <img src="../../../assets/points.png" alt="">
+                                <h2>CANTIDADES DE RCD RECIBIDOS DEL GENERADOR POR TIPO</h2>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Tipo de pesaje</label> <br>
+
+                                <mat-form-field class="form-field">
+                                    <mat-label>Tipo de pesaje</mat-label>
+                                    <mat-select formControlName="type_weight_id">
+                                        <mat-option *ngFor="let opt of typeWeight"
+                                            [value]="opt.id_type_weight">{{opt.description}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div formGroupName="quantitiesRcd" class="row">
+                                <div formGroupName="quantities" class="col-md-6">
+                                    <div class="col-md-6">
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label class="form-label residuos">1. Residuos de construcción y
+                                            demolición -
+                                            RCD susceptibles de aprovechamiento:</label>
+                                        <input type="number" class="form-control" placeholder=""
+                                            formControlName="quantity_rcd_1" (input)="updateTotal()">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label residuos">1.1 Productos de excavación y
+                                            sobrantes de la adecuación
+                                            del terreno: coberturas vegetales, tierras, limos y
+                                            materiales pétreos productos de la excavación, entre otros.</label>
+                                        <input type="number" class="form-control" placeholder=""
+                                            formControlName="quantity_rcd_2" (input)="updateTotal()">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label residuos">1.2 Productos de cimentaciones y
+                                            pilotajes:
+                                            arcillas, bentonitas y demás.</label>
+                                        <input type="number" class="form-control" placeholder=""
+                                            formControlName="quantity_rcd_3" (input)="updateTotal()">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label residuos">1.3 Pétreos: hormigón, arenas,
+                                            gravas, gravillas, cantos,
+                                            pétreos asfalticos, trozos de ladrillos y bloques,
+                                            cerámicas,sobrantes de mezcla de cementos y concretos hidráulicos,
+                                            entre otros. </label>
+                                        <input type="number" class="form-control" placeholder=""
+                                            formControlName="quantity_rcd_4" (input)="updateTotal()">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label residuos">1.4 No pétreos: vidrio, metales como
+                                            acero, hierro, cobre,
+                                            aluminio, con o sin recubrimiento de zinc o estaño, plásticos
+                                            tales como: PVC, polietileno, policarbonato, acrílico,
+                                            espumas de poliestireno y de poliuretano, gomas y cauchos,
+                                            madera y compuestos de madera, cartón-yeso (drywall),
+                                            entre otros.</label>
+                                        <input type="number" class="form-control" placeholder=""
+                                            formControlName="quantity_rcd_5" (input)="updateTotal()">
+                                    </div>
+                                    
+
+                                </div>
+
+                                <div formGroupName="quantities" class="col-md-6">
+                                    <div class="col-md-12">
+                                        <label class="form-label residuos">2. Residuos de construcción y
+                                            demolición - RCD no
+                                            susceptibles de aprovechamiento:</label>
+                                        <input type="number" class="form-control" placeholder=""
+                                            formControlName="quantity_rcd_6" (input)="updateTotal()">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label residuos">2.1 Los contaminados con residuos
+                                            peligrosos.</label>
+                                        <input type="number" class="form-control" placeholder=""
+                                            formControlName="quantity_rcd_7" (input)="updateTotal()">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label residuos">2.2. Los que por su estado no
+                                            pueden ser aprovechados.</label>
+                                        <input type="number" class="form-control" placeholder=""
+                                            formControlName="quantity_rcd_8" (input)="updateTotal()">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label residuos">2.3 Los que tengan
+                                            características de peligrosidad, estos se
+                                            regirán por la normatividad ambiental especial establecida
+                                            para su gestión.</label>
+                                        <input type="number" class="form-control" placeholder=""
+                                            formControlName="quantity_rcd_9" (input)="updateTotal()">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 total">
+                                    <label class="form-label" for="total">Total, RCD recibidos (t)</label>
+                                    <input type="number" class="form-control" placeholder="" readonly
+                                        formControlName="total">
+                                </div>
+                            </div>
                             
-                                </div>
-                                <div class="col-4">
-                                    <label class="form-label">Gestor</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="manager.manager_id_1">
-                                        <label class="form-check-label" for="gridCheck">
-                                            Punto limpio
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="manager.manager_id_2">
-                                        <label class="form-check-label" for="gridCheck">
-                                            Planta de aprovechamiento
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="manager.manager_id_3">
-                                        <label class="form-check-label" for="gridCheck">
-                                            Disposición final
-                                        </label>
-                                    </div>
-                                </div>
+                            <div class="col-md-6 total">
+                                <label class="form-label">Fecha de recepción de los RCD</label>
+                                <input type="text" class="form-control" placeholder=""
+                                    formControlName="reception_date_rcd">
+                            </div>
 
-                                <div class="div-title">
-                                    <img src="../../../assets/points.png" alt="">
-                                    <h2>DATOS BÁSICOS DEL GENERADOR</h2>
-                                </div>
+                            <div class="div-title">
+                                <img src="../../../assets/points.png" alt="">
+                                <h2>DATOS BASICOS DEL GESTOR DE TRANSPORTE</h2>
+                            </div>
 
-                                <div class="col-md-6">
+                            <div formGroupName="data_driver" class="col-md-6">
+                                <div class="col-md-12">
+
                                     <label class="form-label">Nombre o razón social</label>
-                                    <input type="text" class="form-control" placeholder="Digite el nombre o razón social" formControlName="name">
+                                    <input type="text" autocomplete="name" class="form-control" placeholder=""
+                                        formControlName="name">
+
                                 </div>
-                                <div class="col-md-6">
+                                
+                                <div class="col-md-12">
                                     <label class="form-label">Tipo de documento</label> <br>
 
                                     <mat-form-field class="form-field">
                                         <mat-label>Tipo de documento</mat-label>
                                         <mat-select formControlName="type_document_id">
-                                            <mat-option *ngFor="let opt of documentsActive" [value]="opt.id_type_document">{{opt.description}}</mat-option>
+                                            <mat-option *ngFor="let opt of documentsActive"
+                                                [value]="opt.id_type_document">{{opt.description}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Documento de identificación o NIT</label>
-                                    <input type="text" class="form-control" placeholder="" id="number_id" formControlName="number_id" >
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Representante Legal</label>
-                                    <input type="text" required class="form-control" placeholder="" id="legal_representative" formControlName="legal_representative">
-                                </div>
+                            </div>
+
+                            <div formGroupName="data_driver" class="col-md-6">
+
                                 
-                                <div class="col-md-6">
-                                    <label class="form-label">Dirección domicilio</label>
-                                    <input type="text" class="form-control" placeholder="" id="address" formControlName="address" >
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Teléfono</label>
-                                    <input type="number" class="form-control" placeholder="" id="phone_number" formControlName="phone_number">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Correo electrónico</label>
-                                    <input type="text" class="form-control" placeholder="" id="email" formControlName="email" >
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Dirección de generación de RCD</label>
-                                    <input type="text" class="form-control" placeholder="" id="address_rcd" formControlName="address_rcd">
-                                </div>
-
-                                <div class="div-title">
-                                    <img src="../../../assets/points.png" alt="">
-                                    <h2>CANTIDADES DE RCD RECIBIDOS DEL GENERADOR POR TIPO</h2>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label">Tipo de pesaje</label> <br>
-
-                                    <mat-form-field class="form-field">
-                                        <mat-label>Tipo de pesaje</mat-label>
-                                        <mat-select formControlName="type_weight_id">
-                                            <mat-option *ngFor="let opt of documentsActive" [value]="opt.id_type_document">{{opt.description}}</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-6">
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label residuos">1. Residuos de construcción y demolición -
-                                        RCD susceptibles de aprovechamiento:</label>
-                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_1" 
-                                        (input)="updateTotal()">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label residuos">1.1 Productos de excavación y sobrantes de la adecuación
-                                        del terreno: coberturas vegetales, tierras, limos y
-                                        materiales pétreos productos de la excavación, entre otros.</label>
-                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_2"
-                                        (input)="updateTotal()">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label residuos">1.2 Productos de cimentaciones y pilotajes:
-                                        arcillas, bentonitas y demás.</label>
-                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_3"
-                                        (input)="updateTotal()">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label residuos">1.3 Pétreos: hormigón, arenas, gravas, gravillas, cantos,
-                                        pétreos asfalticos, trozos de ladrillos y bloques,
-                                        cerámicas,sobrantes de mezcla de cementos y concretos hidráulicos, entre otros. </label>
-                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_4"
-                                        (input)="updateTotal()">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label residuos">1.4 No pétreos: vidrio, metales como acero, hierro, cobre,
-                                        aluminio, con o sin recubrimiento de zinc o estaño, plásticos
-                                        tales como: PVC, polietileno, policarbonato, acrílico,
-                                        espumas de poliestireno y de poliuretano, gomas y cauchos,
-                                        madera y compuestos de madera, cartón-yeso (drywall),
-                                        entre otros.</label>
-                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_5"
-                                        (input)="updateTotal()">
-                                </div>
-                                <div class="col-md-6">
-                                    
-                                </div>
-
-                                <div class="col-md-6 ">
-                                    <label class="form-label residuos">2. Residuos de construcción y demolición - RCD no
-                                        susceptibles de aprovechamiento:</label>
-                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_6"
-                                        (input)="updateTotal()">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label residuos">2.1 Los contaminados con residuos peligrosos.</label>
-                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_7"
-                                        (input)="updateTotal()">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label residuos">2.2. Los que por su estado no pueden ser aprovechados.</label>
-                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_8" 
-                                        (input)="updateTotal()">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label residuos">2.3 Los que tengan características de peligrosidad, estos se
-                                        regirán por la normatividad ambiental especial establecida
-                                        para su gestión.</label>
-                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.quantity_rcd_9"
-                                         (input)="updateTotal()">
-                                </div>
-                                <div class="col-md-6 total">
-                                    <label class="form-label">Total, RCD recibidos (t)</label>
-                                    <input type="number" class="form-control" placeholder="" formControlName="quantitiesRcd.quantities.total">
-                                </div>
-                                <div class="col-md-6 total">
-                                    <label class="form-label">Fecha de recepción de los RCD</label>
-                                    <input type="text" class="form-control" placeholder="" formControlName="reception_date_rcd">
-                                </div>
-
-
-                                <div class="div-title">
-                                    <img src="../../../assets/points.png" alt="">
-                                    <h2>DATOS BASICOS DEL GESTOR DE TRANSPORTE</h2>
-                                </div>
-
-                                <div class="col-md-6">
-
-                                    <label class="form-label">Nombre o razón social</label>
-                                    <input type="text" autocomplete="name" class="form-control" placeholder="" name="data_driver.name">
-
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label">Tipo de documento</label> <br>
-
-                                    <mat-form-field class="form-field">
-                                        <mat-label>Tipo de documento</mat-label>
-                                        <mat-select name="data_driver.type_document_id">
-                                            <mat-option *ngFor="let opt of documentsActive" [value]="opt.id_type_document">{{opt.description}}</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label">Numero de Identificación</label>
-                                    <input type="text" class="form-control" autocomplete="name" placeholder="" formControlName="data_driver.number_id">
-                                </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <label class="form-label">Placa de Vehículo</label>
-                                    <input type="text" class="form-control" placeholder="" formControlName="data_driver.vehicle_plate">
+                                    <input type="text" class="form-control" placeholder=""
+                                        formControlName="vehicle_plate">
                                 </div>
 
-                                <div class="col-12 button-certificado">
-                                    <div>
-                                        <button type="button" class="btn btn-primary btn-certificado" (click)="openModal()" [disabled]="generatorForm.invalid">Generar Certificado</button>
-                                    </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Numero de Identificación</label>
+                                    <input type="text" autocomplete="name" class="form-control" placeholder=""
+                                        formControlName="number_id">
                                 </div>
-                            </form>
+                            </div>
+
+
+                            <div class="col-12 button-certificado">
+                                <div>
+                                    <button type="button" class="btn btn-primary btn-certificado" (click)="openModal()"
+                                        [disabled]="generatorForm.invalid">Generar Certificado</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -286,7 +329,7 @@
     <p class="msj">
         <i class="fas fa-exclamation-circle"></i>
         ¿Estás seguro de que deseas guardar los cambios? <br>
-        <span style="text-align:center;">Se descargarán automaticamente las certificaciones</span> 
+        <span style="text-align:center;">Se descargarán automaticamente las certificaciones</span>
     </p>
     <div class="buttons">
         <button type="button" class="btn btn-success" (click)="saveChanges()">Aceptar</button>

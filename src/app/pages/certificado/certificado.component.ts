@@ -14,6 +14,7 @@ import { Botadero, QuantitiesRcd } from 'src/app/services/get-certificationServi
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CertificationService } from 'src/app/services/certification/certification.service';
 import { DataManagerService } from 'src/app/services/data-manger/data-manager.service';
+import { TypeWeightService } from 'src/app/services/type-weight/type-weight.service';
 @Component({
   selector: 'app-certificado',
   templateUrl: './certificado.component.html',
@@ -30,6 +31,7 @@ export class CertificadoComponent implements OnInit {
   botaderosActive: any;
   documentsActive: any;
   dataManager:any;
+  typeWeight: any;
   quantities_rcd: QuantitiesRcd[] = QUANTITY_RCD;
   showModal = false;
 
@@ -102,8 +104,9 @@ export class CertificadoComponent implements OnInit {
     private certificacionService:CertificationService,
     private dataManagerService: DataManagerService,
     private formBuilder: FormBuilder,
+    private typeWeightService: TypeWeightService
   ) {
-    this.buildForm();
+    // this.buildForm();
 
   }
 
@@ -118,15 +121,15 @@ export class CertificadoComponent implements OnInit {
     this.dataManagerService.getAllDataManager().subscribe((options)=>{
       this.dataManager = options;
     });
-  }
+    this.typeWeightService.getAllActiveTypeWeight().subscribe((options)=>{
+      this.typeWeight = options;
+    });
+    
 
-  private buildForm(){
     this.generatorForm = this.formBuilder.group({
-      certificationForm : this.formBuilder.group({
         botadero_id : [0, Validators.required],
-        data_manger_id : [0, Validators.required],
+        data_manager_id : [0, Validators.required],
   
-        unic_number : ['', Validators.required],
         name : ['', Validators.required],
         type_document_id : [0, Validators.required],
         number_id : ['', Validators.required],
@@ -145,9 +148,9 @@ export class CertificadoComponent implements OnInit {
         }),
         
         manager : this.formBuilder.group({
-          manager_id_1: [false,Validators.required],
-          manager_id_2: [false,Validators.required],
-          manager_id_3: [false,Validators.required]
+          manager_id_1: [false],
+          manager_id_2: [false],
+          manager_id_3: [false]
         }),
         quantitiesRcd : this.formBuilder.group({
           quantities : this.formBuilder.group({
@@ -161,31 +164,47 @@ export class CertificadoComponent implements OnInit {
             quantity_rcd_8: 0,
             quantity_rcd_9: 0
           }),
-          total : [0, Validators.required]
+          total : [{value: 0, disabled: false}, Validators.required]
         }),
-        type_weight: [0, Validators.required],
+        type_weight_id: [0, Validators.required],
         consecutive : [0, Validators.required],
-      })
-      
-
+ 
     });
+
   }
 
-  updateTotal() {
+  get quantitiesRcd() {
+    return this.generatorForm.get('quantitiesRcd');
+  }
 
-     const cantidades = this.generatorForm.value;
-    const total =
-      cantidades.quantitiesRcd.quantities.quantity_rcd_1 +
-      cantidades.quantitiesRcd.quantities.quantity_rcd_2 +
-      cantidades.quantitiesRcd.quantities.quantity_rcd_3 +
-      cantidades.quantitiesRcd.quantities.quantity_rcd_4 +
-      cantidades.quantitiesRcd.quantities.quantity_rcd_5 +
-      cantidades.quantitiesRcd.quantities.quantity_rcd_6 +
-      cantidades.quantitiesRcd.quantities.quantity_rcd_7 +
-      cantidades.quantitiesRcd.quantities.quantity_rcd_8 +
-      cantidades.quantitiesRcd.quantities.quantity_rcd_9;
-    
-      cantidades.quantitiesRcd.total.patchValue({total});   
+  get quantities() {
+    return this.generatorForm.get('quantitiesRcd.quantities');
+  }
+
+  get addressDetails() {
+    return this.generatorForm.get('addressDetails');
+  }
+
+  updateTotal() { 
+    if (this.quantities){
+      const cantidades = this.quantities.value;
+      console.log(cantidades.quantity_rcd_1);
+      const total =
+        cantidades.quantity_rcd_1 +
+        cantidades.quantity_rcd_2 +
+        cantidades.quantity_rcd_3 +
+        cantidades.quantity_rcd_4 +
+        cantidades.quantity_rcd_5 +
+        cantidades.quantity_rcd_6 +
+        cantidades.quantity_rcd_7 +
+        cantidades.quantity_rcd_8 +
+        cantidades.quantity_rcd_9;
+
+      if (this.quantitiesRcd){
+        this.quantitiesRcd.get('total')?.setValue(total);
+      }
+    }
+      
   }
 
   onSubmit(){
@@ -193,7 +212,9 @@ export class CertificadoComponent implements OnInit {
     this.datosGeneradorService.saveGenerador(this.generatorForm.value).subscribe(
       (resp) => {
         const numero: number = Number(resp);
-        this.generateCertificates(numero);
+        const consecutive = this.generatorForm.value;
+        
+        this.generateCertificates(numero, consecutive.consecutive);  
       },
       (error) => {
         console.error(error);
@@ -203,8 +224,8 @@ export class CertificadoComponent implements OnInit {
 
   }
 
-  generateCertificates(id:number){
-    this.certificacionService.getCertificates(id).subscribe(
+  generateCertificates(id:number, consecutive:number){
+    this.certificacionService.getCertificates(id, consecutive).subscribe(
       (respCert) =>{
         const fileCertificateBotadero = respCert.fileCertificateBotadero;
         const fileCertificateBascula = respCert.fileCertificateBascula;
@@ -212,12 +233,13 @@ export class CertificadoComponent implements OnInit {
         const numberFinalCertification = respCert.number_final_certification;
         // const fileBascula = respCert.fileBascula;
         
-        this.downloadFile(fileCertificateBotadero,'Certificacion '+numberFinalCertification+'.pdf');
-        this.downloadFile(fileCertificateBascula,'Certificacion bascula '+numberFinalCertification+'.pdf');
-        this.downloadFile(fileCalibracionBascula,'Certificacion calibración bascula '+numberFinalCertification+'.pdf');
-        
-        
-
+        if (fileCertificateBascula === ""){
+          this.downloadFile(fileCertificateBotadero,'Certificacion '+numberFinalCertification+'.pdf');
+        }else{
+          this.downloadFile(fileCertificateBotadero,'Certificacion '+numberFinalCertification+'.pdf');
+          this.downloadFile(fileCertificateBascula,'Certificacion bascula '+numberFinalCertification+'.pdf');
+          this.downloadFile(fileCalibracionBascula,'Certificacion calibración bascula '+numberFinalCertification+'.pdf');  
+        }
       }
     );
   }
@@ -247,10 +269,9 @@ export class CertificadoComponent implements OnInit {
 
   onGestorSelectionChange() {
     // Obtén el ID del gestor seleccionado
-    const selectedGestorId = this.generatorForm.value.data_manager_id;
-
+    const selectedGestorId = this.generatorForm.value;
     // Llama al servicio para obtener los datos del gestor seleccionado
-    this.dataManagerService.getByIdDataManager(selectedGestorId)
+    this.dataManagerService.getByIdDataManager(selectedGestorId.data_manager_id)
       .subscribe(
         (gestorData: any) => {
           // Asigna los datos del gestor a las variables

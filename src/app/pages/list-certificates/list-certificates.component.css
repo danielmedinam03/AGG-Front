@@ -95,3 +95,10 @@ input{
       width: 100%;
   }
 }
+.buttons {
+  display: grid;
+  display: flex;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px; /* Espacio entre las columnas (botones) */
+  justify-content: center;
+  }

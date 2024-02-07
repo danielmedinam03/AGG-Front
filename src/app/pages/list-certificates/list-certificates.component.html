@@ -1,44 +1,46 @@
 <div class="table-container">
     <h1>Certificaciones</h1>
 
-        <div class="input-group mb-3 flex-container d-flex align-items-center">
-            <mat-form-field class="flex-item">
-                <mat-label>Buscar por: </mat-label>
-                <mat-select [(ngModel)]="selectedOption">
-                    <mat-option value="none"></mat-option>
-                    <mat-option value="option1">Número de certificación</mat-option>
-                    <mat-option value="option2">Fecha</mat-option>
-                    <mat-option value="option3">Numero de identificación o NIT</mat-option>
-                </mat-select>
-            </mat-form-field>
-    
-            <!-- <input *ngIf="selectedOption === 'none'" type="text" class="form-control" placeholder="Input 1"
+    <div class="input-group mb-3 flex-container d-flex align-items-center">
+        <mat-form-field class="flex-item">
+            <mat-label>Buscar por: </mat-label>
+            <mat-select [(ngModel)]="selectedOption">
+                <mat-option value="none"></mat-option>
+                <mat-option value="option1">Número de certificación</mat-option>
+                <mat-option value="option2">Fecha</mat-option>
+                <mat-option value="option3">Numero de identificación o NIT</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- <input *ngIf="selectedOption === 'none'" type="text" class="form-control" placeholder="Input 1"
                 aria-label="Input 1" placeholder aria-describedby="basic-addon1" disabled> -->
-            <div class="flex-item">
-                <input *ngIf="selectedOption === 'option3'" type="text" class="form-control" placeholder=""
-                aria-label="Input 1" placeholder aria-describedby="basic-addon1" [(ngModel)]="filterArgs.number_id" id="number_id">
-    
+        <div class="flex-item">
+            <input *ngIf="selectedOption === 'option3'" type="text" class="form-control" placeholder=""
+                aria-label="Input 1" placeholder aria-describedby="basic-addon1" [(ngModel)]="filterArgs.number_id"
+                id="number_id">
+
             <input *ngIf="selectedOption === 'option1'" type="text" class="form-control" placeholder=""
-                aria-label="Input 2" aria-describedby="basic-addon2" [(ngModel)]="filterArgs.number_certification" id="number_certification">
-            
-            <input *ngIf="selectedOption === 'option2'" type="date" class="form-control" placeholder="" [(ngModel)]="filterArgs.create_date" id="create_date">
-            </div>
-            
-            <button type="button" class="btn-buscar" routerLink="/admin/bandeja-certificaciones" (click)="buscar()">
-                <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" height="1.5em"
-                    width="13em">
-                    <path
-                        d="M4 9a5 5 0 1110 0A5 5 0 014 9zm5-7a7 7 0 104.2 12.6.999.999 0 00.093.107l3 3a1 1 0 001.414-1.414l-3-3a.999.999 0 00-.107-.093A7 7 0 009 2z"
-                        fill-rule="evenodd" fill="#FFF"></path>
-                </svg>
-                Buscar
-            </button>
-            <!--<button class="btn-buscar" type="button" class="btn btn-primary btn-sm" (click)="buscar()">Buscar</button>-->
+                aria-label="Input 2" aria-describedby="basic-addon2" [(ngModel)]="filterArgs.number_certification"
+                id="number_certification">
+
+            <input *ngIf="selectedOption === 'option2'" type="date" class="form-control" placeholder=""
+                [(ngModel)]="filterArgs.create_date" id="create_date">
         </div>
-    
+
+        <button type="button" class="btn-buscar" routerLink="/admin/bandeja-certificaciones" (click)="buscar()">
+            <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" height="1.5em" width="13em">
+                <path
+                    d="M4 9a5 5 0 1110 0A5 5 0 014 9zm5-7a7 7 0 104.2 12.6.999.999 0 00.093.107l3 3a1 1 0 001.414-1.414l-3-3a.999.999 0 00-.107-.093A7 7 0 009 2z"
+                    fill-rule="evenodd" fill="#FFF"></path>
+            </svg>
+            Buscar
+        </button>
+        <!--<button class="btn-buscar" type="button" class="btn btn-primary btn-sm" (click)="buscar()">Buscar</button>-->
+    </div>
+
     <table class="table table-sm table-bordered border-primary table-light align-middle">
         <thead>
-            <tr class="thead align-middle" >
+            <tr class="thead align-middle">
                 <th scope="col">Numero certificación</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Nombre o razón social</th>
@@ -51,29 +53,39 @@
         <tbody>
             <tr *ngFor="let item of certificates | paginate: { itemsPerPage: 8, currentPage: pagination }">
                 <td class="align-middle">{{item.number_certification}}</td>
-                <td class="align-middle">{{item.create_date}}</td>  
+                <td class="align-middle">{{item.create_date}}</td>
                 <td class="align-middle">{{item.name}}</td>
                 <td class="align-middle">{{item.number_id}}</td>
                 <td class="align-middle">
                     <button mat-icon-button
-                    (click)="descargarPDF(item.file_certificate_botadero,'Certificado botadero N° ',{number_certification: item.number_certification})">
-                        <i class="fa-regular fa-file-pdf"  style="color: #c60000; font-size: 22px;"></i>
+                        (click)="descargarPDF(item.file_certificate_botadero,'Certificado botadero N° ',{number_certification: item.number_certification})">
+                        <i class="fa-regular fa-file-pdf" style="color: #c60000; font-size: 22px;"></i>
                     </button>
                 </td>
                 <td class="align-middle">
                     <button mat-icon-button
-                    (click)="descargarPDF(item.file_certificate_bascula,'Certificado bascula N°',{number_certification:item.number_certification})">
-                        <i class="fa-regular fa-file-pdf"  style="color: #c60000; font-size: 22px;"></i>
+                        (click)="descargarPDF(item.file_certificate_bascula,'Certificado bascula N°',{number_certification:item.number_certification})">
+                        <i class="fa-regular fa-file-pdf" style="color: #c60000; font-size: 22px;"></i>
                     </button>
                 </td>
                 <td class="align-middle">
-                    <button mat-button color="warn" routerLink="/admin/certification-edit/{{item.id_certification}}">Editar</button>
+                    <button mat-button color="warn"
+                        routerLink="/admin/certification-edit/{{item.id_certification}}">Editar</button>
                 </td>
-                
+
             </tr>
 
         </tbody>
     </table>
-    <pagination-controls (pageChange)="pagination = $event" previousLabel="..." nextLabel="..."
-        ></pagination-controls>
+    <pagination-controls (pageChange)="pagination = $event" previousLabel="..." nextLabel="..."></pagination-controls>
 </div>
+
+<app-custom-modal *ngIf="showModal" (closeModalEvent)="closeModal()">
+    <p class="msj">
+        <i class="fas fa-exclamation-circle"></i> <!-- Icono de advertencia -->
+        Esta certificación no tiene certificado de bascula
+    </p>
+    <div class="buttons">
+        <button type="button" class="btn btn-success" (click)="closeModal()">Aceptar</button>
+    </div>
+</app-custom-modal>
