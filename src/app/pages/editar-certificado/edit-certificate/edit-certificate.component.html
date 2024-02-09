@@ -142,6 +142,18 @@
                                     <img src="../../../assets/points.png" alt="">
                                     <h2>CANTIDADES DE RCD RECIBIDOS DEL GENERADOR POR TIPO</h2>
                                 </div>
+                                <div class="col-md-6">  
+                                    <mat-form-field class="form-field">
+                                        <mat-label>Tipo de pesaje</mat-label>
+                                        <mat-select [(ngModel)]="get_data_generator.type_weight.id_type_weight" name="id_type_weight" disabled>
+                                            <mat-option *ngFor="let opt of type_weight"
+                                                [value]="opt.id_type_weight">{{opt.description}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+
+                                </div>
 
                                 <div class="col-md-6">
                                     <label class="form-label residuos">1. Residuos de construcción y demolición -
@@ -223,7 +235,7 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label">Nombre o razón social</label>
-                                    <input type="text" autocomplete="off" class="form-control" placeholder="" [(ngModel)]="get_data_generator.data_driver.name" name="certificadoForm.data_driver.name">
+                                    <input type="text"  class="form-control" placeholder="" [(ngModel)]="get_data_generator.data_driver.name" name="certificadoForm.data_driver.name">
                                 </div>
 
                                 <div class="col-md-6">
@@ -239,7 +251,7 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label">Numero de Identificación</label>
-                                    <input type="text" class="form-control" autocomplete="off" placeholder="" [(ngModel)]="get_data_generator.data_driver.number_id" name="certificadoForm.data_driver.number_id">
+                                    <input type="text" class="form-control" placeholder="" [(ngModel)]="get_data_generator.data_driver.number_id" name="certificadoForm.data_driver.number_id">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Placa de Vehículo</label>

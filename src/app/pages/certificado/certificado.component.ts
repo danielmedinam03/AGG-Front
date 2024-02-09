@@ -288,7 +288,6 @@ export class CertificadoComponent implements OnInit {
         }
       );
   }
-
   openModal() {
     this.showModal = true;
   }
@@ -319,8 +318,8 @@ export interface DataGeneratorRequest {
   reception_date_rcd: string;
   data_driver: DataDriverRequest;
   manager: ManagerRequest;
-  type_weight: number;
   quantitiesRcd: QuantitiesTotal;
+  type_weight_id: number;
 }
 
 export interface ManagerRequest{
