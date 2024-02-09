@@ -16,7 +16,13 @@ export class GetCertificationComponent implements OnInit {
   data_generator= {} as DataGenerator;
   quantities_rcd: QuantitiesRcd[] = QUANTITY_RCD;
   manager: Manager[]=MANAGER;
-  fechaActual: string;
+  diaActual: string;
+  anhioActual: string;
+  currentMonth: string;
+  mesActual!: string;
+  months : string[] = [
+    "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+]
   id:any
   
   public ids = this.route.snapshot.paramMap.get('id');
@@ -27,9 +33,18 @@ export class GetCertificationComponent implements OnInit {
       const fecha = new Date();
       const anio = fecha.getFullYear();
       const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+      const currentDate = new Date();
+      this.currentMonth = this.getMonthInLetters(currentDate)
       const dia = fecha.getDate().toString().padStart(2, '0');
       this.id= this.route.snapshot.params['id'];
-      this.fechaActual = `${dia} días del mes ${mes} del ${anio}`;
+      this.diaActual = `${dia}`;
+      this.anhioActual = `${anio}`
+      
+     }
+
+     getMonthInLetters(date:Date):string {
+      const monthIndex = date.getDate();
+      return this.months[monthIndex];
      }
 
     ngOnInit() {
@@ -37,7 +52,14 @@ export class GetCertificationComponent implements OnInit {
         const id = +params['id'];
         this.obtenerElementoPorId(id);
       });
+      this.obtenerMesActual();
 
+    }
+
+    obtenerMesActual() {
+      const fechaActual = new Date();
+      const opciones = { month: 'long' as const }; // Obtener el nombre del mes en formato largo
+      this.mesActual = fechaActual.toLocaleDateString('es-ES', opciones); // Cambiar 'es-ES' al código de tu idioma deseado
     }
 
 
