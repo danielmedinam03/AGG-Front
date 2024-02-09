@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  API_SERVER:"https://backend-agg-3f19d6ac3452.herokuapp.com"
+  API_SERVER:"https://agg-backend-a9bf5457cba2.herokuapp.com"
 
 };
