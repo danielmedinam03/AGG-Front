@@ -39,6 +39,7 @@ export interface DataGenerator{
   manager: Manager[];
 
   type_document:TypeDocument;
+  type_weight:TypeWeight;
 
   quantitiesRcd: QuantitiesRcd[];
 
@@ -70,6 +71,13 @@ export interface DataManager{
 
 export interface TypeDocument{
   id_type_document: number;
+  name: string;
+  description: string;
+  status: boolean;
+}
+
+export interface TypeWeight{
+  id_type_weight: number;
   name: string;
   description: string;
   status: boolean;
